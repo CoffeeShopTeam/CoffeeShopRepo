@@ -1,4 +1,4 @@
-.header0__group1 {
+/* .header0__group1 {
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
@@ -24,15 +24,13 @@
   max-height: 37px;
 }
 .header0__flexRow > .spacer {
-  flex: 1 1 227px;
+  flex:  0 20px;
 }
 .header0__box {
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   position: relative;
-  flex: 0 1 1271px;
-  margin: 3px 0px 6px;
 }
 .header0__flexRow1 {
   display: flex;
@@ -76,11 +74,9 @@
   cursor: pointer;
   position: relative;
   flex-grow: 1;
-  margin: 0px 0px 0px 9px;
+  margin: 0px 0px 1px 9px;
 }
-.header0__flexRow1 > .spacer {
-  flex: 0 1 39px;
-}
+
 .header0__rect5 {
   background-color: rgb(0, 0, 0);
   position: relative;
@@ -89,15 +85,7 @@
   min-height: 17px;
   margin: 4px 0px 6px;
 }
-.header0__flexRow1 > .spacer1 {
-  flex: 0 1 48px;
-}
-.header0__flexRow1 > .cell2 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  flex: 0 1 20px;
-}
+
 .header0__image10 {
   width: 20px;
   height: auto;
@@ -105,20 +93,12 @@
   aspect-ratio: 1.05;
   vertical-align: top;
   object-fit: cover;
-  object-position: center center;
   position: relative;
+  left: 75px;
+  top: 30px;
   min-width: 20px;
-  margin: 4px 0px 4px 12px;
 }
-.header0__flexRow1 > .spacer2 {
-  flex: 0 1 40px;
-}
-.header0__flexRow1 > .cell3 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  flex: 0 1 21px;
-}
+
 .header0__icon1 {
   width: 21px;
   height: auto;
@@ -126,10 +106,10 @@
   aspect-ratio: 1;
   vertical-align: top;
   object-fit: cover;
-  object-position: center center;
   position: relative;
+  left: 60px;
+  top: 30px;
   min-width: 21px;
-  margin: 4px 0px 2px;
 }
 .header0__icon {
   width: 20px;
@@ -138,8 +118,158 @@
   aspect-ratio: 1;
   vertical-align: top;
   object-fit: cover;
-  object-position: center center;
   position: relative;
+  left: 60px;
+  top: 30px;
   min-width: 20px;
-  margin: 3px 0px 4px;
+}
+
+#search {
+  width: 50px;
+  margin-left: 12px;
+} */
+
+.header0__group1 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  margin-left: 60px;
+}
+
+.header0__flexRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 120px);
+  position: relative;
+  flex-grow: 1;
+  min-width: 500px;
+  margin: 29px auto 25px;
+}
+
+.header0__medium_title {
+  font: 700 26px/1.5 "Poppins", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0px;
+  cursor: pointer;
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 102px;
+  min-height: 37px;
+  max-height: 37px;
+}
+
+.header0__box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+}
+
+.header0__flexRow1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 68%;
+  position: relative;
+  flex-grow: 1;
+  margin: 8px 0% 7px;
+}
+
+.header0__flexRow1 > .cell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header0__txt {
+  display: flex;
+  justify-content: center;
+  font: 400 18px/1.5 "Poppins", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  position: relative;
+  letter-spacing: 0px;
+  top: 2px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.header0__flexRow1 > .cell1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 96px;
+}
+
+.header0__highlights2 {
+  display: flex;
+  justify-content: center;
+  font: 400 18px/1.5 "Poppins", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  letter-spacing: 0px;
+  min-width: 50px;
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+  padding-top: 5px;
+}
+
+.header0__rect5 {
+  background-color: rgb(0, 0, 0);
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 2px;
+  min-height: 20px;
+  margin: 4px 0px 6px;
+  margin-left: 15px;
+}
+
+.header0__image10 {
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  aspect-ratio: 1;
+  vertical-align: top;
+  object-fit: fill;
+  position: relative;
+  margin-left: 25px;
+  min-width: 20px;
+}
+
+.header0__icon1 {
+  width: 21px;
+  height: auto;
+  cursor: pointer;
+  aspect-ratio: 1;
+  vertical-align: top;
+  object-fit: fill;
+  position: relative;
+  margin-left: 25px;
+  min-width: 21px;
+}
+
+.header0__icon {
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  aspect-ratio: 1;
+  vertical-align: top;
+  object-fit: fill;
+  position: relative;
+  margin-left: 25px;
+  min-width: 20px;
+}
+
+#search {
+  width: 50px;
+  margin-left: 12px;
+}
+
+@media (max-width: 768px) {
+  .header0__group1 {
+    padding: 0 20px;
+  }
 }

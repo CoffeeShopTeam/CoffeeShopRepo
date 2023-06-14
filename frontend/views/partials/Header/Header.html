@@ -4,6 +4,7 @@
   href="\frontend\views\partials\Header\Header.css"
 />
 <script src="https://cdn.jsdelivr.net/gh/px2code/posize/build/v1.01.0.js"></script>
+<script src="\frontend\views\partials\Header\Header.js"></script>
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
   rel="stylesheet"
@@ -19,7 +20,6 @@
     >
       Urusta.
     </h2>
-    <div class="spacer"></div>
     <div class="header0__box">
       <div class="header0__flexRow1">
         <div class="cell">
@@ -38,9 +38,15 @@
             Our Story
           </h4>
         </div>
-        <div class="spacer"></div>
         <div class="header0__rect5"></div>
-        <div class="spacer1"></div>
+        <form class="d-flex" id="searchBar" role="search">
+          <input
+            class="form-control me-2"
+            id="searchBar"
+            placeholder="Search Here.."
+            aria-label="Search"
+          />
+        </form>
         <div class="cell2">
           <img
             src="/frontend/views/partials/assets/search.png"
@@ -49,7 +55,6 @@
             onclick="resetPlaceholder()"
           />
         </div>
-        <div class="spacer2"></div>
         <div class="cell3">
           <img
             src="/frontend/views/partials/assets/shopping-cart.png"
@@ -58,7 +63,6 @@
             onclick="window.location.href = '/frontend/views/layouts/Cart/Cart.html'"
           />
         </div>
-        <div class="spacer2"></div>
         <div class="cell2">
           <img
             src="/frontend/views/partials/assets/user.png"
@@ -71,12 +75,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  function resetPlaceholder() {
-    var input = document.querySelector("#newsletter input");
-    input.value = "";
-    input.placeholder = "Give an email, get the newsletter..";
-    alert("newsletter sent!");
-  }
-</script>

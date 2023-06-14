@@ -144,7 +144,7 @@
   width: calc(100% - 120px);
   position: relative;
   flex-grow: 1;
-  min-width: 500px;
+  min-width: 550px;
   margin: 29px auto 25px;
 }
 

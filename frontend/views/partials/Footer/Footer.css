@@ -12,9 +12,9 @@
 .footer__group {
   display: flex;
   flex-direction: column;
-  width: 83.33%;
+  width: calc(100% - 120px);
   position: relative;
-  margin: 25px auto 67px;
+  margin: 29px auto 67px;
 }
 @media (max-width: 1919px) {
   .footer__group {
@@ -264,4 +264,12 @@
   position: absolute;
   right: 12px;
   bottom: 0px;
+}
+
+#scrollUpLink {
+  margin-top: 1%;
+  font: 400 16px/1.68 "DM Sans", Helvetica, Arial, serif;
+  position: relative;
+  text-align: center;
+  text-decoration: solid;
 }

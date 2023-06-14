@@ -5,15 +5,3 @@
   width: 50%;
   margin-right: 0.5rem;
 }
-.btn,
-.btn-primary,
-.my-button {
-  background-color: gray;
-  border-color: gray;
-}
-.btn:hover,
-.btn-primary:hover,
-.my-button:hover {
-  background-color: rgb(142, 142, 142);
-  border-color: rgb(142, 142, 142);
-}

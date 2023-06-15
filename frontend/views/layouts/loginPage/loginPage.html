@@ -9,37 +9,46 @@
     <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
     <script src="./loginPage.js"></script>
     <link rel="stylesheet" type="text/css" href="./loginPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
     <title>Login</title>
   </head>
 
   <body class="flex-column">
-    <header id="header" class="headroom"></header>
-    <div class="my-account root">
-      <div class="flexCol">
-        <h1 class="title">Login</h1>
-        <div class="cell2">
-          <div class="flexCol1">
-            <div class="flexCol2">
-              <label class="highlights2" for="email">Email</label>
-              <input type="text" class="login-input" name="email">
-            </div>
-            <div class="flexCol3">
-              <label class="highlights2" for="password">Password</label>
-              <input type="text" class="login-input" name="password">
-              <!-- <hr size="1" class="line" /> -->
-            </div>
-            <div class="flexRow">
-              <div class="rect3"></div>
-              <h5 class="highlights1">Remember me</h5>
-            </div>
-            <button class="content_box"><h4 class="highlights">SIGN IN</h4></button>
-            <h5 class="highlights11">Have you forgotten your password?</h5>
-          </div>
+    <header id="header"></header>
+    <h1 class="text-center login-h1">My account</h1>
+    <form
+      action=""
+      method="post"
+      id="login-form"
+      class="container text-center login-form col-xl-4 col-lg-6 col-md-8 col-sm-9"
+    >
+      <h2 class="login-title text-center">Login</h2>
+      <div>
+        <label class="row login login-lable" for="email">Email</label>
+        <input type="email" class="login-input row login" name="email" />
+
+        <label class="row login login-lable" for="password">Password</label>
+        <input type="password" class="login-input row login" name="password" />
+
+        <div class="row login form-check">
+          <input
+            type="checkbox"
+            name="remember-me"
+            class="form-check-input login"
+          />
+          <label class="login-lable" for="remember-me" >Remember me</label>
         </div>
       </div>
-      <div class="component">
-        <section id="footer" class="footer footer__section2"> </section>
-      </div>
-    </div>
+
+      <button class="login btn btn-dark login-submit">SIGN IN</button>
+      <button class="login btn">Have you forgotten your password?</button>
+    </form>
   </body>
+  <div class="component">
+    <section id="footer"></section>
+  </div>
 </html>

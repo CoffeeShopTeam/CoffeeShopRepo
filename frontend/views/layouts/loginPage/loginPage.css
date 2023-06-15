@@ -16,7 +16,6 @@
   border-radius: 0.5rem;
   padding: 1rem 0;
   margin: 0;
-  /* margin-bottom: 1rem; */
 }
 
 .row.login,
@@ -30,7 +29,6 @@
   color: rgb(85, 85, 85);
   font-size: medium;
   width: 100%;
-  /* margin-bottom: 1rem; */
 }
 
 .login-input:focus-visible {

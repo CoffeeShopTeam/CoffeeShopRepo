@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 .login-h1 {
   margin-bottom: 5rem;
   margin-top: 1rem;
@@ -51,11 +52,11 @@
 
 .login-input,
 .login-title,
-.login.form-check{
+.login.form-check {
   margin-bottom: 2.2rem;
 }
 
-.login.btn{
+.login.btn {
   padding: 1rem;
 }
 

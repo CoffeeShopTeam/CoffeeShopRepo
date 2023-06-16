@@ -1,7 +1,19 @@
-.spacer {
-  margin-top: 20px;
+@media (max-width: 2560px) {
+  .cart-title {
+    margin-top: 5%;
+  }
 }
-.coupon-input {
-  width: 50%;
-  margin-right: 0.5rem;
+
+@media (max-width: 1200px) {
+  /* Adjustments for screens up to 1200px width */
+  .cart-title {
+    margin-top: 3%;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Adjustments for screens up to 767px width */
+  .cart-title {
+    margin-top: 2%;
+  }
 }

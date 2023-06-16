@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
+    <script src="./signUpPage.js"></script>
+    <link rel="stylesheet" type="text/css" href="./signUpPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <title>Sign up</title>
+  </head>
+
+  <body class="flex-column">
+    <header id="header"></header>
+    <h1 class="text-center sign-up-h1">My account</h1>
+    <form
+      action=""
+      method="post"
+      id="sign-up-form"
+      class="container text-center sign-up-form col-xl-6 col-lg-5 col-md-7 col-sm-8"
+    >
+      <h2 class="sign-up-title text-center">Sign up</h2>
+      <div>
+        <div class="sign-up row">
+          <div class="col text-left sign-up">
+            <label class="sign-up sign-up-lable" for="username">Username</label>
+            <input type="text" class="sign-up sign-up-input" name="username" />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="sign-up sign-up-lable col-xl-1" for="email">
+              Email
+            </label>
+            <input type="email" class="sign-up-input sign-up" name="email" />
+          </div>
+        </div>
+
+        <div class="sign-up row">
+          <div class="col text-left sign-up">
+            <label class="sign-up sign-up-lable" for="password">
+              Password
+            </label>
+            <input
+              type="password"
+              class="sign-up-input sign-up"
+              name="password"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="col sign-up sign-up-lable" for="password">
+              Repeate password
+            </label>
+            <input
+              type="re-password"
+              class="sign-up-input col sign-up"
+              name="re-password"
+            />
+          </div>
+        </div>
+
+        <div class="sign-up row">
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="phone">Phone</label>
+            <input
+              type="number"
+              class="sign-up-input row sign-up"
+              name="phone"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="birthday">
+              Birthday
+            </label>
+            <input
+              type="date"
+              class="sign-up-input row sign-up"
+              name="birthday"
+            />
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="sign-up row">
+          <div class="sign-up text-left">Address</div>
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="address-street">
+              Street
+            </label>
+            <input
+              type="text"
+              class="sign-up-input row sign-up"
+              name="address-street"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="address-country">
+              country
+            </label>
+            <input
+              type="text"
+              class="sign-up-input row sign-up"
+              name="address-country"
+            />
+          </div>
+
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="address-city">
+              City
+            </label>
+            <input
+              type="text"
+              class="sign-up-input row sign-up"
+              name="address-city"
+            />
+          </div>
+        </div>
+
+        <!--  -->
+
+        <div class="row sign-up form-check">
+          <input
+            type="checkbox"
+            name="remember-me"
+            class="form-check-input sign-up"
+          />
+          <label class="sign-up-lable" for="remember-me">Remember me</label>
+        </div>
+      </div>
+
+      <button class="sign-up btn btn-dark sign-up-submit">SIGN UP</button>
+      <button class="sign-up btn">Already have an account</button>
+    </form>
+  </body>
+  <div class="component">
+    <section id="footer"></section>
+  </div>
+</html>

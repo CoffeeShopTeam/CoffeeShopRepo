@@ -13,39 +13,31 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/views/layouts/Checkout/Checkout.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/views/partials/assets" />
+    <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
     <script src="\frontend\views\layouts\Checkout\Checkout.js"></script>
     <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
-    <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
-    <script>
-        $(function () {
-            $("#header").load("/frontend/views/partials/Header/Header.html");
-            $("#footer").load("/frontend/views/partials/Footer/Footer.html");
-        });
-    </script>
 </head>
 
 <body class="flex-column">
-    <nav class="max:show">
-        <div id="header"></div>
-    </nav>
-    <br>
+    <header>
+        <nav>
+            <div id="header"></div>
+        </nav>
+    </header>
     <main class="container">
         <div class="mb-4">
             <h1 class="text-center">Checkout</h1>
         </div>
-        <br>
         <div class="row">
             <!-- ======= section1 ======= -->
             <section class="col-md-6">
                 <div class="mb-4">
-                    <br>
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Returning customer? <a id="click-to-login"
                                 onclick="window.location.href='\frontend\views\layouts\loginPage\loginPage.html'">Click
                                 here</a> to login</h5>
                     </div>
-                    <br>
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">New customer? <a id="click-to-signup"
                                 onclick="window.location.href='\frontend\views\layouts\sign-up\sign-up.html'">Click
@@ -444,7 +436,7 @@
                                 <h5>Credit Card</h5>
                             </label>
                         </div>
-                        <span class="mb-0" id="credit-card-description">Pay with a credit card <br><br>
+                        <span class="mb-0" id="credit-card-description">Pay with a credit card
                         </span>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="payment-method" id="cash-on-delivery"
@@ -453,7 +445,7 @@
                                 <h5>Cash on delivery</h5>
                             </label>
                         </div>
-                        <span class="mb-0" id="cash-on-description">Pay at time of delivery <br><br></span>
+                        <span class="mb-0" id="cash-on-description">Pay at time of delivery </span>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="payment-method" id="paypal"
                                 value="paypal" onclick="togglePaymentDescription()">
@@ -465,7 +457,6 @@
                             if you don't have a PayPal account
                         </span>
                     </div>
-                    <br><br>
                     <button class=" btn btn-success btn-block btn-lg"
                         onclick="window.location.href='\frontend\views\layouts\place-order\place-order.html'">PLACE
                         ORDER

@@ -1,18 +1,10 @@
-@media (max-width: 2560px) {
-  .cart-title {
-    margin-top: 5%;
-  }
-}
-
-@media (max-width: 1200px) {
-  /* Adjustments for screens up to 1200px width */
+@media (max-width: 1024px) {
   .cart-title {
     margin-top: 3%;
   }
 }
 
-@media (max-width: 767px) {
-  /* Adjustments for screens up to 767px width */
+@media (max-width: 768px) {
   .cart-title {
     margin-top: 2%;
   }

@@ -10,22 +10,14 @@
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="\frontend\views\layouts\Cart\Cart.css" />
-    <script src="\frontend\views\layouts\Cart\Cart.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
     <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
-    <script>
-        $(function () {
-            $("#header").load("/frontend/views/partials/Header/Header.html");
-            $("#footer").load("/frontend/views/partials/Footer/Footer.html");
-        });
-    </script>
+    <script src="\frontend\views\layouts\Cart\Cart.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
 </head>
 
 <body class="flex-column">
-    <header id="header" class="headroom">
+    <header>
         <nav>
             <div id="header"></div>
         </nav>
@@ -34,27 +26,21 @@
         <div class="text-center">
             <h2 class="mb-4 cart-title">Shopping Cart</h2>
         </div>
-        <br><br><br><br><br><br>
-        <h3>The products will be shown here as a customer will add one.</h3>
-        <br><br><br><br><br><br>
+        <h3>The products will be shown here when a customer will add one.</h3>
         <div class="col-md-6 row">
             <div class=".btn-lg mb-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <button class="btn btn-dark" name="update-cart">UPDATE CART</button>
-                    <!-- Make a calulate for the updated quantity -->
                 </div>
             </div>
         </div>
-        <br>
         <div class="border mb-3 p-3">
             <h2>Cart totals</h2>
-            <br>
             <div class="col">
                 <div class="col-md-6">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5>SUBTOTAL</h5>
                         <h5>$X</h5>
-                        <!-- Update price with accordance to cart contents-->
                     </div>
                 </div>
                 <div class="col-md-6">

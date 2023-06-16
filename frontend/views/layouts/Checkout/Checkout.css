@@ -3,7 +3,13 @@
   display: inline;
   float: none;
 }
-#click-to-login {
+#click-to-login,
+#click-to-signup {
   cursor: pointer;
   text-decoration: underline;
+}
+#paypal-description,
+#credit-card-description,
+#cash-on-description {
+  display: none;
 }

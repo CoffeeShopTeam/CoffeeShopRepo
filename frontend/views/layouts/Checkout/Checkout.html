@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/frontend/views/partials/Header/Header.html" />
     <link rel="stylesheet" type="text/css" href="/frontend/views/partials/Footer/Footer.html" />
     <link rel="stylesheet" type="text/css" href="/frontend/views/partials/assets" />
+    <script src="\frontend\views\layouts\Checkout\Checkout.js"></script>
     <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
     <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
@@ -39,10 +40,17 @@
             <!-- ======= section1 ======= -->
             <section class="col-md-6">
                 <div class="mb-4">
+                    <br>
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Returning customer? <a id="click-to-login"
-                                onclick="window.location.href='\frontend\views\layouts\login\login.css'">Click
+                                onclick="window.location.href='\frontend\views\layouts\login\login.html'">Click
                                 here</a> to login</h5>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">New customer? <a id="click-to-signup"
+                                onclick="window.location.href='\frontend\views\layouts\sign-up\sign-up.html'">Click
+                                here</a> to signup!</h5>
                     </div>
                     <hr class="mt-2 mb-3">
                     <div class="input-group mb-3">
@@ -52,20 +60,20 @@
                     <button class="btn btn-outline-secondary">APPLY COUPON</button>
                 </div>
                 <div class="mb-4">
-                    <h3 class="mb-3">Billing Details</h3>
+                    <h3 class="mb-3">Shipping Details</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="first-name">First name</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="first-name">
+                                <input type="text" class="form-control" id="first-name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="last-name">Last name</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="last-name">
+                                <input type="text" class="form-control" id="last-name" required>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -79,7 +87,7 @@
                                 <label for="country">Country</label>
                                 <span class="must-fill">*</span>
                                 <div class="input-group">
-                                    <select name="country" class="form-control">
+                                    <select name="country" class="form-control" required>
                                         <option value="Afghanistan">Afghanistan</option>
                                         <option value="Åland Islands">Åland Islands</option>
                                         <option value="Albania">Albania</option>
@@ -345,28 +353,28 @@
                             <div class="form-group">
                                 <label for="street-address">Street Address</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="street-address">
+                                <input type="text" class="form-control" id="street-address" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="postcode">Postcode / ZIP</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="postcode">
+                                <input type="text" class="form-control" id="postcode" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="city">Town / City</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="city">
+                                <input type="text" class="form-control" id="city" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="phone">
+                                <input type="text" class="form-control" id="phone" required>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -377,28 +385,13 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="create-account">
-                                <label class="form-check-label" for="create-account">
-                                    Create an account?
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="ship-different-address">
-                                <label class="form-check-label" for="ship-different-address">
-                                    Ship to a different address?
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="order-notes">Order notes</label>
                                 <textarea class="form-control" id="order-notes" rows="3"
-                                    placeholder="Tell us anything..."></textarea>
+                                    placeholder="Got something to tell us?"></textarea>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
             <!-- ======= End section1 ======= -->
             <section class="col-md-6">
@@ -436,45 +429,39 @@
                         <h5 class="mb-0">TOTAL</h5>
                         <h5 class="mb-0">$380</h5>
                     </div>
-                    <div class="payment-options">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="payment-icon">
-                                <img src="\frontend\views\partials\assets\5533d6f4de7c376b41676bc5b5edbeed.png"
-                                    alt="Direct Bank Transfer" class="img-fluid">
-                            </div>
-                            <h5 class="mb-0">Direct bank transfer</h5>
+                    <div class="payment-methods">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment-method" id="credit-card"
+                                value="credit-card" onclick="togglePaymentDescription()">
+                            <label class="form-check-label" for="credit-card">
+                                <h5>Credit Card</h5>
+                            </label>
                         </div>
-                        <p class="mb-2">
-                            Make your payment directly into our bank account. Please
-                            use your Order ID as the payment reference. Your order
-                            will not be shipped until the funds have cleared in our
-                            account
-                        </p>
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="payment-icon">
-                                <img src="\frontend\views\partials\assets\9a9eda9a730f969396cdebea15c94dd7.png"
-                                    alt="Check Payments" class="img-fluid">
-                            </div>
-                            <h5 class="mb-0">Check payments</h5>
+                        <span class="mb-0" id="credit-card-description">Pay with the supported credit cards <br><br>
+                        </span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment-method" id="cash-on-delivery"
+                                value="cash-on-delivery" onclick="togglePaymentDescription()">
+                            <label class="form-check-label" for="cash-on-delivery">
+                                <h5>Cash on delivery</h5>
+                            </label>
                         </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="payment-icon">
-                                <img src="\frontend\views\partials\assets\9a9eda9a730f969396cdebea15c94dd7.png"
-                                    alt="Cash on Delivery" class="img-fluid">
-                            </div>
-                            <h5 class="mb-0">Cash on delivery</h5>
+                        <span class="mb-0" id="cash-on-description">Pay at the time of delivery <br><br></span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment-method" id="paypal"
+                                value="paypal" onclick="togglePaymentDescription()">
+                            <label class="form-check-label" for="paypal">
+                                <h5>PayPal</h5>
+                            </label>
                         </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="payment-icon">
-                                <img src="\frontend\views\partials\assets\9a9eda9a730f969396cdebea15c94dd7.png"
-                                    alt="PayPal" class="img-fluid">
-                            </div>
-                            <h5 class="mb-0">PayPal</h5>
-                        </div>
-                        <p class="mb-0">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                            account</p>
+                        <span class="mb-0" id="paypal-description">Pay via PayPal; you can pay with your credit card
+                            if you don't have a PayPal account
+                        </span>
                     </div>
-                    <button class="btn btn-success btn-block">PLACE ORDER</button>
+                    <br><br>
+                    <button class=" btn btn-success btn-block btn-lg"
+                        onclick="window.location.href='\frontend\views\layouts\place-order\place-order.html'">PLACE
+                        ORDER</button>
                 </div>
             </section>
         </div>

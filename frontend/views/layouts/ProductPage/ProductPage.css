@@ -1,0 +1,245 @@
+.card {
+    border: none;
+    box-shadow: none;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left:12px;
+
+  }
+  
+
+  .card-subtitle {
+    font-size: 15px;
+    color: #A18A68 !important;
+    margin-top: 1rem;
+  }
+  
+  .card-text {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 1rem;
+  }
+  
+  .section1__greyed-text {
+    color: #707070;
+  }
+  
+  .section1__flexCol4 {
+    margin-top: 20px;
+  }
+  
+  .section1__box {
+    display: flex;
+    align-items: center;
+  }
+  
+  .counter-button {
+    display: flex;
+    align-items: center;
+    background-color: #eee;
+    color : #707070;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  .counter-button button {
+    border: none;
+    background-color: transparent;
+    color : #707070;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .counter-value {
+    margin: 0 12px;
+    font-size: 16px;
+  }
+  
+  .add-to-cart-container {
+    margin-left: 16px;
+  }
+  
+  .add-to-cart-button {
+    padding: 12px 24px;
+    border: none;
+    background-color: whitesmoke;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .section1__flexRow5,
+  .section1__flexRow6 {
+    margin-top: 20px;
+  }
+  
+  .section1__highlights11 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .section1__highlights6,
+  .section1__highlights8 {
+    font-size: 14px;
+    color: #666;
+    margin-left: 8px;
+  }
+
+  .card-body,
+  .card-body-sub,
+  .card-title-sub,
+  .list-group-item {
+    border: none !important;
+  }
+  .card-body {
+    border-bottom: 1px solid #d3d3d3; 
+  }
+  .card-body-sub h5{
+    font-size: 14px;
+  }
+  .card-title-sub{
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+  
+  .list-group-item {
+    border: none; 
+    padding: 0;
+    margin-bottom: 1rem; 
+  }
+  
+  .section2__label {
+    display: inline-block;
+    font-weight: bold; 
+    font-size: 13px;
+  }
+  
+  .section2__value {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #808080; 
+    font-size: 13px;;
+  }
+
+.text-box{
+    margin-left: 1rem;
+}
+.section2__title h4{
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
+  .section2__title {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .add-to-cart-button {
+    padding: 8px 160px;
+    border: 1px solid #707070;
+    border-radius: 4px;
+    background-color: white;
+    color: #000; 
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .add-to-cart-button {
+    padding: 8px 160px; 
+    border: 1px solid #707070;
+    border-radius: 4px;
+    background-color: white;
+    color: #000; 
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .message-content-box {
+    position: relative;
+    width: 1460px;
+    height: 45px;
+    margin: -18px 0 0 145px;
+    background-color: #EFEFEF;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1;
+  }
+  .card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .message-content-flex {
+    display: flex;
+    align-items: center;
+  }
+  
+  .message-icon {
+    width: 14px;
+    height: 14px;
+    margin: 0 1px 8px -5px;
+  }
+  
+  .message-highlights {
+    font-size: 13px;
+    margin-right: auto;
+    margin-left:10px;
+    margin-top:5px;
+    color: black;
+    display: flex;
+    align-items: center; 
+  }
+  
+  .view-cart-button {
+    cursor: pointer;
+    color: #A18A68;
+    margin-top: 7px;
+    font-size: 11.5px;
+    margin-left: 1050px; 
+  }
+  
+
+  @media (max-width: 1024px) {
+    .add-to-cart-button {
+      padding: 8px 120px;
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .add-to-cart-button {
+      padding: 8px 80px;
+      font-size: 10px; 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .add-to-cart-button {
+      padding: 8px 60px;
+      font-size: 12px; 
+    }
+  }
+  @media (max-width: 375px) {
+    .add-to-cart-button {
+      padding: 8px 60px;
+      font-size: 10px; 
+    }
+  }
+  
+  

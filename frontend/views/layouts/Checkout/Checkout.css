@@ -1,7 +1,5 @@
 .must-fill {
-  color: red !important;
-  display: inline;
-  float: none;
+  color: red;
 }
 
 #click-to-login,
@@ -16,67 +14,15 @@
   display: none;
 }
 
-@media (max-width: 768px) {
-  .container {
-    text-align: center;
-  }
-
-  .container h1 {
-    font-size: 3rem;
-  }
-
+@media (max-width: 1024px),
+(max-width: 768px),
+(max-width: 425) {
   .row {
     flex-direction: column;
+    align-content: center;
   }
 
-  .row > section {
-    margin-bottom: 5%;
-  }
-
-  form .form-group {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (max-width: 991px) {
-  .row {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .row > section {
+  .row>section {
     flex-basis: 33%;
   }
-}
-
-form .form-group input,
-form .form-group select,
-form .form-group textarea {
-  width: 100%;
-}
-
-form .payment-methods span {
-  display: none;
-}
-
-form .payment-methods input[type="radio"]:checked + label + span {
-  display: inline;
-}
-
-@media (max-width: 991px) {
-  .row .payment-methods {
-    display: inline;
-    justify-content: left;
-  }
-}
-
-.form-check {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.form-check input[type="radio"] {
-  margin-right: 0.5rem;
 }

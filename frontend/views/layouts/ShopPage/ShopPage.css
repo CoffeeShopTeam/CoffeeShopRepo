@@ -1,0 +1,99 @@
+main {
+  min-height: 800px;
+}
+
+.shop-page .product-name {
+  font: 400 20px/1.3 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.product-price {
+  font: 500 20px/1.3 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(161, 138, 104);
+}
+
+.section1__divider {
+  font: 400 18px/1.3 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+}
+
+/* Left Aside */
+.left-aside {
+  width: 300px; /* Adjust the width as needed */
+  height: calc(100%- 100px);
+  padding: 20px;
+  background-color: #ffffff;
+  position: fixed; /* Set the position to fixed */
+  bottom: 0;
+  margin-left: 60px;
+  top: 130px;
+}
+
+.section1__title {
+  margin-top: 0;
+  font: 600 26px/1.3 "DM Sans", Helvetica, Arial, serif;
+  margin-bottom: 40px;
+}
+
+/* Product List */
+.product-list {
+  margin-left: 370px; /* Add margin to accommodate the width of the left aside */
+  margin-right: 60px;
+  min-width: 200px;
+  display: flex; /* Use flexbox for the product list */
+  flex-wrap: wrap; /* Allow the products to wrap to the next line */
+  justify-content: center; /* Align products to the left side */
+}
+
+#productCell {
+  width: 200px;
+  margin: 5% 5% 5% 5%;
+  position: relative;
+  cursor: pointer;
+}
+
+.productImage {
+  height: 120px;
+  width: auto;
+  object-fit: fill;
+}
+
+.section1__flexRow2 {
+  display: table-row; /* Display each row as a table row */
+}
+
+.col-md- {
+  min-width: 150px;
+  margin-left: 270px;
+}
+
+.box-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1%;
+}
+.box {
+  padding: 30px;
+  margin: 2%;
+  background: white;
+  width: 10%;
+  border: 1px solid #d6d6d6;
+  box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  transition: 0.2s all;
+}
+.box-wrap:hover .box {
+  filter: blur(3px);
+  opacity: 0.5;
+  transform: scale(0.98);
+  box-shadow: none;
+}
+.box-wrap:hover .box:hover {
+  transform: scale(1);
+  filter: blur(0px);
+  opacity: 1;
+  box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+}

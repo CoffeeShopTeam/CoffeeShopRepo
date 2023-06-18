@@ -431,31 +431,29 @@
                     <div class="payment-methods">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="payment-method" id="credit-card"
-                                value="credit-card" onclick="togglePaymentDescription()">
+                                value="credit-card">
                             <label class="form-check-label" for="credit-card">
                                 <h5>Credit Card</h5>
                             </label>
                         </div>
-                        <span class="mb-0" id="credit-card-description">Pay with a credit card
+                        <span class="selection mb-0" id="credit-card-description">Pay with a credit card
                         </span>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="payment-method" id="cash-on-delivery"
-                                value="cash-on-delivery" onclick="togglePaymentDescription()">
+                                value="cash-on-delivery">
                             <label class="form-check-label" for="cash-on-delivery">
                                 <h5>Cash on delivery</h5>
                             </label>
                         </div>
-                        <span class="mb-0" id="cash-on-description">Pay at time of delivery </span>
+                        <span class="selection mb-0" id="cash-on-delivery-description">Pay at time of delivery </span>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="payment-method" id="paypal"
-                                value="paypal" onclick="togglePaymentDescription()">
+                                value="paypal">
                             <label class="form-check-label" for="paypal">
                                 <h5>PayPal</h5>
                             </label>
                         </div>
-                        <span class="mb-0" id="paypal-description">Pay via PayPal; you can pay with your credit card
-                            if you don't have a PayPal account
-                        </span>
+                        <span class="selection mb-0" id="paypal-description">Pay via PayPal </span>
                     </div>
                     <button class=" btn btn-success btn-block btn-lg"
                         onclick="window.location.href='\frontend\views\layouts\place-order\place-order.html'">PLACE

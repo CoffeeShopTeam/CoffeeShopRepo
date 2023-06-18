@@ -1,17 +1,18 @@
 main {
-  min-height: 800px;
+  min-height: 50rem;
 }
 
-.shop-page .product-name {
+.product-name {
   font: 400 20px/1.3 "DM Sans", Helvetica, Arial, serif;
   color: rgb(0, 0, 0);
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 0.625rem;
+  margin-bottom: 0.6rem;
   font-weight: bold;
 }
 .product-price {
   font: 500 20px/1.3 "DM Sans", Helvetica, Arial, serif;
   color: rgb(161, 138, 104);
+  margin-bottom: 0.2rem;
 }
 
 .section1__divider {
@@ -19,54 +20,51 @@ main {
   color: rgb(0, 0, 0);
 }
 
-/* Left Aside */
 .left-aside {
-  width: 300px; /* Adjust the width as needed */
-  height: calc(100%- 100px);
-  padding: 20px;
+  width: 18.75rem;
+  height: calc(100%- 6.25rem);
+  padding: 1.25rem;
   background-color: #ffffff;
-  position: fixed; /* Set the position to fixed */
+  position: fixed;
   bottom: 0;
-  margin-left: 60px;
-  top: 130px;
+  margin-left: 3.75rem;
+  top: 8.125rem;
 }
 
 .section1__title {
   margin-top: 0;
   font: 600 26px/1.3 "DM Sans", Helvetica, Arial, serif;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
-/* Product List */
 .product-list {
-  margin-left: 370px; /* Add margin to accommodate the width of the left aside */
-  margin-right: 60px;
-  min-width: 200px;
-  display: flex; /* Use flexbox for the product list */
-  flex-wrap: wrap; /* Allow the products to wrap to the next line */
-  justify-content: center; /* Align products to the left side */
+  margin-left: 23.125rem;
+  margin-right: 3.75rem;
+  min-width: 12.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #productCell {
-  width: 200px;
+  width: 12.5rem;
   margin: 5% 5% 5% 5%;
   position: relative;
   cursor: pointer;
 }
 
 .productImage {
-  height: 120px;
+  height: 7.5rem;
   width: auto;
   object-fit: fill;
 }
 
 .section1__flexRow2 {
-  display: table-row; /* Display each row as a table row */
+  display: table-row;
 }
 
-.col-md- {
-  min-width: 150px;
-  margin-left: 270px;
+.col-md-9 {
+  margin-left: 0.5rem;
 }
 
 .box-wrap {
@@ -76,24 +74,24 @@ main {
   margin: 1%;
 }
 .box {
-  padding: 30px;
+  padding: 1.875rem;
   margin: 2%;
   background: white;
   width: 10%;
-  border: 1px solid #d6d6d6;
-  box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
+  border: 0.062rem solid #d6d6d6;
+  box-shadow: 0 0.125rem 0.1875rem 0rem rgba(0, 0, 0, 0.25);
+  border-radius: 0.1875rem;
   transition: 0.2s all;
 }
 .box-wrap:hover .box {
-  filter: blur(3px);
+  filter: blur(0.1875rem);
   opacity: 0.5;
   transform: scale(0.98);
   box-shadow: none;
 }
 .box-wrap:hover .box:hover {
   transform: scale(1);
-  filter: blur(0px);
+  filter: blur(0rem);
   opacity: 1;
-  box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.5rem 1.25rem 0rem rgba(0, 0, 0, 0.125);
 }

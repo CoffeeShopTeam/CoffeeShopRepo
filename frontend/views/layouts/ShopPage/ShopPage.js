@@ -4,8 +4,8 @@ $(function () {
 });
 
 const shopBySelect = document.getElementById("shopBy");
-var productItems = document.querySelectorAll("#productCell");
-var productsPrices = document.querySelectorAll(".product-price");
+let productItems = document.querySelectorAll("#productCell");
+let productsPrices = document.querySelectorAll(".product-price");
 const sortBySelect = document.getElementById("sortBy");
 const productElements = document.getElementsByClassName("box");
 const originalArray = Array.from(productElements);
@@ -15,15 +15,15 @@ shopBySelect.addEventListener("change", function (event) {
 
   const selectedOption = event.target.value;
 
-  for (let i = 0; i < productItems.length; i++) {
-    if (selectedOption == "all") {
-      productItems[i].style.display = "";
-    } else if (productItems[i].classList.contains(selectedOption)) {
-      productItems[i].style.display = "";
+  $.each(productItems, function (index, element) {
+    const item = element;
+
+    if (selectedOption === "all" || item.classList.contains(selectedOption)) {
+      item.style.display = "";
     } else {
-      productItems[i].style.display = "none";
+      item.style.display = "none";
     }
-  }
+  });
 });
 
 sortBySelect.addEventListener("change", function (event) {

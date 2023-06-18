@@ -3,30 +3,30 @@
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   position: relative;
-  margin-left: 60px;
+  margin-left: 3.75rem;
 }
 
 .header0__flexRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(100% - 120px);
+  width: calc(100% - 7.5rem);
   position: relative;
   flex-grow: 1;
-  min-width: 750px;
-  margin: 25px auto 12px;
+  min-width: 47.5rem;
+  margin: 1.56rem auto 0.75rem;
 }
 
 .header0__medium_title {
   font: 700 26px/1.5 "Poppins", Helvetica, Arial, serif;
   color: rgb(0, 0, 0);
-  letter-spacing: 0px;
+  letter-spacing: 0rem;
   cursor: pointer;
   position: relative;
   flex: 0 0 auto;
-  min-width: 102px;
-  min-height: 37px;
-  max-height: 37px;
+  min-width: 6.37rem;
+  min-height: 2.3rem;
+  max-height: 2.3rem;
 }
 
 .header0__box {
@@ -40,10 +40,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  right: 60px;
+  right: 3.75rem;
   position: relative;
   flex-grow: 1;
-  margin: 8px 0% 7px;
+  margin: 0.5rem 0% 0.43rem;
 }
 
 .header0__flexRow1 > .cell {
@@ -59,17 +59,17 @@
   color: rgb(0, 0, 0);
   text-align: center;
   position: relative;
-  letter-spacing: 0px;
-  top: 2px;
+  letter-spacing: 0rem;
+  top: 0.125rem;
   cursor: pointer;
-  margin-right: 15px;
+  margin-right: 0.94rem;
 }
 
 .header0__flexRow1 > .cell1 {
   display: flex;
   flex-direction: column;
   position: relative;
-  min-width: 96px;
+  min-width: 6rem;
 }
 
 .header0__highlights2 {
@@ -78,70 +78,64 @@
   font: 400 18px/1.5 "Poppins", Helvetica, Arial, serif;
   color: rgb(0, 0, 0);
   text-align: center;
-  letter-spacing: 0px;
-  min-width: 50px;
+  letter-spacing: 0rem;
+  min-width: 3.125rem;
   cursor: pointer;
   position: relative;
   flex-grow: 1;
-  padding-top: 5px;
+  padding-top: 0.3rem;
 }
 
 .header0__rect5 {
   background-color: rgb(0, 0, 0);
   position: relative;
   flex: 0 0 auto;
-  min-width: 2px;
-  min-height: 20px;
-  margin: 4px 0px 6px;
-  margin-left: 15px;
+  min-width: 0.125rem;
+  min-height: 1.25rem;
+  margin: 0.25rem 0rem 0.375rem;
+  margin-left: 0.94rem;
 }
 
 .header0__image10 {
   background-color: white;
-  width: 20px;
-  height: auto;
+  width: 1.25rem;
+  height: 1.25rem;
   cursor: pointer;
   aspect-ratio: 1;
   vertical-align: top;
   object-fit: fill;
   position: relative;
-  margin-left: -12px;
-  min-width: 20px;
+  margin-left: -0.76rem;
+  min-width: 1.25rem;
 }
 
 .header0__icon1 {
-  width: 21px;
-  height: auto;
+  width: 1.3rem;
+  height: 1.3rem;
   cursor: pointer;
   aspect-ratio: 1;
   vertical-align: top;
   object-fit: fill;
   position: relative;
-  margin-left: 25px;
-  min-width: 21px;
+  margin-left: 2rem;
+  min-width: 1.3125rem;
 }
 
 .header0__icon {
-  width: 20px;
-  height: auto;
+  width: 1.25rem;
+  height: 1.25rem;
   cursor: pointer;
   aspect-ratio: 1;
   vertical-align: top;
   object-fit: fill;
   position: relative;
-  margin-left: 25px;
-  min-width: 20px;
+  margin-left: 1.56rem;
+  min-width: 1.25rem;
 }
 
 #searchBar {
-  width: 200px;
-  margin-left: 15px;
-  margin-top: -1.5px;
-  height: 30px;
-}
-
-@media (max-width: 768px) {
-  .header0__group1 {
-    padding: 0 20px;
-  }
+  width: 12.5rem;
+  margin-left: 0.93rem;
+  margin-top: -0.05rem;
+  height: 1.8rem;
 }

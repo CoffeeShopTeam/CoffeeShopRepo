@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account - Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="accountDetails.css" />
+    <script src="accountDetails.js"></script>
+  </head>
+  <body>
+    <div class="header" id="header"></div>
+    <div class="accountNavBar" id="accountNavBar"></div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="card">
+            <div class="card-header bg-dark text-light">
+              <h5 class="card-title">Account Details</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="name">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    value="John"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="name">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    value="Doe"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="name">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    value="John92Doe"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    value="john.doe@example.com"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input
+                    class="form-control"
+                    id="address"
+                    value="123 Main St, City, Country"
+                    readonly
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-dark"
+                  data-toggle="modal"
+                  data-target="#changePasswordModal"
+                >
+                  Change Password
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="changePasswordModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="changePasswordModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-light">
+            <h5 class="modal-title" id="changePasswordModalLabel">
+              Change Password
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="currentPassword"
+                  placeholder="Enter current password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="newPassword"
+                  placeholder="Enter new password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  placeholder="Confirm new password"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-dark">
+                Change Password
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footer"></div>
+
+    <!-- connect genrel header and footer, connect nav bar of account -->
+    <script src="\frontend\views\partials\partials.js"></script>
+    <script src="\frontend\views\layouts\account\account.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

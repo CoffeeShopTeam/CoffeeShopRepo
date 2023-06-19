@@ -30,9 +30,11 @@ $(document).ready(function () {
         const option = $("<option></option>");
         option.val(countryName);
         option.text(countryName);
+        if (countryName === "Israel") {
+          option.attr("selected", true);
+        }
         selectElement.append(option);
       });
-      selectElement.val("Israel");
     },
     error: function () {
       console.log("Failed to fetch country data");

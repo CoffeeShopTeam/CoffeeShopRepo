@@ -13,3 +13,29 @@ $(document).ready(function () {
     });
   });
 });
+
+let CountryArray = [];
+$(document).ready(function () {
+  const selectElement = $(".countrySelect");
+  let i = 0;
+  $.ajax({
+    url: "https://restcountries.com/v3.1/all",
+    method: "GET",
+    success: function (response) {
+      response.forEach(function (country) {
+        CountryArray.push(country.name.common);
+      });
+      CountryArray.sort();
+      CountryArray.forEach(function (countryName) {
+        const option = $("<option></option>");
+        option.val(countryName);
+        option.text(countryName);
+        selectElement.append(option);
+      });
+      selectElement.val("Israel");
+    },
+    error: function () {
+      console.log("Failed to fetch country data");
+    },
+  });
+});

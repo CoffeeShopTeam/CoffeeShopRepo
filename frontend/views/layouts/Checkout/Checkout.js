@@ -14,10 +14,10 @@ $(document).ready(function () {
   });
 });
 
-let CountryArray = [];
 $(document).ready(function () {
   const selectElement = $(".countrySelect");
   let i = 0;
+  const CountryArray = [];
   $.ajax({
     url: "https://restcountries.com/v3.1/all",
     method: "GET",

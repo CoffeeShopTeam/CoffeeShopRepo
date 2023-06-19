@@ -15,11 +15,9 @@
     <link rel="stylesheet" type="text/css" href="/frontend/views/partials/assets" />
     <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
     <script src="\frontend\views\layouts\Checkout\Checkout.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
 </head>
 
-<body class="flex-column">
+<body class="">
     <header>
         <nav>
             <div id="header"></div>
@@ -29,9 +27,9 @@
         <div class="mb-4">
             <h1 class="text-center">Checkout</h1>
         </div>
-        <div class="row">
-            <!-- ======= section1 ======= -->
-            <section class="col-md-6">
+        <!-- ======= section1 ======= -->
+        <section class=".col-xxl">
+            <div class="row">
                 <div class="mb-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Returning customer? <a id="click-to-login"
@@ -43,17 +41,21 @@
                                 onclick="window.location.href='\frontend\views\layouts\sign-up\sign-up.html'">Click
                                 here</a> to signup!</h5>
                     </div>
-                    <hr class="mt-2 mb-3">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Coupon Code" aria-label="Coupon Code"
-                            aria-describedby="apply-coupon">
-                    </div>
-                    <button class="btn btn-dark">APPLY COUPON</button>
                 </div>
-                <div class="mb-4">
+            </div>
+
+            <hr class="mt-2 mb-3">
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Coupon Code" aria-label="Coupon Code"
+                    aria-describedby="apply-coupon">
+            </div>
+            <button class="btn btn-dark">APPLY COUPON</button>
+
+            <div class="row">
+                <div class="shipping col-md-4">
                     <h3 class="mb-3">Shipping Details</h3>
-                    <div class="row">
-                        <div class="col-md-5">
+                    <div class="checkout row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Prefix">Prefix</label>
                                 <select class="form-select" aria-label="Floating label select example" name="Prefix">
@@ -78,7 +80,7 @@
                                 <input type="text" class="form-control" id="last-name" required>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="company-name">Company Name</label>
                                 <input type="text" class="form-control" id="company-name">
@@ -102,16 +104,16 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="postcode">Postcode / ZIP</label>
+                                <label for="city">Town / City</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="postcode" required>
+                                <input type="text" class="form-control" id="city" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="city">Town / City</label>
+                                <label for="postcode">Postcode / ZIP</label>
                                 <span class="must-fill">*</span>
-                                <input type="text" class="form-control" id="city" required>
+                                <input type="text" class="form-control" id="postcode" required>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -121,7 +123,7 @@
                                 <input type="text" class="form-control" id="phone" required>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="  col-md-12">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <span class="must-fill">*</span>
@@ -132,14 +134,14 @@
                             <div class="form-group">
                                 <label for="order-notes">Order notes</label>
                                 <textarea class="form-control" id="order-notes" rows="3"
-                                    placeholder="Got something to tell us?"></textarea>
+                                    placeholder="Got something to tell us?">
+                                </textarea>
                             </div>
                         </div>
                     </div>
-            </section>
-            <!-- ======= End section1 ======= -->
-            <section class="col-md-6">
-                <div class="mb-4">
+                </div>
+                <!-- ======= End section1 ======= -->
+                <div class="order col-md-4">
                     <h3 class="mb-3">YOUR ORDER</h3>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="mb-0">PRODUCT</h5>
@@ -166,7 +168,17 @@
                     <hr class="mb-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h5 class="mb-0">SHIPPING</h5>
-                        <h5 class="mb-0">Free shipping</h5>
+                        <div class="mb-4">
+                            <select class="form-select" id="ship-option" for="deliveryOption">Delivery Option
+                                <option>
+                                    Express Shippping (1-3 business days)
+                                </option>
+                                <option>
+                                    Regular Shipping (3-8 business days)
+                                </option>
+                            </select>
+                        </div>
+
                     </div>
                     <hr class="mb-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -190,7 +202,8 @@
                                 <h5>Cash on delivery</h5>
                             </label>
                         </div>
-                        <span class="selection mb-0" id="cash-on-delivery-description">Pay at time of delivery </span>
+                        <span class="selection mb-0" id="cash-on-delivery-description">Pay at time of delivery
+                        </span>
                         <span class="selection mb-0" id="paypal-description">Pay via PayPal </span>
                     </div>
                     <button class=" btn btn-success btn-block btn-lg"
@@ -198,8 +211,8 @@
                         ORDER
                     </button>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
     <div id="footer"></div>
 </body>

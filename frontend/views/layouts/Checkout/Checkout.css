@@ -8,15 +8,26 @@
   text-decoration: underline;
 }
 
-@media (max-width: 1024px),
-(max-width: 768px),
-(max-width: 425) {
-  .row {
-    flex-direction: column;
-    align-content: center;
-  }
 
-  .row>section {
-    flex-basis: 33%;
-  }
+.checkout.row {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.shipping {
+  position: relative;
+}
+
+.order {
+  position: relative;
+  right: 0;
+  align-content: center;
+  align-items: center;
+}
+
+#ship-option {
+  margin-top: 1.5rem;
+  margin-left: 1.2rem;
+  border-width: 0.1rem;
 }

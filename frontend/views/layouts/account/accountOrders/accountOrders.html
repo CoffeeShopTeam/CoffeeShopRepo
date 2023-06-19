@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Account - Template</title>
+    <title>My Account - Orders</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -11,13 +11,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script src="jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="account.css" />
-    <script src="account.js"></script>
+    <link rel="stylesheet" href="accountOrders.css" />
+    <script src="accountOrders.js"></script>
   </head>
   <body>
     <div class="header" id="header"></div>
     <div class="accountNavBar" id="accountNavBar"></div>
-
+    <div class="container">
+      <h1>Orders</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody"></tbody>
+      </table>
+      <!-- Displayed when the table is empty -->
+      <p id="emptyMessage" style="display: none">
+        No orders have been made yet. <a href="#">Product</a>
+      </p>
+    </div>
     <div class="footer" id="footer"></div>
 
     <!-- connect genrel header and footer, connect nav bar of account -->

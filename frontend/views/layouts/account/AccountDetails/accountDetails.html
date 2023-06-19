@@ -20,60 +20,60 @@
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <div class="card">
+          <div class="card border-0">
             <div class="card-header bg-dark text-light">
               <h5 class="card-title">Account Details</h5>
             </div>
             <div class="card-body">
               <form>
-                <div class="form-group">
-                  <label for="name">First Name</label>
+                <div class="form-floating mb-3">
                   <input
                     type="text"
-                    class="form-control"
-                    id="name"
+                    readonly
+                    class="form-control-plaintext"
+                    id="firstName"
                     value="John"
-                    readonly
                   />
+                  <label for="firstName">First Name</label>
                 </div>
-                <div class="form-group c">
-                  <label for="name">Last Name</label>
+                <div class="form-floating mb-3">
                   <input
                     type="text"
-                    class="form-control"
-                    id="name"
+                    readonly
+                    class="form-control-plaintext"
+                    id="lastName"
                     value="Doe"
-                    readonly
                   />
+                  <label for="lastName">Last Name</label>
                 </div>
-                <div class="form-group">
-                  <label for="name">Username</label>
+                <div class="form-floating mb-3">
                   <input
                     type="text"
-                    class="form-control"
-                    id="name"
-                    value="John92Doe"
                     readonly
+                    class="form-control-plaintext"
+                    id="username"
+                    value="John92Doe"
                   />
+                  <label for="username">Username</label>
                 </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
+                <div class="form-floating mb-3">
                   <input
                     type="email"
-                    class="form-control"
+                    readonly
+                    class="form-control-plaintext"
                     id="email"
                     value="john.doe@example.com"
-                    readonly
                   />
+                  <label for="email">Email</label>
                 </div>
-                <div class="form-group">
-                  <label for="address">Address</label>
+                <div class="form-floating mb-3">
                   <input
-                    class="form-control"
+                    class="form-control-plaintext"
+                    readonly
                     id="address"
                     value="123 Main St, City, Country"
-                    readonly
                   />
+                  <label for="address">Address</label>
                 </div>
                 <button
                   type="button"
@@ -83,6 +83,7 @@
                 >
                   Change Password
                 </button>
+                <button type="button" class="btn float-right">Edit</button>
               </form>
             </div>
           </div>
@@ -115,35 +116,35 @@
           </div>
           <div class="modal-body">
             <form>
-              <div class="form-group">
-                <label for="currentPassword">Current Password</label>
+              <div class="form-floating mb-3">
                 <input
                   type="password"
                   class="form-control"
                   id="currentPassword"
                   placeholder="Enter current password"
                 />
+                <label for="currentPassword">Current Password</label>
               </div>
-              <div class="form-group">
-                <label for="newPassword">New Password</label>
+              <div class="form-floating mb-3">
                 <input
                   type="password"
                   class="form-control"
                   id="newPassword"
                   placeholder="Enter new password"
                 />
+                <label for="newPassword">New Password</label>
               </div>
-              <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
+              <div class="form-floating mb-3">
                 <input
                   type="password"
                   class="form-control"
                   id="confirmPassword"
                   placeholder="Confirm new password"
                 />
+                <label for="confirmPassword">Confirm Password</label>
               </div>
               <button type="submit" class="btn btn-primary btn-dark">
-                Change Password
+                Confirm
               </button>
             </form>
           </div>

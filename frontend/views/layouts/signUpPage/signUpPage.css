@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
-
-.login-h1 {
+.sign-up-h1 {
   margin-bottom: 5rem;
   margin-top: 1rem;
 }
 
-.login-title {
+.sign-up-title {
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 400;
@@ -19,12 +18,18 @@
   margin: 0;
 }
 
-.row.login,
-.row.form-check-input {
+.sign-up.text-left{
+    padding-left: 0;
+}
+.row.sign-up,
+.col.form-check-input {
   margin-left: 0;
 }
 
-.login-input {
+.sign-up.sign-up-lable {
+    padding: 0;
+}
+.sign-up-input {
   border: transparent;
   border-bottom: 1px solid rgb(216, 216, 216);
   color: rgb(85, 85, 85);
@@ -32,16 +37,16 @@
   width: 100%;
 }
 
-.login-input:focus-visible {
+.sign-up-input:focus-visible {
   outline: transparent;
 }
 
-.container.login-form {
+.container.sign-up-form {
   height: 100%;
   padding: 0;
 }
 
-.btn.login-submit {
+.btn.sign-up-submit {
   background-color: rgb(0, 0, 0);
   width: 100%;
   margin: 0;
@@ -49,12 +54,12 @@
   font-weight: 700;
 }
 
-.login-input,
-.login-title,
-.login.form-check {
+.sign-up-input,
+.sign-up-title,
+.sign-up.form-check {
   margin-bottom: 2.2rem;
 }
 
-.login.btn {
+.sign-up.btn {
   padding: 1rem;
 }

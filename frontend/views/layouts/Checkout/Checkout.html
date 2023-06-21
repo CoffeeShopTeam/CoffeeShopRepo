@@ -17,7 +17,7 @@
     <script src="\frontend\views\layouts\Checkout\Checkout.js"></script>
 </head>
 
-<body class="">
+<body>
     <header>
         <nav>
             <div id="header"></div>
@@ -28,30 +28,31 @@
             <h1 class="text-center">Checkout</h1>
         </div>
         <!-- ======= section1 ======= -->
-        <section class=".col-xxl">
+        <section>
             <div class="row">
-                <div class="mb-4">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Returning customer? <a id="click-to-login"
-                                onclick="window.location.href='\frontend\views\layouts\loginPage\loginPage.html'">Click
-                                here</a> to login</h5>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">New customer? <a id="click-to-signup"
-                                onclick="window.location.href='\frontend\views\layouts\sign-up\sign-up.html'">Click
-                                here</a> to signup!</h5>
-                    </div>
+                <div class="d-flex justify-content-center">
+                    <h5 class="mb-0">Returning customer? <a id="click-to-login"
+                            onclick="window.location.href='\frontend\views\layouts\loginPage\loginPage.html'">Click
+                            here</a> to login</h5>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <h5 class="mb-0">New customer? <a id="click-to-signup"
+                            onclick="window.location.href='\frontend\views\layouts\sign-up\sign-up.html'">Click
+                            here</a> to signup!</h5>
                 </div>
             </div>
-
-            <hr class="mt-2 mb-3">
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Coupon Code" aria-label="Coupon Code"
-                    aria-describedby="apply-coupon">
+            <hr class="mt-2">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="ml-2">
+                    <input type="text" class="form-control" id="coupon-input" placeholder="Coupon Code"
+                        aria-label="Coupon Code" aria-describedby="apply-coupon">
+                </div>
+                <button class="btn btn-dark">APPLY COUPON</button>
             </div>
-            <button class="btn btn-dark">APPLY COUPON</button>
+        </section>
 
-            <div class="row">
+        <section class="col">
+            <div class="main-sec row">
                 <div class="shipping col-md-4">
                     <h3 class="mb-3">Shipping Details</h3>
                     <div class="checkout row">

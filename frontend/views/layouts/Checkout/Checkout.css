@@ -2,17 +2,30 @@
   color: red;
 }
 
+main {
+  width: 100%;
+}
+
 #click-to-login,
 #click-to-signup {
   cursor: pointer;
   text-decoration: underline;
 }
 
+#coupon-input {
+  width: 20rem;
+  margin-right: 1.4rem;
+}
 
-.checkout.row {
+.main-sec {
+  padding-top: 1.5rem;
   display: flex;
+  justify-content: center;
   align-content: center;
-  align-items: center;
+}
+
+.checkout {
+  padding-right: 1rem;
 }
 
 .shipping {
@@ -21,7 +34,6 @@
 
 .order {
   position: relative;
-  right: 0;
   align-content: center;
   align-items: center;
 }

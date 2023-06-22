@@ -50,6 +50,12 @@ const UserSchema = new mongoose.Schema({
     houseNumber: {
         type: String,
         require: true,
+    },
+    type: {
+        type: String,
+        require: true,
+        enum: ['admin', 'supplier', 'customer'],
+        default: 'customer'
     }
 });
 
@@ -79,6 +85,6 @@ UserSchema.pre('save', async function (next) {
 });
 
 
-const Users = mongoose.model('products', UserSchema);
+const Users = mongoose.model('users', UserSchema);
 
 module.exports = Users;

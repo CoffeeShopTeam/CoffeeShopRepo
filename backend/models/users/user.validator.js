@@ -1,20 +1,10 @@
-const ajax = require('ajax');
+const { default: axios } = require('axios');
 require('dotenv').config()
 
 const validateEmail = function (email) {
     const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email)
 };
-
-// const validateCountry = async function (country) {
-//     try {
-//         const response = await ajax.get('https://restcountries.com/v3.1/name/isra?fullText=true');
-//         const { data } = response
-//         return data.status === 200;
-//     } catch (error) {
-//         return false;
-//     }
-// };
 
 const addressValidator = async function (country, city, street, houseNumber) {
     let isAddressValid = false;
@@ -26,10 +16,16 @@ const addressValidator = async function (country, city, street, houseNumber) {
             format: 'json',
             apiKey: apiKey,
         }
-        const response = await ajax.get(url, params);
-        const data = response.data;
+        const response = await axios.get(url, { params });
+        if (!response) throw new Error("Cannot validate address");
+        const data = await response.data;
+        if (!data) throw new Error("Cannot validate address - no data")
         const results = data.results;
-        isAddressValid = results.find(res => console.log(res.rank.match_type) || res.rank.match_type === 'full_match');
+        if (!results) throw new Error("Cannot validate address - no results")
+        isAddressValid = results.find(res => (
+            res.rank.match_type === 'full_match' ||
+            res.rank.confidence >= 0.9
+        ));
     } catch (error) {
         console.log(error.message);
     }

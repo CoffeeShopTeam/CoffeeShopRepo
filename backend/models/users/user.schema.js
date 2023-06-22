@@ -69,7 +69,6 @@ UserSchema.pre('save', async function (next) {
             throw new Error("Passwords does not match");
         }
         const isvalidAddress = await addressValidator(this.country, this.city, this.street, this.houseNumber)
-        console.log(isvalidAddress);
         if (!isvalidAddress) {
             throw new Error("Address does not exist");
         }
@@ -83,7 +82,6 @@ UserSchema.pre('save', async function (next) {
         return next(error);
     }
 });
-
 
 const Users = mongoose.model('users', UserSchema);
 

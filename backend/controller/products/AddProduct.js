@@ -31,6 +31,7 @@ app.post("/create-product", async (req, res) => {
     productDescription,
     productCategory,
     productImage,
+    supplierId,
   } = req.body;
 
   try {
@@ -40,6 +41,7 @@ app.post("/create-product", async (req, res) => {
       productDescription,
       productCategory,
       productImage,
+      supplierId,
     });
 
     const savedProduct = await product.save();

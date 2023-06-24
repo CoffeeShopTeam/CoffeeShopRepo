@@ -24,9 +24,16 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { name, price, description, category, image } = req.body;
+  const { name, price, description, category, image, supplierId } = req.body;
   try {
-    const product = new Product({ name, price, description, category, image });
+    const product = new Product({
+      name,
+      price,
+      description,
+      category,
+      image,
+      supplierId,
+    });
     await product.save();
     res.status(201).json({ success: true, data: product });
   } catch (e) {
@@ -42,7 +49,7 @@ const updateProductById = async (req, res) => {
       res.status(204).send("Cannot find product with this id");
       return;
     }
-    const { name, price, description, category, image } = req.body;
+    const { name, price, description, category, image, supplierId } = req.body;
 
     if (name) {
       product.productName = name;
@@ -62,6 +69,9 @@ const updateProductById = async (req, res) => {
 
     if (image) {
       product.productImage = image;
+    }
+    if (supplierId) {
+      product.SupplierId = supplierId;
     }
 
     const updatedProduct = await product.save();

@@ -18,6 +18,6 @@ $.ajax({
   dataType: "html",
   success: function (data) {
     $("#footer").html(data);
-    loadCSS("/frontend/views/partials/Footer/Footer.html");
+    loadCSS("/frontend/views/partials/Footer/Footer.css");
   },
 });

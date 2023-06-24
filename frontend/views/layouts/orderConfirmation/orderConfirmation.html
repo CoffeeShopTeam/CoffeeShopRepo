@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="\frontend\views\layouts\orderConfirmation\orderConfirmation.css" />
+    <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
+    <script src="\frontend\views\layouts\orderConfirmation\orderConfirmation.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+    <title>Order Confirmation</title>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="mb-4">
+        <h1 class="text-center">Order Confirmation</h1>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card border-0">
+                    <div class="card-header">
+                        <h5 class="card-title">Order Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="orderNumber"
+                                            name="orderNumber" value="12345" />
+                                        <label for="orderNumber">Order Number</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" disabled class="form-control-plaintext" id="email"
+                                            name="email" value="user@example.com" />
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="paymentMethod"
+                                            name="paymentMethod" value="Credit Card" />
+                                        <label for="paymentMethod">Payment Method</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="orderDate"
+                                            name="orderDate" value="2023-06-24" />
+                                        <label for="orderDate">Order Date</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="deliveryOption"
+                                            name="deliveryOption" value="Express Shipping" />
+                                        <label for="deliveryOption">Delivery Option</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="deliveryAddress"
+                                            name="deliveryAddress" value="Rishon Le Ziyon, Colman College" />
+                                        <label for="deliveryAddress">Delivery Address</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="contactNumber"
+                                            name="contactNumber" value="+1 123-456-7890" />
+                                        <label for="contactNumber">Contact Number</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="orderNotes"
+                                            name="orderNotes" value="Call before shipping" />
+                                        <label for="orderNotes">Order notes</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card border-0">
+                    <div class="card-header">
+                        <h5 class="card-title">Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Product 1</td>
+                                    <td>$19.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Product 2</td>
+                                    <td>$29.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Product 3</td>
+                                    <td>$9.99</td>
+                                </tr>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <td>$59.97</td>
+                                </tr>
+                                <tr>
+                                    <th>Shipping</th>
+                                    <td class="table-price">$5.00</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <td class="table-price">$64.97</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"></div>
+
+</body>
+
+</html>

@@ -1,15 +1,26 @@
 const express = require('express');
 const mongoConnect = require('./config/mongoConnect.js');
-const { signupRouter } = require('./routes');
+const cookieParser = require("cookie-parser");
+const session = require('express-session');
+const routes = require('./routes');
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT;
+const SECRETE = process.env.SECRETE
 
-app.use(express.static('./views'))
+
 app.set('view engine', 'ejs');
+app.use(express.static('./views'));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use('/signup', signupRouter);
+// app.use(cookieParser(SECRETE));
+app.use(session({
+    secret: SECRETE, // Replace with your own secret key
+    resave: false,
+    saveUninitialized: false
+  }));
+app.use('/signup', routes.signupRouter);
+app.use('/login', routes.loginRouter);
 
 
 app.listen(PORT, () => {

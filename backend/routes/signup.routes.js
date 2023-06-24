@@ -3,10 +3,6 @@ const router = express.Router();
 const path = require('path');
 const { createUser } = require('../controller/users')
 
-router.get('/healthy', (req, res, next) => {
-    res.send("im fine")
-})
-
 router.get('/', (req, res, next) => {
     res.render(path.join(__dirname, '../', 'views', 'signup', 'signUpPage'));
 });

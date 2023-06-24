@@ -6,7 +6,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <!-- <script src="/node_modules/jquery/dist/jquery.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./signUpPage.css" />
@@ -40,6 +39,7 @@
               class="sign-up sign-up-input"
               name="firstName"
               id="firstName"
+              placeholder="Jon"
               autocomplete="off"
             />
           </div>
@@ -52,6 +52,7 @@
               class="sign-up sign-up-input"
               name="lastName"
               id="lastName"
+              placeholder="Doe"
               autocomplete="off"
             />
           </div>
@@ -178,7 +179,7 @@
             />
           </div>
         </div>
-        <div class="sign-up row">
+        <!-- <div class="sign-up row">
           <div class="col sign-up form-check">
             <input
               type="checkbox"
@@ -189,18 +190,19 @@
             />
             <label class="sign-up-lable" for="remember-me">Remember me</label>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <button class="sign-up btn btn-dark sign-up-submit" type="submit">
         SIGN ME UP
       </button>
-      <button class="sign-up btn">Already have an account</button>
+      <button id="goToLoginBtn" class="sign-up btn">
+        Already have an account
+      </button>
     </form>
-    <script src="signUpPage.js"></script>
   </body>
-
   <div class="component">
     <section id="footer"></section>
   </div>
+  <script src="signUpPage.js"></script>
 </html>

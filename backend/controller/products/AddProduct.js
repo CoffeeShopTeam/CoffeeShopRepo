@@ -7,7 +7,6 @@ require("dotenv").config();
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to the MongoDB database
 const connectToDatabase = async () => {
   try {
     await mongoose.connect(process.env.DATABASE_URL, {
@@ -16,7 +15,6 @@ const connectToDatabase = async () => {
     });
     console.log("Connected to the database");
 
-    // Start the server
     const port = process.env.PORT || 8080;
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
@@ -26,7 +24,6 @@ const connectToDatabase = async () => {
   }
 };
 
-// Handle the form submission and save the product to the database
 app.post("/create-product", async (req, res) => {
   const {
     productName,

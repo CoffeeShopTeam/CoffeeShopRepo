@@ -13,9 +13,7 @@ router.post('/', async (req, res, next) => {
         const user = await login(data);
         if (!user) throw new Error("email of password are wrong");
         req.session.data = user
-        res.status(200)
-        // .cookie('user', JSON.stringify(user))
-        .send("Loged in!");
+        res.status(200).send("Loged in!");
     } catch (error) {
         res.redirect('/login/');
     }

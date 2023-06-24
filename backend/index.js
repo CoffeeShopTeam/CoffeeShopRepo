@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoConnect = require('./config/mongoConnect.js');
-const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const routes = require('./routes');
 const app = express();
@@ -13,9 +12,8 @@ app.set('view engine', 'ejs');
 app.use(express.static('./views'));
 app.use(express.json());
 app.use(express.urlencoded());
-// app.use(cookieParser(SECRETE));
 app.use(session({
-    secret: SECRETE, // Replace with your own secret key
+    secret: SECRETE,
     resave: false,
     saveUninitialized: false
   }));

@@ -9,7 +9,6 @@ const ProductSchema = new mongoose.Schema({
     message: "Name must be a non-empty string",
     required: true,
   },
-
   productPrice: {
     type: Number,
     min: [1, "The minimum price is 1 dollar."],
@@ -26,6 +25,14 @@ const ProductSchema = new mongoose.Schema({
   },
   productImage: {
     type: String,
+    required: true,
+  },
+  supplierId: {
+    type: String,
+    validator: function (id) {
+      return id.length == 9;
+    },
+    message: "id must have 9 digits",
     required: true,
   },
 });

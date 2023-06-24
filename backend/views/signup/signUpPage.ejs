@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- <script src="/node_modules/jquery/dist/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./signUpPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <title>Sign up</title>
+  </head>
+
+  <body class="flex-column">
+    <header id="header"></header>
+    <h1 class="text-center sign-up-h1">My account</h1>
+    <form
+      action="/signup/"
+      method="post"
+      autocomplete="off"
+      id="signUpForm"
+      class="container text-center sign-up-form col-xl-6 col-lg-5 col-md-7 col-sm-8"
+    >
+      <h2 class="sign-up-title text-center">Sign up</h2>
+      <div>
+        <div class="sign-up row row-cols-xl-2 row-cols-1">
+          <div class="col text-left sign-up">
+            <label class="sign-up sign-up-lable" for="firstName">
+              First name
+            </label>
+            <input
+              type="text"
+              class="sign-up sign-up-input"
+              name="firstName"
+              id="firstName"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="sign-up sign-up-lable" for="lastName">
+              Last name
+            </label>
+            <input
+              type="text"
+              class="sign-up sign-up-input"
+              name="lastName"
+              id="lastName"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="sign-up row">
+          <div class="col text-left sign-up">
+            <label class="sign-up sign-up-lable" for="email"> Email </label>
+            <input
+              type="email"
+              class="sign-up-input sign-up"
+              name="email"
+              id="email"
+              placeholder="myEmail@gmail.com"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="sign-up row row-cols-xl-2 row-cols-1">
+          <div class="col text-left sign-up">
+            <label class="sign-up sign-up-lable" for="password">
+              Password
+            </label>
+            <input
+              type="password"
+              class="sign-up-input sign-up"
+              name="password"
+              id="password"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="col sign-up sign-up-lable" for="rePassword">
+              Repeate password
+            </label>
+            <input
+              type="password"
+              class="sign-up-input col sign-up"
+              name="rePassword"
+              id="rePassword"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="sign-up row">
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="phone">Phone</label>
+            <input
+              type="number"
+              class="sign-up-input row sign-up"
+              name="phone"
+              id="phone"
+              placeholder="0123456789"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="birthday">
+              Birthday
+            </label>
+            <input
+              type="date"
+              class="sign-up-input row sign-up"
+              name="birthday"
+              id="birthday"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div
+          class="sign-up row row-cols-1 row-cols-xl-4 row-cols-lg-2 row-cols-md-2"
+        >
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="country">
+              Country
+            </label>
+            <input
+              type="text"
+              class="sign-up-input row sign-up"
+              name="country"
+              id="country"
+              placeholder="Israel"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="city"> City </label>
+            <input
+              type="text"
+              class="sign-up-input row sign-up"
+              name="city"
+              id="city"
+              placeholder="Rishon Lezion"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="street">
+              Street
+            </label>
+            <input
+              type="text"
+              class="sign-up-input row sign-up"
+              name="street"
+              id="street"
+              placeholder="Elie Wiesel"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col text-left sign-up">
+            <label class="row sign-up sign-up-lable" for="houseNumber">
+              Number
+            </label>
+            <input
+              type="text"
+              class="sign-up-input row sign-up"
+              name="houseNumber"
+              id="houseNumber"
+              placeholder="2"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="sign-up row">
+          <div class="col sign-up form-check">
+            <input
+              type="checkbox"
+              name="remember-me"
+              id="remember-me"
+              class="form-check-input sign-up col"
+              autocomplete="off"
+            />
+            <label class="sign-up-lable" for="remember-me">Remember me</label>
+          </div>
+        </div>
+      </div>
+
+      <button class="sign-up btn btn-dark sign-up-submit" type="submit">
+        SIGN ME UP
+      </button>
+      <button class="sign-up btn">Already have an account</button>
+    </form>
+    <script src="signUpPage.js"></script>
+  </body>
+
+  <div class="component">
+    <section id="footer"></section>
+  </div>
+</html>

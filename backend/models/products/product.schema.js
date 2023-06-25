@@ -1,22 +1,20 @@
 const mongoose = require("mongoose");
-
+const validateQuantity = require("./product.validator");
 const ProductSchema = new mongoose.Schema({
   productName: {
     type: String,
-    validator: function (name) {
-      return name.length > 0;
-    },
-    message: "Name must be a non-empty string",
     required: true,
+    min: [2, "Name can't be shorter than 2 characters"],
   },
   productPrice: {
     type: Number,
-    min: [1, "The minimum price is 1 dollar."],
     required: true,
+    min: [1, "The minimum price is 1 dollar."],
   },
   productDescription: {
     type: String,
     required: true,
+    min: [4, "Description can't be shorter than 4 characters"],
   },
   productCategory: {
     type: String,
@@ -27,13 +25,14 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  supplierId: {
-    type: String,
-    validator: function (id) {
-      return id.length == 9;
-    },
-    message: "id must have 9 digits",
+  productQuantity: {
+    type: Number,
     required: true,
+    validate: [validateQuantity, "Invalid quantity"],
+  },
+  supplierId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "User",
   },
 });
 

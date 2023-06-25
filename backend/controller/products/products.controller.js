@@ -25,7 +25,7 @@ const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     if (!product) {
-      res.status(204).send("Product not found by id: " + req.params.id);
+      res.status(404).send("Product not found by id: " + req.params.id);
     }
     res.send(products);
   } catch (e) {
@@ -66,7 +66,7 @@ const updateProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     if (!product) {
-      res.status(204).send("Cannot find product with this id");
+      res.status(404).send("Cannot find product with this id");
       return;
     }
     const { name, price, description, category, image, quantity, supplierId } =

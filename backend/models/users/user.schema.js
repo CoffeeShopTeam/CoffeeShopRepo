@@ -29,6 +29,7 @@ const UserSchema = new mongoose.Schema({
     phone: {
         type: String,
         require: true,
+        validate: [phoneNumberValidation, "Invalid phone Number"],
         minlength: 10
     },
     birthday: {

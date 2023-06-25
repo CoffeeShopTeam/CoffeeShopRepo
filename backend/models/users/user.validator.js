@@ -32,7 +32,13 @@ const addressValidator = async function (country, city, street, houseNumber) {
     return isAddressValid
 }
 
+function phoneNumberValidation(phoneNumber) {
+    const phoneNumberRegex = /^(?:(?:\+|00)(?:[1-9]\d{0,2})[\s-]?)?(?:\()?(?:\d{1,4}(?:[\s-])?)?(?:\))?(?:[\s-]?\d{1,4}){1,10}(?:[\s-]?(?:#|x\.?|ext\.?|extension)\s?\d{1,4})?$/;
+    return phoneNumberRegex.test(phoneNumber);
+}
+
 module.exports = {
     validateEmail,
-    addressValidator
+    addressValidator,
+    phoneNumberValidation,
 }

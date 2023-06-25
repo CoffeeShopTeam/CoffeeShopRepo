@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account - Orders</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="accountOrders.css" />
+    <script src="accountOrders.js"></script>
+  </head>
+  <body>
+    <div class="header" id="header"></div>
+    <div class="accountNavBar" id="accountNavBar"></div>
+    <div class="container">
+      <h1>Orders</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody"></tbody>
+      </table>
+      <p id="emptyMessage" style="display: none">
+        No orders have been made yet. <a href="#">Product</a>
+      </p>
+    </div>
+    <div class="footer" id="footer"></div>
+
+    <script src="\frontend\views\partials\partials.js"></script>
+    <script src="\frontend\views\layouts\account\account.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

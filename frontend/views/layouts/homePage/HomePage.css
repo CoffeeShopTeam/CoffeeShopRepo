@@ -1,0 +1,34 @@
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/frontend/views/partials/assets/54d627dd9c8c9cec425bd49850edc281.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.hero h1,
+.hero p {
+  color: #fff;
+}
+.carousel .card {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.carousel .card-img-top {
+  height: 100px; 
+  width: auto;
+  object-fit: contain;
+}

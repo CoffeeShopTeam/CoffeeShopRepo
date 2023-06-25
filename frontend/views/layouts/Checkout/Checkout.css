@@ -1,0 +1,45 @@
+.must-fill {
+  color: red;
+}
+
+main {
+  width: 100%;
+}
+
+#click-to-login,
+#click-to-signup {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#coupon-input {
+  width: 20rem;
+  margin-right: 1.4rem;
+}
+
+.main-sec {
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.checkout {
+  padding-right: 1rem;
+}
+
+.shipping {
+  position: relative;
+}
+
+.order {
+  position: relative;
+  align-content: center;
+  align-items: center;
+}
+
+#ship-option {
+  margin-top: 1.5rem;
+  margin-left: 1.2rem;
+  border-width: 0.1rem;
+}

@@ -6,8 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
-    <script src="./signUpPage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./signUpPage.css" />
     <link
       rel="stylesheet"
@@ -21,9 +21,10 @@
     <header id="header"></header>
     <h1 class="text-center sign-up-h1">My account</h1>
     <form
-      action=""
+      action="/signup/"
       method="post"
-      id="sign-up-form"
+      autocomplete="off"
+      id="signUpForm"
       class="container text-center sign-up-form col-xl-6 col-lg-5 col-md-7 col-sm-8"
     >
       <h2 class="sign-up-title text-center">Sign up</h2>
@@ -33,13 +34,27 @@
             <label class="sign-up sign-up-lable" for="firstName">
               First name
             </label>
-            <input type="text" class="sign-up sign-up-input" name="firstName" />
+            <input
+              type="text"
+              class="sign-up sign-up-input"
+              name="firstName"
+              id="firstName"
+              placeholder="Jon"
+              autocomplete="off"
+            />
           </div>
           <div class="col text-left sign-up">
             <label class="sign-up sign-up-lable" for="lastName">
               Last name
             </label>
-            <input type="text" class="sign-up sign-up-input" name="lastName" />
+            <input
+              type="text"
+              class="sign-up sign-up-input"
+              name="lastName"
+              id="lastName"
+              placeholder="Doe"
+              autocomplete="off"
+            />
           </div>
         </div>
 
@@ -50,7 +65,9 @@
               type="email"
               class="sign-up-input sign-up"
               name="email"
+              id="email"
               placeholder="myEmail@gmail.com"
+              autocomplete="off"
             />
           </div>
         </div>
@@ -64,6 +81,8 @@
               type="password"
               class="sign-up-input sign-up"
               name="password"
+              id="password"
+              autocomplete="off"
             />
           </div>
           <div class="col text-left sign-up">
@@ -74,6 +93,8 @@
               type="password"
               class="sign-up-input col sign-up"
               name="rePassword"
+              id="rePassword"
+              autocomplete="off"
             />
           </div>
         </div>
@@ -85,7 +106,9 @@
               type="number"
               class="sign-up-input row sign-up"
               name="phone"
-              placeholder="0123456789"
+              id="phone"
+              placeholder="0521234567"
+              autocomplete="off"
             />
           </div>
           <div class="col text-left sign-up">
@@ -96,11 +119,15 @@
               type="date"
               class="sign-up-input row sign-up"
               name="birthday"
+              id="birthday"
+              autocomplete="off"
             />
           </div>
         </div>
 
-        <div class="sign-up row row-cols-1 row-cols-xl-4 row-cols-lg-2 row-cols-md-2">
+        <div
+          class="sign-up row row-cols-1 row-cols-xl-4 row-cols-lg-2 row-cols-md-2"
+        >
           <div class="col text-left sign-up">
             <label class="row sign-up sign-up-lable" for="country">
               Country
@@ -109,18 +136,20 @@
               type="text"
               class="sign-up-input row sign-up"
               name="country"
+              id="country"
               placeholder="Israel"
+              autocomplete="off"
             />
           </div>
           <div class="col text-left sign-up">
-            <label class="row sign-up sign-up-lable" for="city">
-              City
-            </label>
+            <label class="row sign-up sign-up-lable" for="city"> City </label>
             <input
               type="text"
               class="sign-up-input row sign-up"
               name="city"
-              placeholder="Rishon Lezion"
+              id="city"
+              placeholder="Rishon LeZion"
+              autocomplete="off"
             />
           </div>
           <div class="col text-left sign-up">
@@ -131,7 +160,9 @@
               type="text"
               class="sign-up-input row sign-up"
               name="street"
+              id="street"
               placeholder="Elie Wiesel"
+              autocomplete="off"
             />
           </div>
           <div class="col text-left sign-up">
@@ -142,28 +173,36 @@
               type="text"
               class="sign-up-input row sign-up"
               name="houseNumber"
+              id="houseNumber"
               placeholder="2"
+              autocomplete="off"
             />
           </div>
         </div>
-        <div class="sign-up row">
+        <!-- <div class="sign-up row">
           <div class="col sign-up form-check">
             <input
               type="checkbox"
               name="remember-me"
+              id="remember-me"
               class="form-check-input sign-up col"
+              autocomplete="off"
             />
             <label class="sign-up-lable" for="remember-me">Remember me</label>
           </div>
-        </div>
+        </div> -->
       </div>
 
-      <button class="sign-up btn btn-dark sign-up-submit">SIGN ME UP</button>
-      <button class="sign-up btn">Already have an account</button>
+      <button class="sign-up btn btn-dark sign-up-submit" type="submit">
+        SIGN ME UP
+      </button>
+      <button id="goToLoginBtn" class="sign-up btn">
+        Already have an account
+      </button>
     </form>
   </body>
-
   <div class="component">
     <section id="footer"></section>
   </div>
+  <script src="signUpPage.js"></script>
 </html>

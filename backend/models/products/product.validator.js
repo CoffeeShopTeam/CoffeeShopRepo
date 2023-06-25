@@ -1,9 +1,6 @@
 function validateQuantity(productQuantity) {
   const quantity = productQuantity;
-  if (!quantity.isInteger() || quantity < 1) {
-    return false;
-  }
-  return true;
+  return !quantity.isInteger() || quantity < 1;
 }
 
 module.exports = validateQuantity;

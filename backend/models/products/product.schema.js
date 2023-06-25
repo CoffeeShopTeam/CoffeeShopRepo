@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validateQuantity = require("./product.validator");
+
 const ProductSchema = new mongoose.Schema({
   productName: {
     type: String,

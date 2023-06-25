@@ -1,10 +1,20 @@
-const Product = require("../models/products/product.schema");
+const path = require("path");
+const Product = require(path.join(
+  __dirname,
+  "../",
+  "../",
+  "models",
+  "products",
+  "product.schema"
+));
+const bcrypt = require("bcrypt");
+
 require("dotenv").config();
 
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
-    res.json(producst);
+    res.json(products);
   } catch (e) {
     console.log(e);
     res.status(500).send({ message: e.message });
@@ -24,15 +34,23 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { name, price, description, category, image, supplierId } = req.body;
+  const {
+    productName,
+    productPrice,
+    productDescription,
+    productCategory,
+    productImage,
+    supplierId,
+  } = req.body;
   try {
+    console.log(req.body);
     const product = new Product({
-      name,
-      price,
-      description,
-      category,
-      image,
-      supplierId,
+      productName: productName,
+      productPrice: productPrice,
+      productDescription: productDescription,
+      productCategory: productCategory,
+      productImage: productImage,
+      supplierId: supplierId,
     });
     await product.save();
     res.status(201).json({ success: true, data: product });
@@ -86,7 +104,7 @@ const deleteProduct = async (req, res) => {
   try {
     const result = await Product.deleteOne({ _id: req.params.id });
     if (!result.deletedCount) {
-      res.status(204).send("No product found with this id");
+      res.status(404).send("No product found with this id");
     } else {
       res.status(200).send("Product deleted successfully");
     }
@@ -94,4 +112,12 @@ const deleteProduct = async (req, res) => {
     console.log(e);
     res.status(500).send({ message: e.message });
   }
+};
+
+module.exports = {
+  getAllProducts,
+  getProductById,
+  createProduct,
+  updateProductById,
+  deleteProduct,
 };

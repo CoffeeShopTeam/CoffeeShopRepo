@@ -1,127 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Account - View Order</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script src="jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="accountViewOrder.css" />
-    <script src="accountViewOrder.js"></script>
-  </head>
-  <body>
-    <div class="header" id="header"></div>
-    <div class="accountNavBar" id="accountNavBar"></div>
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card border-0">
-            <div class="card-header">
-              <h5 class="card-title">Order Details</h5>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <div class="form-floating mb-3">
-                      <input type="text" disabled class="form-control-plaintext" id="orderNumber" value="12345" />
-                      <label for="orderNumber">Order Number</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="email" disabled class="form-control-plaintext" id="email" value="user@example.com" />
-                      <label for="email">Email</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="text" disabled class="form-control-plaintext" id="paymentMethod" value="Credit Card" />
-                      <label for="paymentMethod">Payment Method</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="text" disabled class="form-control-plaintext" id="orderDate" value="2023-06-18" />
-                      <label for="orderDate">Order Date</label>
-                    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account - View Order</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <script src="jquery-3.6.4.min.js"></script>
+  <link rel="stylesheet" href="accountViewOrder.css" />
+  <script src="accountViewOrder.js"></script>
+</head>
+
+<body>
+  <div class="header" id="header"></div>
+  <div class="accountNavBar" id="accountNavBar"></div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card border-0">
+          <div class="card-header">
+            <h5 class="card-title">Order Details</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="form-floating mb-3">
+                    <input type="text" disabled class="form-control-plaintext" id="orderNumber" value="12345" />
+                    <label for="orderNumber">Order Number</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" disabled class="form-control-plaintext" id="email" value="user@example.com" />
+                    <label for="email">Email</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" disabled class="form-control-plaintext" id="paymentMethod" value="Credit Card" />
+                    <label for="paymentMethod">Payment Method</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" disabled class="form-control-plaintext" id="orderDate" value="2023-06-18" />
+                    <label for="orderDate">Order Date</label>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <div class="form-floating mb-3">
-                      <input type="text" disabled class="form-control-plaintext" id="deliveryOption" value="Express Shipping" />
-                      <label for="deliveryOption">Delivery Option</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="text" disabled class="form-control-plaintext" id="deliveryAddress" value="Rishon Le Ziyon, Colman College" />
-                      <label for="deliveryAddress">Delivery Address</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="text" disabled class="form-control-plaintext" id="contactNumber" value="+1 123-456-7890" />
-                      <label for="contactNumber">Contact Number</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="text" disabled class="form-control-plaintext" id="contactNumber" value="Call before shipping" />
-                      <label for="contactNumber">Order notes</label>
-                    </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="form-floating mb-3">
+                    <input type="text" disabled class="form-control-plaintext" id="deliveryOption"
+                      value="Express Shipping" />
+                    <label for="deliveryOption">Delivery Option</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" disabled class="form-control-plaintext" id="deliveryAddress"
+                      value="Rishon Le Ziyon, Colman College" />
+                    <label for="deliveryAddress">Delivery Address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" disabled class="form-control-plaintext" id="contactNumber"
+                      value="+1 123-456-7890" />
+                    <label for="contactNumber">Contact Number</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" disabled class="form-control-plaintext" id="contactNumber"
+                      value="Call before shipping" />
+                    <label for="contactNumber">Order notes</label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-                  
-        <div class="col-md-6">
-          <div class="card border-0">
-            <div class="card-header">
-              <h5 class="card-title">Order Summary</h5>
-            </div>
-            <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Product 1</td>
-                    <td>$19.99</td>
-                  </tr>
-                  <tr>
-                    <td>Product 2</td>
-                    <td>$29.99</td>
-                  </tr>
-                  <tr>
-                    <td>Product 3</td>
-                    <td>$9.99</td>
-                  </tr>
-                  <tr>
-                    <th>Subtotal</th>
-                    <td>$59.97</td>
-                  </tr>
-                  <tr>
-                    <th>Shipping</th>
-                    <td class="table-price">$5.00</td>
-                  </tr>
-                  <tr>
-                    <th>Total</th>
-                    <td class="table-price">$64.97</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card border-0">
+          <div class="card-header">
+            <h5 class="card-title">Order Summary</h5>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Product 1</td>
+                  <td>$19.99</td>
+                </tr>
+                <tr>
+                  <td>Product 2</td>
+                  <td>$29.99</td>
+                </tr>
+                <tr>
+                  <td>Product 3</td>
+                  <td>$9.99</td>
+                </tr>
+                <tr>
+                  <th>Subtotal</th>
+                  <td>$59.97</td>
+                </tr>
+                <tr>
+                  <th>Shipping</th>
+                  <td class="table-price">$5.00</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <td class="table-price">$64.97</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-                
-    <div class="footer" id="footer"></div>
+      </div>
 
-    <script src="\frontend\views\partials\partials.js"></script>
-    <script src="\frontend\views\layouts\account\account.js"></script>
+      <div class="footer" id="footer"></div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
+      <script src="\frontend\views\partials\partials.js"></script>
+      <script src="\frontend\views\layouts\account\account.js"></script>
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
 </html>

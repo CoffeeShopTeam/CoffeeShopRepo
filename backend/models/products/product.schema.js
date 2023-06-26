@@ -1,32 +1,40 @@
 const mongoose = require("mongoose");
+const validateQuantity = require("./product.validator");
 
 const ProductSchema = new mongoose.Schema({
-  product: [
-    {
-      productName: {
-        type: String,
-        validate: function (String) {
-          return length(String) > 0;
-        },
-        message: "Name must be a non-empty string",
-      },
-
-      productPrice: {
-        type: Number,
-        min: [1, "The minimum price is 1 dollar."],
-      },
-      productDescription: {
-        type: String,
-      },
-      productCategory: {
-        type: String,
-        enum: ["machines", "capsules", "beans", "accessories"],
-      },
-      productImage: {
-        type: String,
-      },
-    },
-  ],
+  productName: {
+    type: String,
+    required: true,
+    min: [2, "Name can't be shorter than 2 characters"],
+  },
+  productPrice: {
+    type: Number,
+    required: true,
+    min: [1, "The minimum price is 1 dollar."],
+  },
+  productDescription: {
+    type: String,
+    required: true,
+    min: [4, "Description can't be shorter than 4 characters"],
+  },
+  productCategory: {
+    type: String,
+    enum: ["machines", "capsules", "beans", "accessories"],
+    required: true,
+  },
+  productImage: {
+    type: String,
+    required: true,
+  },
+  productQuantity: {
+    type: Number,
+    required: true,
+    validate: [validateQuantity, "Invalid quantity"],
+  },
+  supplierId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "User",
+  },
 });
 
 const Products = mongoose.model("products", ProductSchema);

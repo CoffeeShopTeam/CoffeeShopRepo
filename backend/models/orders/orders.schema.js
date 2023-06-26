@@ -67,18 +67,6 @@ const ordersSchema = new mongoose.Schema({
     },
   },
 
-  // products: [{
-  //     product:{
-  //         type: mongoose.Schema.Types.ObjectId,
-  //         ref: 'Product' // Reference the product schema
-  //     },
-  //     quantity:{
-  //         type:Number,
-  //         default:1,
-  //         min:1
-  //     }
-  //   }],
-
   paymentMethod: {
     type: String,
     require: true,

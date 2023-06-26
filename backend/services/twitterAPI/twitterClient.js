@@ -1,4 +1,5 @@
-require("dotenv").config({ path: "/backend/.env" });
+require("dotenv").config({ path: "../../.env" });
+
 const { TwitterApi } = require("twitter-api-v2");
 
 const client = new TwitterApi({
@@ -8,9 +9,19 @@ const client = new TwitterApi({
   accessSecret: process.env.TWITTER_ACCESS_SECRET,
 });
 
-const bearer = new TwitterApi(process.env.BEARER_TOKEN);
+const bearer = new TwitterApi(process.env.TWITTER_BEARER_TOKEN);
 
 const twitterClient = client.readWrite;
 const twitterBearer = bearer.readOnly;
 
-module.exports = { twitterClient, twitterBearer };
+const tweet = async () => {
+  try {
+    await twitterClient.v2.tweet("TEST!");
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+tweet();
+
+module.exports = { tweet };

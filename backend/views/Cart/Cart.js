@@ -18,3 +18,5 @@ $(function () {
     $(this).siblings(".counter-value").text(value);
   });
 });
+
+let cartData;

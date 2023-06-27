@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Shopping Cart</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/backend/views/Cart/Cart.css"
+    />
+    <script src="\frontend\node_modules\jquery\dist\jquery.min.js"></script>
+    <script src="/backend/views/Cart/Cart.js"></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+
+  <body class="flex-column">
+    <header>
+      <div id="header"></div>
+    </header>
+    <main class="container">
+      <div class="text-center">
+        <h2 class="mb-4 cart-title">Shopping Cart</h2>
+      </div>
+      <h3>No products in the cart.</h3>
+      <div class="counter-button">
+        <button class="minus-button">-</button>
+        <span class="counter-value">1</span>
+        <button class="plus-button">+</button>
+      </div>
+      <div class="row">
+        <div class=".btn-lg mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-dark" name="update-cart">UPDATE CART</button>
+          </div>
+        </div>
+      </div>
+      <div class="border mb-3 p-3">
+        <h2>Cart totals</h2>
+        <div class="col">
+          <div class="col-md-6">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5>SUBTOTAL</h5>
+              <h5>$X</h5>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mt-3">
+              <button
+                class="btn btn-dark btn-lg"
+                onclick="window.location.href='/frontend/views/layouts/Checkout/Checkout.html'"
+              >
+                PROCEED TO CHECKOUT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </body>
+</html>

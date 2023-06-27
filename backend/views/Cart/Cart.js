@@ -19,4 +19,5 @@ $(function () {
   });
 });
 
-let cartData;
+const cartTotal = document.getElementById("cart-total");
+let cart = [];

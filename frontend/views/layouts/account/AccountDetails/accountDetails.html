@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account - Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="accountDetails.css" />
+    <script src="accountDetails.js"></script>
+  </head>
+  <body>
+    <div class="header" id="header"></div>
+    <div class="accountNavBar" id="accountNavBar"></div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="card border-0">
+            <div class="card-header bg-dark text-light">
+              <h5 class="card-title">Account Details</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    disabled
+                    class="form-control-plaintext"
+                    id="firstName"
+                    value="John"
+                  />
+                  <label for="firstName">First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    disabled
+                    class="form-control-plaintext"
+                    id="lastName"
+                    value="Doe"
+                  />
+                  <label for="lastName">Last Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    disabled
+                    class="form-control-plaintext"
+                    id="username"
+                    value="John92Doe"
+                  />
+                  <label for="username">Username</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    disabled
+                    class="form-control-plaintext"
+                    id="email"
+                    value="john.doe@example.com"
+                  />
+                  <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control-plaintext"
+                    disabled
+                    id="address"
+                    value="123 Main St, City, Country"
+                  />
+                  <label for="address">Address</label>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-dark"
+                  data-toggle="modal"
+                  data-target="#changePasswordModal"
+                >
+                  Change Password
+                </button>
+                <button type="button" class="btn float-right" id="edit">
+                  Edit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="changePasswordModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="changePasswordModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-light">
+            <h5 class="modal-title" id="changePasswordModalLabel">
+              Change Password
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="currentPassword"
+                  placeholder="Enter current password"
+                />
+                <label for="currentPassword">Current Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="newPassword"
+                  placeholder="Enter new password"
+                />
+                <label for="newPassword">New Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  placeholder="Confirm new password"
+                />
+                <label for="confirmPassword">Confirm Password</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-dark">
+                Confirm
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footer"></div>
+
+    <script src="\frontend\views\partials\partials.js"></script>
+    <script src="\frontend\views\layouts\account\account.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

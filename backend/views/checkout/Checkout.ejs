@@ -6,7 +6,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <link
       rel="stylesheet"
       type="text/css"
@@ -19,23 +18,9 @@
       type="text/css"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./Checkout.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/frontend/views/partials/assets"
-    />
-    <script src="\backend\node_modules\jquery\dist\jquery.min.js"></script>
-    <script src=".\Checkout.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/views/checkout/Checkout.js"></script>
   </head>
 
   <body>
@@ -48,7 +33,7 @@
       <div class="mb-4">
         <h1 class="text-center">Checkout</h1>
       </div>
-      <!-- ======= section1 ======= -->
+      <div></div>
       <section>
         <div class="row">
           <div class="d-flex justify-content-center">
@@ -75,40 +60,26 @@
           </div>
         </div>
         <hr class="mt-2" />
-        <div class="d-flex align-items-center justify-content-center">
-          <div class="ml-2">
-            <input
-              type="text"
-              class="form-control"
-              id="coupon-input"
-              placeholder="Coupon Code"
-              aria-label="Coupon Code"
-              aria-describedby="apply-coupon"
-            />
-          </div>
-          <button class="btn btn-dark">APPLY COUPON</button>
-        </div>
       </section>
 
       <section class="col">
         <div class="main-sec row">
           <div class="shipping col-md-4">
-            <h3 class="mb-3">Shipping Details</h3>
+            <h3 class="mb-3" style="margin-top:1rem;">Shipping Details</h3>
             <div class="checkout row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="Prefix">Prefix</label>
-                  <select
-                    class="form-select"
-                    aria-label="Floating label select example"
-                    name="Prefix"
-                  >
-                    <option value="Mr">Mr.</option>
-                    <option value="Ms">Ms.</option>
-                    <option value="Mrs">Mrs.</option>
-                    <option value="Dr">Dr.</option>
-                  </select>
+                  <div class="select-container">
+                    <select class="form-select" aria-label="Floating label select example" name="Prefix">
+                      <option value="Mr">Mr.</option>
+                      <option value="Ms">Ms.</option>
+                      <option value="Mrs">Mrs.</option>
+                      <option value="Dr">Dr.</option>
+                    </select>
+                  </div>
                 </div>
+                
               </div>
               <div class="col-md-6">
                 <div class="form-group">
@@ -140,17 +111,19 @@
                   <input type="text" class="form-control" id="company-name" />
                 </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-12">                
                 <div class="form-group">
                   <label for="country">Country</label>
                   <span class="must-fill">*</span>
+                  <div class="select-conainer">
                   <select
-                    class="form-select countrySelect"
+                    class="form-select countrySelect" 
                     aria-label="Floating label select example"
                     name="countrySelect"
-                    required
-                  ></select>
+                    required>
+                </select>                  
                 </div>
+              </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
@@ -213,7 +186,7 @@
           </div>
           <!-- ======= End section1 ======= -->
           <div class="order col-md-4">
-            <h3 class="mb-3">YOUR ORDER</h3>
+            <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h5 class="mb-0">PRODUCT</h5>
               <h5 class="mb-0">TOTAL</h5>
@@ -221,32 +194,30 @@
             <hr class="mb-3" />
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">CitiZ</h5>
-              <h5 class="mb-0">$350</h5>
+              <h5 class="mb-0">350₪</h5>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">BARISTA Cups</h5>
-              <h5 class="mb-0">$20</h5>
+              <h5 class="mb-0">20₪</h5>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">ORIGIN Cups</h5>
-              <h5 class="mb-0">$10</h5>
+              <h5 class="mb-0">10₪</h5>
             </div>
             <hr class="mb-3" />
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">SUBTOTAL</h5>
-              <h5 class="mb-0">$380</h5>
+              <h5 class="mb-0">380₪</h5>
             </div>
             <hr class="mb-3" />
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">SHIPPING</h5>
-              <div class="mb-4">
-                <select
-                  class="form-select"
-                  id="ship-option"
-                  for="deliveryOption"
-                >
-                  Delivery Option
-                  <option>Express Shippping (1-3 business days)</option>
+            </div>
+            <div class="mb-4">
+              <div id="select-container">
+                <label for="ship-option">Delivery Option</label>
+                <select class="form-select" id="ship-option" name="deliveryOption">
+                  <option>Express Shipping (1-3 business days)</option>
                   <option>Regular Shipping (3-8 business days)</option>
                 </select>
               </div>
@@ -254,7 +225,7 @@
             <hr class="mb-3" />
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">TOTAL</h5>
-              <h5 class="mb-0">$380</h5>
+              <h5 class="mb-0">380₪</h5>                 
             </div>
             <div class="payment-methods">
               <div class="form-check">
@@ -287,14 +258,37 @@
               <span class="selection mb-0" id="cash-on-delivery-description"
                 >Pay at time of delivery
               </span>
-              <span class="selection mb-0" id="paypal-description"
-                >Pay via PayPal
-              </span>
+
+              <div class="d-flex justify-content-between align-items-center mb-3">
+              <form action="/backend/Service/exchangeRate" method="POST">            
+                <strong class="mb-0"s>Convert Payment To:</strong>
+                <select class="mt-1 ml-4 mr-3" id="currency" name="currency" required>
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                </select>
+                  <button type="submit" class="btn-xs btn-dark ms-auto" id="convert-button">Convert</button>   
+                </form>
+                </div>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <input
+                type="text"
+                class="form form-control-xs"
+                id="coupon-input"
+                placeholder="Coupon Code"
+                aria-label="Coupon Code"
+                aria-describedby="apply-coupon"
+                />
+              <button class="btn btn-dark btn-sm"            
+              style=" font-size: 1rem;"
+              >
+              Apply Coupon</button>
             </div>
+            
             <button
-              class="btn btn-success btn-block btn-lg"
-              onclick="window.location.href='/frontend/views/layouts/orderConfirmation/orderConfirmation.html'"
-            >
+              class="btn btn-success btn-block btn-lg btn-dark"
+              onclick="window.location.href='/backend/views/layouts/orderConfirmation/orderConfirmation.ejs'"      
+              >
               PLACE ORDER
             </button>
           </div>
@@ -302,5 +296,9 @@
       </section>
     </main>
     <div id="footer"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   </body>
 </html>

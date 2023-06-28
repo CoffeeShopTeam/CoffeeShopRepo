@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Fictional Product 1",
+    "price": 19.99,
+    "description": "1st test product"
+  },
+  {
+    "title": "Fictional Product 2",
+    "price": 15.9,
+    "description": "2nd test product"
+  }
+]

@@ -26,27 +26,21 @@
       <h2 class="mb-4 cart-title">Shopping Cart</h2>
     </div>
     <h3>No products in the cart.</h3>
-    <div class="cart-item"></div>
-    <div class="counter-button">
-      <button class="minus-button">-</button>
-      <span class="counter-value">1</span>
-      <button class="plus-button">+</button>
-    </div>
+    <div id="cart-items"></div>
     <button class="clear-cart">Clear Cart</button>
-    <div class="border mb-3 p-3" id="cart-total">
+    <div class="border mb-3 p-3">
       <h2>Cart totals</h2>
       <div class="col">
         <div class="col-md-6">
           <div class="d-flex justify-content-between align-items-center">
             <h5>SUBTOTAL</h5>
-            <h5>$X</h5>
+            <h5 id="cart-total"></h5>
           </div>
         </div>
         <div class="col-md-6">
           <div class="mt-3">
             <button class="btn btn-dark btn-lg"
-              onclick="window.location.href='/frontend/views/layouts/Checkout/Checkout.html'">
-              <!-- change to checkout.ejs later on -->
+              onclick="window.location.href='/backend/views/layouts/Checkout/Checkout.ejs'">
               PROCEED TO CHECKOUT
             </button>
           </div>

@@ -30,7 +30,7 @@ app.get("/", (req, res, next) => {
 app.use("/signup", routes.signupRouter);
 app.use("/login", routes.loginRouter);
 app.use("/account", routes.accountRouter);
-// app.use("/cart", routes.cartRouter);
+app.use("/cart", routes.cartRouter);
 
 app.listen(PORT, () => {
   console.log(`app available on http://localhost:${PORT}`);

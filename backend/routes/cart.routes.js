@@ -3,9 +3,7 @@ const router = express.Router();
 const path = require("path");
 
 router.get("/", (req, res) => {
-  const products = Products.getProducts(); // Get the products using the Products class
-  console.log(products);
-  res.render("cart.ejs", { cartTotal });
+  res.render(path.join(__dirname, "..", "views", "Cart", "Cart"));
 });
 
 module.exports = router;

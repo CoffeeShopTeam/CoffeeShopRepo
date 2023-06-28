@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoConnect = require("./config/mongoConnect.js");
 const session = require("express-session");
+const path = require("path");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 require("dotenv").config();
-const path = require("path");
 
 const PORT = process.env.PORT;
 const SECRET = process.env.SECRET;
@@ -28,6 +28,7 @@ app.get("/", (req, res, next) => {
   res.render(filePath);
 });
 
+app.use("/ShopPage", routes.shopRouter);
 app.use("/signup", routes.signupRouter);
 app.use("/login", routes.loginRouter);
 app.use("/account", routes.accountRouter);

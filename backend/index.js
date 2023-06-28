@@ -6,7 +6,7 @@ const routes = require("./routes");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT;
-const SECRETE = process.env.SECRETE;
+const SECRET = process.env.SECRET;
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(
   session({
-    secret: SECRETE,
+    secret: SECRET,
     resave: false,
     saveUninitialized: false,
   })

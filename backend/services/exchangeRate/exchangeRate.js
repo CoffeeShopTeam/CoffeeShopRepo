@@ -3,9 +3,6 @@ const axios = require('axios');
 
 
 const app_id = process.env.EXCHANGE_RATE_API_KEY;
-// const baseCurrency = 'ILS';
-// const targetCurrency = 'USD';
-// const amountToConvert = 100;
 
 async function getExchangeRates(targetCurrency , baseCurrency , amount) {
   try {

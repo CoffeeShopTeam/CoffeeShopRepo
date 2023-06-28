@@ -5,10 +5,11 @@ function loadCSS(url) {
   document.head.appendChild(link);
 }
 $.ajax({
-  url: "/account/account.html",
+  url: "/account/navbar",
   dataType: "html",
   success: function (data) {
     $("#accountNavBar").html(data);
     loadCSS("/account/account.css");
   },
 });
+

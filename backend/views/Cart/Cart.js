@@ -58,7 +58,7 @@ function populateCart(cart) {
 }
 
 function addCartline(cartItem) {
-  const newProduct = $("<div>").addClass("cart-items");
+  const newProduct = $(".div").addClass("cart-items");
   newProduct.html(`<img src="${cartItem.image}" id="product${cartItem.id}" alt="productImage">
     <div class="">
         <h4>${cartItem.title}</h4>
@@ -81,11 +81,12 @@ function removeItem(id) {
 function setCartValues(cart) {
   let countTotal = 0; // Count the item prices
   let itemsTotal = 0; // How many products are there
-  cart.forEach((item) => {
-    countTotal += item.price * item.quantity;
-    itemsTotal += item.quantity;
-    const div = document.createElement("div");
-  });
+  if (cart.length() === 0)
+    cart.forEach((item) => {
+      countTotal += item.price * item.quantity;
+      itemsTotal += item.quantity;
+      const div = document.createElement("div");
+    });
   cartItems.innerText = itemsTotal; // Assign number of products
   const cartTotal = parseFloat(countTotal.toFixed(2));
   $("#cart-total").text(cartTotal);

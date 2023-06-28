@@ -21,7 +21,6 @@ router.get('/', async (req, res, next) => {
 
 router.get('/exchange/', async (req, res, next) => {
   try {
-    // console.log(req.body, req.params);
     const {baseCurrency, targetCurrency, amount } = req.query;
     const exchangeRateResult = await exchangeRate(targetCurrency , baseCurrency , amount);
     const {convertedAmount, currencySymbol, current} = exchangeRateResult;

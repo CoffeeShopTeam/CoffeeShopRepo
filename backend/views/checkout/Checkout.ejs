@@ -13,14 +13,15 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/checkout/Checkout.css" />
     <script src="/checkout/Checkout.js"></script>
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   </head>
@@ -39,26 +40,6 @@
       <section>
         <div class="row">
           <div class="d-flex justify-content-center">
-            <h5 class="mb-0">
-              Returning customer?
-              <a
-                id="click-to-login"
-                onclick="window.location.href='/login/loginPage.ejs'"
-                >Click here</a
-              >
-              to login
-            </h5>
-          </div>
-          <div class="d-flex justify-content-center">
-            <h5 class="mb-0">
-              New customer?
-              <a
-                id="click-to-signup"
-                onclick="window.location.href='/frontend/views/layouts/signUpPage/signUpPage.html'"
-                >Click here</a
-              >
-              to signup!
-            </h5>
           </div>
         </div>
         <hr class="mt-2" />
@@ -236,8 +217,20 @@
                 <label for="expirationMonth">Expiration Month</label>
                 <select class="form-control" id="expirationMonth">
                   <option value="">Month</option>
-                  <option value="01">01 - January</option>
-                  <option value="02">02 - February</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+
+
                   <!-- Add more options for the remaining months -->
                 </select>
               </div>
@@ -247,6 +240,9 @@
                   <option value="">Year</option>
                   <option value="2023">2023</option>
                   <option value="2024">2024</option>
+                  <option value="2024">2025</option>
+                  <option value="2024">2026</option>
+                  <option value="2024">2027</option>
                   <!-- Add more options for future years -->
                 </select>               
               </div>
@@ -290,9 +286,9 @@
       </section>
     </main>
     <div id="footer"></div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="\partials\partials.js"></script>
   </body>
 </html>

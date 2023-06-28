@@ -13,14 +13,16 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="/views/checkout/Checkout.js"></script>
+    <link rel="stylesheet" type="text/css" href="/checkout/Checkout.css" />
+    <script src="/checkout/Checkout.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   </head>
 
   <body>
@@ -41,7 +43,7 @@
               Returning customer?
               <a
                 id="click-to-login"
-                onclick="window.location.href='/frontend/views/layouts/loginPage/loginPage.html'"
+                onclick="window.location.href='/login/loginPage.ejs'"
                 >Click here</a
               >
               to login
@@ -115,14 +117,19 @@
                 <div class="form-group">
                   <label for="country">Country</label>
                   <span class="must-fill">*</span>
-                  <div class="select-conainer">
+                  <!-- <div class="select-conainer"> -->
                   <select
-                    class="form-select countrySelect" 
+                    class="form-select countrySelect narrow-select" 
                     aria-label="Floating label select example"
                     name="countrySelect"
-                    required>
+                    style="width: 100%;"
+                    required
+                    >
+                    <% countries.forEach(function(countryName) { %>
+                      <option value="<%= countryName %>"><%= countryName %></option>
+                    <% }); %>
                 </select>                  
-                </div>
+                <!-- </div> -->
               </div>
               </div>
               <div class="col-md-12">
@@ -184,7 +191,6 @@
               </div>
             </div>
           </div>
-          <!-- ======= End section1 ======= -->
           <div class="order col-md-4">
             <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -192,76 +198,64 @@
               <h5 class="mb-0">TOTAL</h5>
             </div>
             <hr class="mb-3" />
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">CitiZ</h5>
-              <h5 class="mb-0">350₪</h5>
+            <div class="d-flex justify-content-between align-items-center mb-2 product">
+              <h5 class="mb-0" data-amount="350">CitiZ</h5>
+              <span class="currency-symbol" currency-select="ILS">350₪</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-2 product">
+              <h5 class="mb-0" data-amount="20">BARISTA Cups</h5>
+              <span class="currency-symbol" currency-select="ILS">20₪</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-2 product">
+              <h5 class="mb-0" data-amount="20">ORIGIN Cups</h5>
+              <span class="currency-symbol" currency-select="ILS">20₪</span>
+            </div>
+            <hr3 class = "mb-3" />
+            <div class="d-flex justify-content-between align-items-center mb-2 product">
+              <h5 class="mb-0" data-amount="380">TOTAL</h5>
+              <span class="currency-symbol"  currency-select="ILS">380₪</span>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">BARISTA Cups</h5>
-              <h5 class="mb-0">20₪</h5>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">ORIGIN Cups</h5>
-              <h5 class="mb-0">10₪</h5>
-            </div>
-            <hr class="mb-3" />
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">SUBTOTAL</h5>
-              <h5 class="mb-0">380₪</h5>
-            </div>
-            <hr class="mb-3" />
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">SHIPPING</h5>
-            </div>
-            <div class="mb-4">
-              <div id="select-container">
-                <label for="ship-option">Delivery Option</label>
-                <select class="form-select" id="ship-option" name="deliveryOption">
-                  <option>Express Shipping (1-3 business days)</option>
-                  <option>Regular Shipping (3-8 business days)</option>
-                </select>
-              </div>
-            </div>
-            <hr class="mb-3" />
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">TOTAL</h5>
-              <h5 class="mb-0">380₪</h5>                 
             </div>
             <div class="payment-methods">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="payment-method"
-                  id="credit-card"
-                  value="credit-card"
-                />
-                <label class="form-check-label" for="credit-card">
-                  <h5>Credit Card</h5>
-                </label>
+              <div class="form-row">
+              <div class="form-group col-md-6">
+              <label for="cardNumber">Credit Card Number</label>
+              <input type="text" class="form-control" id="cardNumber" placeholder="Enter credit card number">
+            </div>
+            <div class="form-group col-md-6 ">
+
+            <label for="cvv">CVV</label>
+            <input type="text" class="form-control " id="cvv" placeholder="Enter CVV">
+            
+          </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="expirationMonth">Expiration Month</label>
+                <select class="form-control" id="expirationMonth">
+                  <option value="">Month</option>
+                  <option value="01">01 - January</option>
+                  <option value="02">02 - February</option>
+                  <!-- Add more options for the remaining months -->
+                </select>
               </div>
-              <span class="selection mb-0" id="credit-card-description"
-                >Pay with a credit card
-              </span>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="payment-method"
-                  id="cash-on-delivery"
-                  value="cash-on-delivery"
-                />
-                <label class="form-check-label" for="cash-on-delivery">
-                  <h5>Cash on delivery</h5>
-                </label>
+              <div class="form-group col-md-6">
+                <label for="expirationYear">Expiration Year</label>
+                <select class="form-control" id="expirationYear">
+                  <option value="">Year</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <!-- Add more options for future years -->
+                </select>               
               </div>
-              <span class="selection mb-0" id="cash-on-delivery-description"
-                >Pay at time of delivery
-              </span>
+            </form>
 
               <div class="d-flex justify-content-between align-items-center mb-3">
-              <form action="/backend/Service/exchangeRate" method="POST">            
-                <strong class="mb-0"s>Convert Payment To:</strong>
+                
+                  <form id="currency-conversion-form">                            
+                  <strong class="mb-0"s>Convert Payment To:</strong>
                 <select class="mt-1 ml-4 mr-3" id="currency" name="currency" required>
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
@@ -280,14 +274,14 @@
                 aria-describedby="apply-coupon"
                 />
               <button class="btn btn-dark btn-sm"            
-              style=" font-size: 1rem;"
+              style=" font-size: 0.8rem;width:50%;"
               >
               Apply Coupon</button>
             </div>
             
             <button
               class="btn btn-success btn-block btn-lg btn-dark"
-              onclick="window.location.href='/backend/views/layouts/orderConfirmation/orderConfirmation.ejs'"      
+               onclick="window.location.href='/views/orderConfirmation/orderConfirmation.ejs'"      
               >
               PLACE ORDER
             </button>

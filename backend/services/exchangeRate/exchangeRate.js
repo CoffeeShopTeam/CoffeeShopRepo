@@ -3,11 +3,11 @@ const axios = require('axios');
 
 
 const app_id = process.env.EXCHANGE_RATE_API_KEY;
-const baseCurrency = 'USD';
-const targetCurrency = 'EUR';
-const amountToConvert = 100;
+// const baseCurrency = 'ILS';
+// const targetCurrency = 'USD';
+// const amountToConvert = 100;
 
-async function getExchangeRates() {
+async function getExchangeRates(targetCurrency , baseCurrency , amount) {
   try {
     const url = `https://restcountries.com/v2/currency/${targetCurrency}`;
     const response = await axios.get(url);
@@ -22,7 +22,6 @@ async function getExchangeRates() {
     }
 
     const currencySymbol = data[0].currencies[0].symbol;
-    console.log('Currency Symbol:', currencySymbol);
 
     const exchangeRateUrl = `https://v6.exchangerate-api.com/v6/${app_id}/latest/${baseCurrency}`;
     const exchangeRateResponse = await axios.get(exchangeRateUrl);
@@ -34,13 +33,14 @@ async function getExchangeRates() {
     const exchangeRateData = exchangeRateResponse.data;
     const rates = exchangeRateData.conversion_rates;
     const exchangeRate = rates[targetCurrency];
-    const exchangedAmount = exchangeRate * amountToConvert;
-    console.log(`Translating ${amountToConvert} ${baseCurrency} to ${targetCurrency} is ${exchangedAmount} ${currencySymbol}`);
+    const exchangedAmount = (exchangeRate * amount).toFixed(2);
+    console.log( {currency : targetCurrency});
+    return { current: targetCurrency, convertedAmount: exchangedAmount , currencySymbol: currencySymbol };
+
+    
   } catch (error) {
     console.error('Error:', error.message);
   }
 }
-
-getExchangeRates();
 
 module.exports = getExchangeRates;

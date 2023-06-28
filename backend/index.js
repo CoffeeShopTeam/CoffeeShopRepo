@@ -20,6 +20,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
   }));
+  
 app.use('/signup', routes.signupRouter);
 app.use('/login', routes.loginRouter);
 app.use('/account', routes.accountRouter);

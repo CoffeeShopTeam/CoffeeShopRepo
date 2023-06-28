@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajax": "^0.0.4",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.1.4",
@@ -18,7 +19,6 @@
     "jquery": "^3.7.0",
     "mongoose": "^7.2.3",
     "twitter-api-v2": "^1.15.0"
-
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

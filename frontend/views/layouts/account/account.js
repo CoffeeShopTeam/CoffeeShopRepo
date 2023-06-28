@@ -9,6 +9,6 @@ $.ajax({
   dataType: "html",
   success: function (data) {
     $("#accountNavBar").html(data);
-    loadCSS("/frontend/views/layouts/account/account.html");
+    loadCSS("/frontend/views/layouts/account/account.css");
   },
 });

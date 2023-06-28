@@ -17,24 +17,26 @@
   <body>
     <div class="header" id="header"></div>
     <div class="accountNavBar" id="accountNavBar"></div>
-    <div class="container">
-      <h1>Orders</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Order Number</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Total</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="orderTableBody"></tbody>
-      </table>
-      <p id="emptyMessage" style="display: none">
-        No orders have been made yet. <a href="#">Product</a>
-      </p>
-    </div>
+    <main class="mainContent">
+      <div class="orders container">
+        <h1>Orders</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Order Number</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Total</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody"></tbody>
+        </table>
+        <p id="emptyMessage" style="display: none">
+          No orders have been made yet. <a href="#">Product</a>
+        </p>
+      </div>
+    </main>
     <div class="footer" id="footer"></div>
 
     <script src="\frontend\views\partials\partials.js"></script>

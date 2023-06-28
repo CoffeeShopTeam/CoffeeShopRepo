@@ -14,14 +14,4 @@ const bearer = new TwitterApi(process.env.TWITTER_BEARER_TOKEN);
 const twitterClient = client.readWrite;
 const twitterBearer = bearer.readOnly;
 
-const tweet = async () => {
-  try {
-    await twitterClient.v2.tweet("TEST!");
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-tweet();
-
-module.exports = { tweet };
+module.exports = twitterClient;

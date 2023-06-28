@@ -19,7 +19,6 @@
     "jquery": "^3.7.0",
     "mongoose": "^7.2.3",
     "twitter-api-v2": "^1.15.0"
-
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

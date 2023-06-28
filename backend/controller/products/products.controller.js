@@ -8,7 +8,14 @@ const Product = require(path.join(
   "product.schema"
 ));
 const bcrypt = require("bcrypt");
-
+const twitterClient = require(path.join(
+  __dirname,
+  "../",
+  "../",
+  "services",
+  "twitterAPI",
+  "twitterClient"
+));
 require("dotenv").config();
 
 const getAllProducts = async (req, res) => {
@@ -46,57 +53,28 @@ const createProduct = async (req, res) => {
   try {
     console.log(req.body);
     const product = new Product({
-      productName: productName,
-      productPrice: productPrice,
-      productDescription: productDescription,
-      productCategory: productCategory,
-      productImage: productImage,
-      productQuantity: productQuantity,
-      supplierId: supplierId,
+      ...req.body,
     });
     await product.save();
-    res.status(201).json({ success: true, data: product });
+    res.status(200).json({ success: true, data: product });
+    const productId = product._id;
+    const tweetMessage = `We got a brand new product: ${productName}!\n\nFind it Here: http://Urusta.co.il/${productId}`;
+    const tweet = await twitterClient.v2.tweet(tweetMessage);
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: e.message });
   }
 };
 
-const updateProductById = async (req, res) => {
+const EditProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     if (!product) {
       res.status(404).send("Cannot find product with this id");
       return;
     }
-    const { name, price, description, category, image, quantity, supplierId } =
-      req.body;
 
-    if (name) {
-      product.productName = name;
-    }
-
-    if (price) {
-      product.productPrice = price;
-    }
-
-    if (description) {
-      product.productDescription = description;
-    }
-
-    if (category) {
-      product.productCategory = category;
-    }
-
-    if (image) {
-      product.productImage = image;
-    }
-    if (quantity) {
-      product.productQuantity = quantity;
-    }
-    if (supplierId) {
-      product.SupplierId = supplierId;
-    }
+    Object.assign(product, req.body);
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);
@@ -120,10 +98,19 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const tweet = async (req, res) => {
+  const product = await Product;
+  try {
+    await twitterClient.v2.tweet("We Got A New Product: " + p);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   createProduct,
-  updateProductById,
+  EditProductById,
   deleteProduct,
 };

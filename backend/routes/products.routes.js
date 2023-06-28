@@ -1,12 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const { createProduct } = require(path.join(
+const {
+  createProduct,
+  getAllProducts,
+  getProductById,
+  EditProductById,
+  deleteProduct,
+} = require(path.join(
   __dirname,
   "../",
   "controller",
   "products",
   "products.controller"
+));
+const getProduct = require(path.join(
+  __dirname,
+  "../",
+  "middleware",
+  "getProduct"
 ));
 
 router.get("/", (req, res, next) => {
@@ -21,4 +33,20 @@ router.post("/", async (req, res, next) => {
     res.status(500).send(err.message);
   }
 });
+
+router.get("/", getAllProducts);
+
+router.get("/:id", getProduct, getProductById);
+
+router.put("/:id", getProduct, EditProductById);
+
+router.delete("/", async (req, res) => {
+  try {
+    await deleteProduct(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+});
+
 module.exports = router;

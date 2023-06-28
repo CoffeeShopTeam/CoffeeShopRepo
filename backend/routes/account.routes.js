@@ -1,30 +1,88 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const path = require('path');
+const path = require("path");
 
-router.get('/', (req, res, next) => {
-    res.redirect('/account/details/')
+router.use("/", (req, res, next) => {
+  const { type } = req.session.data;
+  req.type = type;
+  console.log(type);
+  next();
 });
 
-router.get('/details', (req, res, next) => {
-    res.render(path.join(__dirname, '..', 'views', 'account', 'accountDetails', 'accountDetails'));
+router.get("/", (req, res, next) => {
+  res.redirect("/account/details/");
 });
 
-router.get('/orders', (req, res, next) => {
-    res.render(path.join(__dirname, '..', 'views', 'account', 'accountOrders', 'accountOrders'));
+router.get("/details", (req, res, next) => {
+  const type = req.type;
+  res.render(
+    path.join(
+      __dirname,
+      "..",
+      "views",
+      "account",
+      "accountDetails",
+      "accountDetails"
+    ),
+    { type }
+  );
 });
 
-router.get('/products', (req, res, next) => {
-    res.render(path.join(__dirname, '..', 'views', 'account', 'accountProducts', 'accountProducts'));
+router.get("/orders", (req, res, next) => {
+  const type = req.type;
+  res.render(
+    path.join(
+      __dirname,
+      "..",
+      "views",
+      "account",
+      "accountOrders",
+      "accountOrders"
+    )
+  );
 });
 
-router.get('/orders/:orderId', (req, res, next) => {
-    const { orderId } = req.params;
-    console.log(orderId);
-    res.render(path.join(__dirname, '..', 'views', 'account', 'accountViewOrder', 'accountViewOrder'));
+router.get("/products", (req, res, next) => {
+  const type = req.type;
+  res.render(
+    path.join(
+      __dirname,
+      "..",
+      "views",
+      "account",
+      "accountProducts",
+      "accountProducts"
+    )
+  );
 });
 
-router.get('/whishlist', (req, res, next) => {
-    res.render(path.join(__dirname, '..', 'views', 'account', 'accountWishlist', 'accountWishlist'));
+router.get("/orders/:orderId", (req, res, next) => {
+  const type = req.type;
+  const { orderId } = req.params;
+  console.log(orderId);
+  res.render(
+    path.join(
+      __dirname,
+      "..",
+      "views",
+      "account",
+      "accountViewOrder",
+      "accountViewOrder"
+    )
+  );
+});
+
+router.get("/whishlist", (req, res, next) => {
+  const type = req.type;
+  res.render(
+    path.join(
+      __dirname,
+      "..",
+      "views",
+      "account",
+      "accountWishlist",
+      "accountWishlist"
+    )
+  );
 });
 module.exports = router;

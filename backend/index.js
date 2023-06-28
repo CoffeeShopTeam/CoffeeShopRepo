@@ -10,9 +10,6 @@ const SECRET = process.env.SECRET
 app.use(bodyParser.urlencoded({ extended: true }));
 const path = require("path");
 
-const PORT = process.env.PORT;
-const SECRET = process.env.SECRET;
-
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'views'),));

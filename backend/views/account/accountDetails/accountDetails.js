@@ -12,20 +12,11 @@ function handleEditButtonClick(event) {
 
   const editButton = document.getElementById("editButton");
   editButton.textContent = "Save";
-  editButton.removeEventListener("click", handleEditButtonClick);
+  // editButton.removeEventListener("click", handleEditButtonClick);
   editButton.addEventListener("click", handleSaveButtonClick);
 }
 
 function handleSaveButtonClick() {
-  const form = document.getElementById("user-details-form");
-  const formInputs = form.querySelectorAll("input");
-  formInputs.forEach((input) => {
-    input.setAttribute("disabled", true);
-  });
-
-  const editButton = document.getElementById("editButton");
-  editButton.textContent = "Edit";
-
   const data = {
     firstName: document.getElementById("firstName").value,
     lastName: document.getElementById("lastName").value,
@@ -38,8 +29,20 @@ function handleSaveButtonClick() {
   };
   axios
     .put("/account/details", data)
-    .then((response) => {})
-    .catch((error) => {});
+    .then((response) => {
+      const form = document.getElementById("user-details-form");
+      const formInputs = form.querySelectorAll("input");
+      formInputs.forEach((input) => {
+        input.setAttribute("disabled", true);
+      });
+      const editButton = document.getElementById("editButton");
+      editButton.textContent = "Edit";
+    })
+    .catch((error) => {
+      if (error.response) {
+        alert("Entered wrong addres.");
+      }
+    });
 }
 
 function handleconfirmPasswordButton(event) {
@@ -62,11 +65,18 @@ function handleconfirmPasswordButton(event) {
 
   axios
     .put("/account/details", data)
-    .then((response) => {})
+    .then((response) => {
+      const currentPassword = document.getElementById("currentPassword");
+      const newPassword = document.getElementById("newPassword");
+      const confirmPassword = document.getElementById("confirmPassword");
+      currentPassword.value = "";
+      newPassword.value = "";
+      confirmPassword.value = "";
+      alert("password changed");
+    })
     .catch((error) => {
       console.log("helllo");
       if (error.response) {
-        // Handle the specific error case
         alert("Entered current password wrong.");
       }
     });

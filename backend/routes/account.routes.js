@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const bcrypt = require("bcrypt");
-
+const { addressValidator } = require("../models/users/user.validator.js");
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
 const { updateUserFields } = require("../controller/users/updateUser.contoroller.js");
 const { updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
@@ -54,14 +54,14 @@ router.put("/details", async (req, res, next) => {
       }
       await updateUserPassword(user, req.body);
     } else {
-      // const isvalidAddress = await addressValidator(req.body.country, req.body.city, req.body.street, req.body.houseNumber);
-      // if (!isvalidAddress) {
-      //   throw new Error("Address does not exist");
-      // }
+      const isvalidAddress = await addressValidator(req.body.country, req.body.city, req.body.street, req.body.houseNumber);
+      if (!isvalidAddress) {
+        throw new Error("Address does not exist");
+      }
       await updateUserFields(user, req.body);
     }
-
     await user.save();
+    res.send("success");
   } catch (error) {
     console.log(error.message);
 

@@ -48,18 +48,29 @@ stockSwitch.addEventListener("change", function () {
 
       if (productQuantity === 0) {
         item.style.display = "none";
-      }
-
-      if (
+      } else if (
         currentCategoryOption !== "all" &&
         productCategory !== currentCategoryOption
       ) {
         item.style.display = "none";
+      } else {
+        item.style.display = "block";
       }
     });
   } else {
     Array.from(productElements).forEach(function (item) {
-      item.style.display = "block";
+      const productCategory = item.classList[item.classList.length - 1];
+      const productQuantity = parseInt(item.dataset.quantity);
+
+      if (
+        (currentCategoryOption === "all" ||
+          productCategory === currentCategoryOption) &&
+        (!stockSwitch.checked || productQuantity > 0)
+      ) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
     });
 
     shopBySelect.value = currentCategoryOption;
@@ -156,7 +167,7 @@ function renderProducts(products) {
 
   products.forEach((product) => {
     const productHtml = `
-      <div class="col-md-4 box ${product.productCategory}" data-quantity="${product.productQuantity}" id="productCell" onclick="window.location.href='/${product._id}'">
+      <div class="col-md-4 box ${product.productCategory}" data-quantity="${product.productQuantity}" id="productCell" onclick="window.location.href='/ProductPage/${product._id}'">
         <img src="/assets/${product.productImage}" alt="alt text" class="productImage" />
         <h3 class="product-name">${product.productName}</h3>
         <h3 class="product-price">$ ${product.productPrice}</h3>

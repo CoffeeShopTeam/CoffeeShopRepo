@@ -33,6 +33,7 @@ app.use("/signup", routes.signupRouter);
 app.use("/login", routes.loginRouter);
 app.use("/account", routes.accountRouter);
 app.use("/createProduct", routes.productRouter);
+app.use("/ProductPage", routes.productPageRouter);
 
 app.listen(PORT, () => {
   console.log(`app available on http://localhost:${PORT}`);

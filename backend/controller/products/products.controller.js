@@ -28,15 +28,25 @@ const getAllProducts = async () => {
   }
 };
 
-const getProductById = async (req, res) => {
+async function getProductById(productId) {
   try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      res.status(404).send("Product not found by id: " + req.params.id);
-    }
-    res.send(products);
-  } catch (e) {
-    res.status(500).send({ message: e.message });
+    const product = await Product.findById(productId);
+    return product;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+const getProductsByCategory = async (category, limit) => {
+  try {
+    const products = await Product.find({ productCategory: category })
+      .limit(limit)
+      .exec();
+    return products;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
 
@@ -98,18 +108,10 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-const tweet = async (req, res) => {
-  const product = await Product;
-  try {
-    await twitterClient.v2.tweet("We Got A New Product: " + p);
-  } catch (e) {
-    console.log(e);
-  }
-};
-
 module.exports = {
   getAllProducts,
   getProductById,
+  getProductsByCategory,
   createProduct,
   EditProductById,
   deleteProduct,

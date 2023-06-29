@@ -10,11 +10,11 @@
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="/backend/views/Cart/Cart.css" />
-  <script src="\backend\node_modules\jquery\dist\jquery.min.js"></script>
-  <script src="/backend/views/Cart/Cart.js"></script>
   <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/Cart/Cart.css" />
+  <script src="/Cart/Cart.js"></script>
+
 </head>
 
 <body class="flex-column">
@@ -39,17 +39,18 @@
           </div>
           <div class="col-md-6">
             <div class="mt-3">
-              <button class="btn btn-dark btn-lg"
-                onclick="window.location.href='/backend/views/layouts/Checkout/Checkout.ejs'">
+              <button class="btn btn-dark btn-lg" onclick="window.location.href='/checkout'">
                 PROCEED TO CHECKOUT
               </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </main>
   <div id="footer"></div>
   <script src="/partials/partials.js"></script>
 </body>
+
 
 </html>

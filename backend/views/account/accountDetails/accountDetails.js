@@ -36,14 +36,44 @@ function handleSaveButtonClick() {
     street: document.getElementById("street").value,
     houseNumber: document.getElementById("houseNumber").value,
   };
+  axios
+    .put("/account/details", data)
+    .then((response) => {})
+    .catch((error) => {});
+}
+
+function handleconfirmPasswordButton(event) {
+  event.preventDefault();
+
+  const currentPassword = document.getElementById("currentPassword").value;
+  const newPassword = document.getElementById("newPassword").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (newPassword !== confirmPassword) {
+    alert("New password and confirm password do not match.");
+    return;
+  }
+
+  const data = {
+    currentPassword,
+    newPassword,
+    confirmPassword,
+  };
 
   axios
     .put("/account/details", data)
     .then((response) => {})
     .catch((error) => {
-      console.error("Error:", error);
+      console.log("helllo");
+      if (error.response) {
+        // Handle the specific error case
+        alert("Entered current password wrong.");
+      }
     });
 }
 
 const editButton = document.getElementById("editButton");
 editButton.addEventListener("click", handleEditButtonClick);
+
+const confirmPasswordButton = document.getElementById("confirmPasswordButton");
+confirmPasswordButton.addEventListener("click", handleconfirmPasswordButton);

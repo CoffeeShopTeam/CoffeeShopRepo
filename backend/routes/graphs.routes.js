@@ -6,7 +6,7 @@ const productsController = require(path.join(__dirname, "../", "controller", "pr
 router.get("/", async (req, res) => {
   try {
     const products = await productsController.getAllProducts();
-    res.render("ShopPage/ShopPage", { products });
+    res.render(path.join(__dirname, "..", "views", "statisticalGraphs", "statisticalGraphs"), { products });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

@@ -18,13 +18,13 @@ const twitterClient = require(path.join(
 ));
 require("dotenv").config();
 
-const getAllProducts = async (req, res) => {
+const getAllProducts = async () => {
   try {
     const products = await Product.find();
-    res.json(products);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e.message });
+    return products;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    />
+    <script src="\node_modules\jquery\dist\jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="\ShopPage\ShopPage.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/px2code/posize/build/v1.01.0.js"></script>
+  </head>
+
+  <body class="flex-column">
+    <header>
+      <div id="header"></div>
+    </header>
+    <main class="shop-page">
+      <div class="container.col-xxl">
+      <section class="section1__section1">
+          <div class="row">
+            <aside class="col-md-2">
+              <div class="left-aside">
+                <h1 class="section1__title">Shop The Latest</h1>
+                <div class="form-group">
+                  <label class="section1__divider">Shop By</label>
+                  <select class="form-select" aria-label="Default select example" id="shopBy">
+                    <option value="all">All</option>
+                    <option value="machines">Espresso Machines</option>
+                    <option value="capsules">Capsules</option>
+                    <option value="beans">Coffee Beans</option>
+                    <option value="accessories">Accessories</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="section1__divider">Sort By</label>
+                  <select class="form-select" aria-label="Default select example" id="sortBy">
+                    <option value="none">None</option>
+                    <option value="least">Lowest Price</option>
+                    <option value="most">Highest Price</option>
+                  </select>
+                </div>
+                <div class="section1__flexRow1">
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      role="switch"
+                      id="StockSwitch"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="StockSwitch"
+                      >On Stock</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </aside>
+            <div class="col-md-9">
+              <div class="product-list" >
+                <div class="box-wrap">
+                  <div class="row">
+                    <% products.forEach(function(product) { %>
+                      <div class="col-md-4 box <%= product.productCategory %>" data-quantity="<%= product.productQuantity%>" id="productCell" onclick ="window.location.href='/<%= product._id%>'">
+                        <img src="/assets/<%= product.productImage %>" alt="alt text" class="productImage" />
+                        <h3 class="product-name"><%= product.productName %></h3>
+                        <h3 class="product-price">$ <%= product.productPrice %></h3> 
+                      </div>
+                    <% }) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>      
+    </main>
+    <footer>
+      <div id="footer"></div>
+    </footer>
+
+      <script src="\ShopPage\ShopPage.js"></script>
+  </body>
+</html>

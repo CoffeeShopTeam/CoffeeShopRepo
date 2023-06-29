@@ -1,0 +1,96 @@
+main {
+  min-height: 50rem;
+}
+
+.product-name {
+  font: 400 20px/1.3 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  margin-top: 0.625rem;
+  margin-bottom: 0.6rem;
+  font-weight: bold;
+}
+.product-price {
+  font: 500 20px/1.3 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(161, 138, 104);
+  margin-bottom: 0.2rem;
+}
+
+.section1__divider {
+  font: 400 18px/1.3 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+}
+
+.left-aside {
+  width: 18.75rem;
+  height: calc(100%- 6.25rem);
+  padding: 1.25rem;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  margin-left: 3.75rem;
+  top: 8.125rem;
+}
+
+.section1__title {
+  margin-top: 0;
+  font: 600 26px/1.3 "DM Sans", Helvetica, Arial, serif;
+  margin-bottom: 2.5rem;
+}
+
+.product-list {
+  margin-left: 23.125rem;
+  margin-right: 3.75rem;
+  min-width: 12.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#productCell {
+  width: 12.5rem;
+  margin: 5% 5% 5% 5%;
+  position: relative;
+  cursor: pointer;
+}
+
+.productImage {
+  height: 7.5rem;
+  width: auto;
+  object-fit: fill;
+}
+
+.section1__flexRow2 {
+  display: table-row;
+}
+
+.col-md-9 {
+  margin-left: 0.5rem;
+}
+
+.box-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1%;
+}
+.box {
+  padding: 1.875rem;
+  margin: 2%;
+  background: white;
+  width: 10%;
+  border-radius: 0.1875rem;
+  transition: 0.2s all;
+}
+.box-wrap:hover .box {
+  filter: blur(0.1875rem);
+  opacity: 0.5;
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.box-wrap:hover .box:hover {
+  transform: scale(1);
+  filter: blur(0rem);
+  opacity: 1;
+  box-shadow: 0 0.5rem 1.25rem 0rem rgba(0, 0, 0, 0.125);
+}

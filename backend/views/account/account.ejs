@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
     <title>My Account</title>
 
     <link rel="stylesheet" href="/account/account.css" />
@@ -11,27 +13,36 @@
     <main>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+          <%= type %>
+
           <a class="navbar-brand" href="#">My Account</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+              <% if (["admin", "supplier", "customer"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountDetails" href="/account/details">Account details</a>
               </li>
+              <% } %> <% if (["admin", "supplier", "customer"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountOrders" href="/account/orders">Orders</a>
               </li>
+              <% } %> <% if (["customer"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountWishlist" href="\account\whishlist">Wishlist</a>
               </li>
+              <% } %> <% if (["admin", "supplier"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountProducts" href="\account\products">Products</a>
               </li>
+              <% } %> <% if (["admin"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountPermission" href="\account\users">Users</a>
               </li>
+              <% } %>
+
               <li class="nav-item">
                 <a class="nav-link" href="#">Logout</a>
               </li>
@@ -40,10 +51,5 @@
         </div>
       </nav>
     </main>
-
-    <!-- <script src="\frontend\views\partials\partials.js"></script> -->
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script> -->
   </body>
 </html>

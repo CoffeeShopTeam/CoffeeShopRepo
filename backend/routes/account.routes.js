@@ -36,10 +36,10 @@ router.put("/details", async (req, res, next) => {
 
       await updateUserPassword(user, req.body);
     } else {
-      const isvalidAddress = await addressValidator(req.body.country, req.body.city, req.body.street, req.body.houseNumber);
-      if (!isvalidAddress) {
-        throw new Error("Address does not exist");
-      }
+      // const isvalidAddress = await addressValidator(req.body.country, req.body.city, req.body.street, req.body.houseNumber);
+      // if (!isvalidAddress) {
+      //   throw new Error("Address does not exist");
+      // }
       await updateUserFields(user, req.body);
     }
 

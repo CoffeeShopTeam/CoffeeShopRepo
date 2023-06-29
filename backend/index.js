@@ -9,7 +9,7 @@ require("dotenv").config();
 const path = require("path");
 
 const PORT = process.env.PORT;
-const SECRETE = process.env.SECRETE;
+const SECRETE = process.env.SECRET;
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));

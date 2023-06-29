@@ -1,12 +1,19 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
+const express = require('express');
 const router = express.Router();
 const path = require("path");
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
-const { updateUserFields } = require("../controller/users/updateUser.contoroller.js");
-const { updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
+const { updateUserFields, updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
 
 let count = 0;
+router.use("/", (req, res, next) => {
+  try {
+    const { type } = req.session.data;
+    req.type = type;
+    next();
+  } catch (error) {
+    res.redirect('/login/');
+  }
+});
 
 router.get("/", (req, res, next) => {
   res.redirect("/account/details/");
@@ -23,6 +30,7 @@ router.get("/details", async (req, res, next) => {
     res.redirect("/login/");
   }
 });
+
 router.put("/details", async (req, res, next) => {
   try {
     const { email } = req.session.data;
@@ -57,21 +65,101 @@ router.put("/details", async (req, res, next) => {
   }
 });
 
+router.get('/navbar', (req, res, next) => {
+  try {
+    const type = req.type;
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "account",
+      ),
+      { type }
+    );
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+})
+
 router.get("/orders", (req, res, next) => {
-  res.render(path.join(__dirname, "..", "views", "account", "accountOrders", "accountOrders"));
+  try {
+    const type = req.type;
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountOrders",
+        "accountOrders"
+      ), { type }
+    );
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 router.get("/products", (req, res, next) => {
-  res.render(path.join(__dirname, "..", "views", "account", "accountProducts", "accountProducts"));
+  try {
+    const type = req.type;
+    if (!["supplier", "admin"].includes(type)) {
+      res.status(404).send("unauthorized")
+    }
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountProducts",
+        "accountProducts"
+      ), { type }
+    );
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 router.get("/orders/:orderId", (req, res, next) => {
-  const { orderId } = req.params;
-  console.log(orderId);
-  res.render(path.join(__dirname, "..", "views", "account", "accountViewOrder", "accountViewOrder"));
+  try {
+    const type = req.type;
+    const { orderId } = req.params;
+    console.log(orderId);
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountViewOrder",
+        "accountViewOrder"
+      ), { type }
+    );
+  } catch (error) {
+
+  }
 });
 
 router.get("/whishlist", (req, res, next) => {
-  res.render(path.join(__dirname, "..", "views", "account", "accountWishlist", "accountWishlist"));
+  try {
+    const type = req.type;
+    if ("customer" !== type) {
+      res.status(404).send("unauthorize");
+    }
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountWishlist",
+        "accountWishlist"
+      )
+    );
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 module.exports = router;

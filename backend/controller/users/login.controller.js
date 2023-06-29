@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const User = require("../../models/users/user.schema");
 
 async function login({ email, password }) {
-  if (!email || !password) throw new Error("Missing parameter");
+  if (!email || !password) throw new Error("Missing parameter")
   const user = await User.findOne({ email });
   if (!user) return null;
   const matchPasswords = await bcrypt.compare(password, user.password);
@@ -11,6 +11,7 @@ async function login({ email, password }) {
     firstName: user.firstName,
     type: user.type,
     email: user.email,
+    _id: user._id,
   };
   return data;
 }

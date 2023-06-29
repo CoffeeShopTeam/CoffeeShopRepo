@@ -11,7 +11,7 @@ router.post("/", async (req, res, next) => {
   try {
     const data = req.body;
     const user = await login(data);
-    if (!user) throw new Error("email of password are wrong");
+    if (!user) throw new Error("email or password are wrong");
     req.session.data = user;
     res.redirect("/account/details");
   } catch (error) {

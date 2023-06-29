@@ -23,6 +23,8 @@
     <main>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+          <%= type %>
+
           <a class="navbar-brand" href="#">My Account</a>
           <button
             class="navbar-toggler"
@@ -37,16 +39,21 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+              <% if (["admin", "supplier", "customer"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountDetails" href="/account/details"
                   >Account details</a
                 >
               </li>
+              <% } %>
+              <% if (["admin", "supplier", "customer"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountOrders" href="/account/orders"
                   >Orders</a
                 >
               </li>
+              <% } %>
+              <% if (["customer"].includes(type)) { %>
               <li class="nav-item">
                 <a
                   class="nav-link"
@@ -55,6 +62,9 @@
                   >Wishlist</a
                 >
               </li>
+              <% } %>
+          
+              <% if (["admin", "supplier"].includes(type)) { %>
               <li class="nav-item">
                 <a
                   class="nav-link"
@@ -63,11 +73,15 @@
                   >Products</a
                 >
               </li>
+              <% } %>
+              <% if (["admin"].includes(type)) { %>
               <li class="nav-item">
                 <a class="nav-link" id="accountPermission" href="\account\users"
                   >Users</a
                 >
               </li>
+              <% } %>
+
               <li class="nav-item">
                 <a class="nav-link" href="#">Logout</a>
               </li>

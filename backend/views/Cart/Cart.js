@@ -1,28 +1,29 @@
 console.log("testtttttt");
-var cartItems = $("#cart-items");
-var cartContent = $("#cart-items");
-var cartTotal = $("#cart-total");
-var jsonProducts = [
+let cartItems = $("#cart-items");
+let cartContent = $("#cart-items");
+let cartTotal = $("#cart-total");
+let jsonProducts = [
   {
     image: "/assets/ShlomkePic.png",
     title: "Fictional Product 1",
-    price: 9.99,
+    price: 19.99,
     description: "1st test product",
     quantity: 1,
   },
   {
     image: "/assets/ShlomkePic.png",
     title: "Fictional Product 2",
-    price: 15.9,
+    price: 10.0,
     description: "2nd test product",
     quantity: 2,
   },
 ];
 
 localStorage.setItem("jsonProducts", JSON.stringify(jsonProducts));
+let cart = [];
 
 $(document).ready(function () {
-  let cart = getProducts();
+  cart = getProducts();
   populateCart(cart);
   setCartValues(cart);
 });
@@ -33,16 +34,16 @@ function cartLogic() {
   });
 
   cartContent.on("click", ".remove-item", function () {
-    var removeItem = $(this);
-    var id = parseInt(removeItem.data("id"));
+    let removeItem = $(this);
+    let id = parseInt(removeItem.data("id"));
     removeItem.closest(".cart-items").remove();
     removeItem(id);
   });
 
   cartContent.on("click", ".plus-button", function () {
-    var addQuantity = $(this);
-    var id = parseInt(addQuantity.data("id"));
-    var tempItem = cart.find(function (item) {
+    let addQuantity = $(this);
+    let id = parseInt(addQuantity.data("id"));
+    let tempItem = cart.find(function (item) {
       return item.id === id;
     });
     tempItem.quantity += 1;
@@ -88,19 +89,27 @@ function addCartline(cartItem) {
   let cartItemsDiv = $("#cart-items");
   const newItem = $("<div>");
   newItem.html(`
-    <div class="row">
-      <img class="product-image" src="${cartItem.image}" alt="Product Image">
-      <h4>${cartItem.title}</h4>
-      <h5>$${cartItem.price}</h5>
-      <span class="remove-item" data-id="${cartItem.id}">remove</span>
+  <div class="product-container row">
+  <div class="product-item">
+    <div class="product-image">
+      <img id="product-image" src="${cartItem.image}" alt="Product Image">
     </div>
-    <div>
-      <i class="plus-button" data-id="${cartItem.id}"></i>
+    <div class="product-details">
+      <h4 id="product-title">${cartItem.title}</h4>
+      <h5 id="product-price">$${cartItem.price}</h5>
+      <btn class="remove-item" data-id="${cartItem.id}">remove</btn>
+    </div>
+      <div class="product-quantity">
+      <button class="minus-button">-</button>
       <p class="item-amount">${cartItem.quantity}</p>
-      <i class="minus-button" data-id="${cartItem.id}"></i>
+      <button class="plus-button">+</button>
     </div>
+  </div>
+</div>
+  <hr class="mb-3">
   `);
   cartItemsDiv.append(newItem);
+  setCartValues(cart);
 }
 
 function removeItem(id) {
@@ -111,14 +120,17 @@ function removeItem(id) {
 }
 
 function setCartValues(cart) {
-  var countTotal = 0;
-  var itemsTotal = 0;
+  let countTotal = 0;
+  let itemsTotal = 0;
+  let cartItems = $("#cart-total");
   cart.forEach(function (item) {
     countTotal += item.price * item.quantity;
     itemsTotal += item.quantity;
   });
   cartItems.text(itemsTotal);
-  cartTotal.text(countTotal.toFixed(2));
+
+  let cartTotal = $("#cart-total");
+  cartTotal.html(`<div class="cart-total">$${countTotal.toFixed(2)}</div>`);
 }
 
 function clearCart() {

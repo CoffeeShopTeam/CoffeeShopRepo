@@ -31,9 +31,8 @@ app.use("/checkout", routes.checkoutRouter);
 app.use("/createProduct", routes.productRouter);
 app.use("/orders", routes.ordersRouter);
 app.use("/orderConfirmation", routes.orderConfirmationRouter);
-
 app.use("/privacyPolicy", routes.privacyPolicyRouter);
-
+app.use("/ourStory", routes.ourStoryRouter);
 app.use("/ProductPage", routes.productPageRouter);
 
 app.get("/", (req, res, next) => {

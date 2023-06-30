@@ -29,6 +29,7 @@ app.use("/account", routes.accountRouter);
 app.use("/checkout", routes.checkoutRouter);
 app.use("/createProduct", routes.productRouter);
 app.use("/graph", routes.graphRouter);
+app.use("/orderConfirmation", routes.orderConfirmationRouter);
 
 app.get("/", (req, res, next) => {
   const filePath = path.join(__dirname, "views", "homePage", "homePage.ejs");

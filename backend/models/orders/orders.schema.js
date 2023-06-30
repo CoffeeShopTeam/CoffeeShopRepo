@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const { validateEmail, addressValidator } = require("../users/user.validator");
-const {
-  validateCreditCard,
-  validateDate,
-  validateCoupon,
-} = require("./order.validator");
+const { validateCreditCard, validateDate, validateCoupon } = require("./order.validator");
 const bcrypt = require("bcrypt");
 
 const ordersSchema = new mongoose.Schema({
@@ -76,7 +72,7 @@ const ordersSchema = new mongoose.Schema({
 
   cardNumber: {
     type: String,
-    validate: [validateCreditCard, "invalid credit card number"], //TODO
+    validate: [validateCreditCard, "invalid credit card number"],
   },
 
   orderDate: {
@@ -93,16 +89,10 @@ const ordersSchema = new mongoose.Schema({
   },
 });
 
-
 ordersSchema.pre("save", async function (next) {
   const { country, city, street, houseNumber } = this.shippingDetails;
   try {
-    const isAddressValid = await addressValidator(
-      country,
-      city,
-      street,
-      houseNumber
-    );
+    const isAddressValid = await addressValidator(country, city, street, houseNumber);
     if (!isAddressValid) {
       throw new Error("Address is not valid");
     }

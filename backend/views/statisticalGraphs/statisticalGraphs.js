@@ -2,49 +2,102 @@ const productsElement = document.getElementById("products");
 const productsString = productsElement.getAttribute("data-products");
 const products = JSON.parse(productsString);
 
-console.log(products);
+const usersElement = document.getElementById("users");
+const usersString = usersElement.getAttribute("data-users");
+const users = JSON.parse(usersString);
 
-function createChart(products) {
-  // Use D3.js to create the chart
+// console.log(products);
+console.log(users);
 
-  // Example: Create a bar chart
-  const svg = d3.select("#chartContainer").append("svg").attr("width", 500).attr("height", 300);
+function createPieChart(users) {
+  // Extract the country from each user
+  const countries = users.map((user) => user.country);
 
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-  const width = +svg.attr("width") - margin.left - margin.right;
-  const height = +svg.attr("height") - margin.top - margin.bottom;
+  // Count the occurrences of each country
+  const counts = {};
+  countries.forEach((country) => {
+    if (counts[country]) {
+      counts[country]++;
+    } else {
+      counts[country] = 1;
+    }
+  });
 
-  const x = d3.scaleBand().rangeRound([0, width]).padding(0.2);
+  // Convert the counts object into an array of objects
+  const pieData = Object.keys(counts).map((country) => ({
+    label: country,
+    value: counts[country],
+  }));
 
-  const y = d3.scaleLinear().rangeRound([height, 0]);
+  // Set up the chart dimensions
+  const width = 400;
+  const height = 400;
+  const radius = Math.min(width, height) / 2;
 
-  const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+  // Select the container element
+  const container = d3.select("#pieChartContainer");
+  const legendContainer = d3.select("#legendContainer");
 
-  svg
-    .append("text")
-    .attr("class", "chart-title")
-    .attr("x", width / 2)
-    .attr("y", 20)
-    .attr("text-anchor", "middle")
-    .text("Number of Products by Price");
+  // Create the SVG element within the container
+  const svg = container
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-  x.domain(products.map((product) => product.productPrice));
-  y.domain([0, d3.max(products, (product) => product.count)]);
+  // Define the color scale
+  // Define a custom color scale
+  const colorScale = d3.scaleOrdinal().range(["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff", "#ff8000", "#8000ff", "#00ff80", "#ff0080"]);
 
-  g.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x)).selectAll("text").attr("y", 0).attr("x", 9).attr("dy", ".35em").attr("transform", "rotate(90)").style("text-anchor", "start");
+  // Generate the pie chart layout
+  const pie = d3
+    .pie()
+    .value((d) => d.value)
+    .sort(null);
 
-  g.append("g").call(d3.axisLeft(y)).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", "0.71em").attr("text-anchor", "end").text("Count");
+  // Generate the arc shapes based on the data
+  const arc = d3.arc().innerRadius(0).outerRadius(radius);
 
-  g.selectAll(".bar")
-    .data(products)
+  // Generate the pie chart slices
+  const slices = svg
+    .selectAll("path")
+    .data(pie(pieData))
     .enter()
+    .append("path")
+    .attr("d", arc)
+    .attr("fill", (d, i) => colorScale(i));
+
+  // Add labels to the slices
+  slices
+    .append("text")
+    .attr("transform", (d) => `translate(${arc.centroid(d)})`)
+    .attr("dy", "0.35em")
+    .text((d) => d.data.label)
+    .style("text-anchor", "middle");
+
+  // Add legend at the bottom
+  const legend = legendContainer.append("svg").attr("width", width).attr("height", 40);
+
+  const legendItem = legend
+    .selectAll("g")
+    .data(pieData)
+    .enter()
+    .append("g")
+    .attr("transform", (d, i) => `translate(${i * 100}, 0)`);
+
+  legendItem
     .append("rect")
-    .attr("class", "bar")
-    .attr("x", (d) => x(d.productPrice))
-    .attr("y", (d) => y(d.count))
-    .attr("width", x.bandwidth())
-    .attr("height", (d) => height - y(d.count))
-    .attr("fill", "steelblue");
+    .attr("width", 18)
+    .attr("height", 18)
+    .attr("fill", (d, i) => colorScale(i));
+
+  legendItem
+    .append("text")
+    .attr("x", 24)
+    .attr("y", 12)
+    .attr("dy", "0.35em")
+    .text((d) => `${d.label} (${d.value})`);
 }
 
-createChart(products);
+createPieChart(users);

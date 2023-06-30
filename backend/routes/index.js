@@ -4,6 +4,7 @@ const accountRouter = require("./account.routes");
 const checkoutRouter = require("./checkout.routes");
 const productRouter = require("./products.routes");
 const shopRouter = require("./shopPage.routes");
+const orderConfirmationRouter = require("./orderConfirmation.routes");
 const graphRouter = require("./graphs.routes");
 
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   productRouter,
   shopRouter,
   graphRouter,
+  orderConfirmationRouter,
 };

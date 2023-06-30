@@ -89,25 +89,26 @@ $(document).ready(function () {
     let cartItemsDiv = $("#cart-items");
     const newItem = $("<div>");
     newItem.html(`
-    <div class="product-container row">
-      <div class="product-item">
-        <div class="product-image">
-          <img id="product-image" src="${cartItem.image}" alt="Product Image">
-        </div>
-        <div class="product-details">
-          <h4 id="product-title">${cartItem.title}</h4>
-          <h5 id="product-price">$${cartItem.price}</h5>
-          <button class="remove-item" data-id="${cartItem.id}">remove</button>
-        </div>
-        <div class="product-quantity">
-          <button class="minus-button" data-id="${cartItem.id}">-</button>
-          <p class="item-amount">${cartItem.quantity}</p>
-          <button class="plus-button" data-id="${cartItem.id}">+</button>
-        </div>
-      </div>
+<div class="product-container row">
+  <div class="product-item">
+    <div class="product-image">
+      <img id="product-image" src="${cartItem.image}" alt="Product Image">
     </div>
-    <hr class="mb-3">
-  `);
+    <div class="product-details">
+      <h4 id="product-title mb-">${cartItem.title}</h4>
+      <h5 id="product-price">$${cartItem.price}</h5>
+      <div class="product-quantity">
+        <button class="btn btn-dark minus-button" data-id="${cartItem.id}">-</button>
+        <p class="item-amount mt-2">${cartItem.quantity}</p>
+        <button class="btn btn-dark plus-button" data-id="${cartItem.id}">+</button>
+      </div>
+      <button class="btn btn-dark remove-item" data-id="${cartItem.id}">remove</button>
+    </div>
+  </div>
+</div>
+<hr class="mb-3">
+`);
+
     cartItemsDiv.append(newItem);
     setCartValues(cart);
   }

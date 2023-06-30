@@ -4,13 +4,14 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const { addressValidator } = require("../models/users/user.validator.js");
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
-const { updateUserFields } = require("../controller/users/updateUser.contoroller.js");
-const { updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
+const { updateUserFields, updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
+const { getAllProducts, getAllSupplierProducts } = require("../controller/products/products.controller.js");
 
 router.use("/", (req, res, next) => {
   try {
-    const { type } = req.session.data;
+    const { type, _id } = req.session.data;
     req.type = type;
+    req.userId = _id;
     next();
   } catch (error) {
     res.redirect("/login/");
@@ -33,7 +34,6 @@ router.get("/navbar", (req, res, next) => {
 router.get("/details", async (req, res, next) => {
   try {
     const type = req.type;
-
     const { email } = req.session.data;
     const user = await getUser(email);
     res.render(path.join(__dirname, "..", "views", "account", "accountDetails", "accountDetails"), { user });
@@ -86,13 +86,23 @@ router.get("/orders", (req, res, next) => {
   }
 });
 
-router.get("/products", (req, res, next) => {
+router.get("/products", async (req, res, next) => {
   try {
     const type = req.type;
+    let products = [];
     if (!["supplier", "admin"].includes(type)) {
-      res.status(404).send("unauthorized");
+      res.redirect("/account/");
     }
-    res.render(path.join(__dirname, "..", "views", "account", "accountProducts", "accountProducts"), { type });
+    if (type === "admin") {
+      products = await getAllProducts();
+    }
+    if (type === "supplier"){
+      products = await getAllSupplierProducts(req.userId);
+    }
+    res.render(
+      path.join(
+        __dirname, "..", "views", "account", "accountProducts", "accountProducts"
+      ), { type, products });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -102,9 +112,8 @@ router.get("/orders/:orderId", (req, res, next) => {
   try {
     const type = req.type;
     const { orderId } = req.params;
-    console.log(orderId);
     res.render(path.join(__dirname, "..", "views", "account", "accountViewOrder", "accountViewOrder"), { type });
-  } catch (error) {}
+  } catch (error) { }
 });
 
 router.get("/whishlist", (req, res, next) => {

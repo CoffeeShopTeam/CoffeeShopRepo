@@ -65,7 +65,6 @@ UserSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
       return next();
     }
-    console.log(this.password, this.rePassword);
     if (this.password !== this.rePassword) {
       throw new Error("Passwords does not match");
     }

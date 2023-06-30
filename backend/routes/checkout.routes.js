@@ -33,7 +33,6 @@ router.get('/exchange/', async (req, res, next) => {
 
 router.post('/test', async(req, res, next ) => {
     const {currency, anomunt} = req.post;
-    console.log(currency, anomunt );
     res.send(':)')
 })
 module.exports = router;

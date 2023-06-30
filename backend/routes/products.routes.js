@@ -7,13 +7,7 @@ const {
   getProductById,
   EditProductById,
   deleteProduct,
-} = require(path.join(
-  __dirname,
-  "../",
-  "controller",
-  "products",
-  "products.controller"
-));
+} = require("../controller/products/products.controller");
 const getProduct = require(path.join(
   __dirname,
   "../",
@@ -28,6 +22,7 @@ router.get("/", (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     await createProduct(req, res);
+    res.redirect('/account/products/')
   } catch (err) {
     console.log(err.message);
     res.status(500).send(err.message);
@@ -40,7 +35,7 @@ router.get("/:id", getProduct, getProductById);
 
 router.put("/:id", getProduct, EditProductById);
 
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     await deleteProduct(req, res);
   } catch (err) {

@@ -6,6 +6,7 @@ const { addressValidator } = require("../models/users/user.validator.js");
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
 const getAllUsers = require(path.join(__dirname, "../", "controller", "users", "getAllUsers.controller"));
 const deleteUser = require(path.join(__dirname, "../", "controller", "users", "deleteUser.controller"));
+const EditUserById = require(path.join(__dirname, "../", "controller", "users", "EditUserById.controller"));
 
 const { updateUserFields } = require("../controller/users/updateUser.contoroller.js");
 const { updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
@@ -133,6 +134,16 @@ router.get("/users", async (req, res, next) => {
 router.delete("/:id", async (req, res) => {
   try {
     await deleteUser(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    console.log(req.body);
+    EditUserById(req, res);
   } catch (err) {
     console.log(err.message);
     res.status(500).send(err.message);

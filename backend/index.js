@@ -29,8 +29,9 @@ app.use("/login", routes.loginRouter);
 app.use("/account", routes.accountRouter);
 app.use("/checkout", routes.checkoutRouter);
 app.use("/createProduct", routes.productRouter);
-app.use('/orders', routes.ordersRouter);
+app.use("/orders", routes.ordersRouter);
 app.use("/orderConfirmation", routes.orderConfirmationRouter);
+app.use("/ourStory", routes.ourStoryRouter);
 app.use("/ProductPage", routes.productPageRouter);
 
 app.get("/", (req, res, next) => {

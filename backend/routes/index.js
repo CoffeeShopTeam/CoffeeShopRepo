@@ -5,6 +5,7 @@ const checkoutRouter = require("./checkout.routes");
 const productRouter = require("./products.routes");
 const shopRouter = require("./shopPage.routes");
 const orderConfirmationRouter = require("./orderConfirmation.routes");
+const productPageRouter = require("./productPage.routes");
 const cartRouter = require("./cart.routes");
 
 module.exports = {
@@ -16,4 +17,5 @@ module.exports = {
   shopRouter,
   orderConfirmationRouter,
   cartRouter,
+  productPageRouter,
 };

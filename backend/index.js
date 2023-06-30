@@ -28,7 +28,7 @@ app.use("/signup", routes.signupRouter);
 app.use("/login", routes.loginRouter);
 app.use("/account", routes.accountRouter);
 app.use("/checkout", routes.checkoutRouter);
-app.use("/createProduct", routes.productRouter);
+app.use("/product", routes.productRouter);
 app.use("/orders", routes.ordersRouter);
 app.use("/orderConfirmation", routes.orderConfirmationRouter);
 app.use("/privacyPolicy", routes.privacyPolicyRouter);

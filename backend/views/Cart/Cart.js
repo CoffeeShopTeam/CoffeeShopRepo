@@ -14,7 +14,7 @@ let jsonProducts = [
     image: "/assets/ShlomkePic.png",
     title: "Fictional Product 2",
     price: 10.0,
-    quantity: 2,
+    quantity: 1,
   },
 ];
 
@@ -31,6 +31,7 @@ $(document).ready(function () {
       return item.id !== id;
     });
     setCartValues(cart);
+    updateLocalStorage(cart);
   }
 
   function populateCart(cart) {
@@ -55,6 +56,7 @@ $(document).ready(function () {
       tempItem.quantity += 1;
       addQuantity.siblings(".item-amount").text(tempItem.quantity);
       setCartValues(cart);
+      updateLocalStorage(cart);
     });
 
     $(".minus-button").click(function () {
@@ -66,8 +68,10 @@ $(document).ready(function () {
       if (tempItem.quantity > 1) {
         tempItem.quantity -= 1;
         lowerQuantity.siblings(".item-amount").text(tempItem.quantity);
+        setCartValues(cart);
       }
       setCartValues(cart);
+      updateLocalStorage(cart);
     });
 
     $(".clear-cart").click(function () {
@@ -127,10 +131,14 @@ $(document).ready(function () {
       `<div class="cart-total">$${countTotal.toFixed(2)}</div>`
     );
   }
-
+  function updateLocalStorage(cart) {
+    localStorage.setItem("jsonProducts", JSON.stringify(cart));
+  }
   function clearCart() {
     cart = [];
     $(".product-container").remove();
     setCartValues(cart);
+    updateLocalStorage(cart);
+    localStorage.removeItem("jsonProducts");
   }
 });

@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
-router.use("/", (req, res, next) => {
+router.get("/", async (req, res) => {
   try {
-    const { type } = req.session.data;
-    req.type = type;
-    next();
+    res.render(path.join(__dirname, "..", "views", "privacy", "privacyPolicy", "privacyPolicy"));
   } catch (error) {
-    res.redirect("/login/");
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

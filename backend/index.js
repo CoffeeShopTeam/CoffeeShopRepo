@@ -29,7 +29,7 @@ app.use("/account", routes.accountRouter);
 app.use("/checkout", routes.checkoutRouter);
 app.use("/createProduct", routes.productRouter);
 app.use("/orderConfirmation", routes.orderConfirmationRouter);
-app.use("/privacyPolicy", routes.privacyPolicyRouterRouter);
+app.use("/privacyPolicy", routes.privacyPolicyRouter);
 
 app.get("/", (req, res, next) => {
   const filePath = path.join(__dirname, "views", "homePage", "homePage.ejs");

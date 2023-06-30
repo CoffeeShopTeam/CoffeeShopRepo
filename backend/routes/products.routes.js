@@ -15,6 +15,19 @@ const getProduct = require(path.join(
   "getProduct"
 ));
 
+router.use("/", (req, res, next) => {
+  try {
+    const data = req?.session?.data;
+    if (!data) {
+      res.redirect('/login/');
+    } else {
+      next();
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+})
+
 router.get("/", (req, res, next) => {
   res.render(path.join(__dirname, "../", "views", "products", "createProduct"));
 });

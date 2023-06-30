@@ -10,10 +10,10 @@ $(document).ready(function () {
 
   function removeItemFromCart(id) {
     cart = cart.filter(function (item) {
-      console.log(item.id !== id);
+      //console.log(item.id !== id);
       return item.id !== id;
     });
-    console.log(`you need to remove me`, cart);
+    //console.log(`you need to remove me`, cart);
     setCartValues(cart);
     updateLocalStorage(cart);
     populateCart(cart);
@@ -34,12 +34,12 @@ $(document).ready(function () {
     $(".cart-content").on("click", ".plus-button", function () {
       console.log($(this));
       let id = $(this).attr("data-id");
-      console.log(id);
+      //console.log(id);
       let tempItem = cart.find(function (item) {
         return item.id === id;
       });
-      console.log(`i'm temp`, tempItem);
-      tempItem.quantity = tempItem.quantity + 1;
+      //console.log(`i'm temp`, tempItem);
+      tempItem.quantity = Number(tempItem.quantity) + 1;
       $(this).siblings(".item-amount").text(tempItem.quantity);
       setCartValues(cart);
       updateLocalStorage(cart);
@@ -51,8 +51,8 @@ $(document).ready(function () {
         return item.id === id;
       });
       if (tempItem.quantity > 1) {
-        tempItem.quantity -= 1;
-        lowerQuantity.siblings(".item-amount").text(tempItem.quantity);
+        tempItem.quantity = Number(tempItem.quantity) - 1;
+        $(this).siblings(".item-amount").text(tempItem.quantity);
       }
       setCartValues(cart);
       updateLocalStorage(cart);

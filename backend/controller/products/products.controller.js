@@ -38,9 +38,12 @@ async function getProductById(productId) {
   }
 }
 
-const getProductsByCategory = async (category, limit) => {
+const getProductsByCategory = async (category, limit, excludeProductId) => {
   try {
-    const products = await Product.find({ productCategory: category })
+    const products = await Product.find({
+      productCategory: category,
+      _id: { $ne: excludeProductId },
+    })
       .limit(limit)
       .exec();
     return products;
@@ -59,6 +62,7 @@ const createProduct = async (req, res) => {
     productImage,
     productQuantity,
     supplierId,
+    productBrand,
   } = req.body;
   try {
     console.log(req.body);

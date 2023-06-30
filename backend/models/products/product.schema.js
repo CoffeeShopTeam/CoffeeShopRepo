@@ -35,6 +35,10 @@ const ProductSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
+  productBrand: {
+    type: String,
+    required: true,
+  },
 });
 
 const Products = mongoose.model("products", ProductSchema);

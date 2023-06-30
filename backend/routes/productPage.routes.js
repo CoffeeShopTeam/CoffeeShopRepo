@@ -23,7 +23,8 @@ router.get("/:id", async (req, res) => {
     const product = await productsController.getProductById(productId);
     const relatedProducts = await productsController.getProductsByCategory(
       product.productCategory,
-      3
+      3,
+      productId
     );
     res.render("ProductPage/productPage", { product, relatedProducts });
   } catch (error) {

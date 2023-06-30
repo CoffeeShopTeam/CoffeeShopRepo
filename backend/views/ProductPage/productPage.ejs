@@ -80,15 +80,15 @@
                   </div>
                 </div>
                 <div class="section1__flexRow5">
-                  <h5 class="section1__highlights11">Categories:</h5>
+                  <h5 class="section1__highlights11">Brand:</h5>
                   <h5 class="section1__highlights6">
-                    Machines, Milk, Frothers
+                    <%= product.productBrand%>
                   </h5>
                 </div>
-                <div class="section1__flexRow6">
-                  <h5 class="section1__highlights11">Tags:</h5>
-                  <h5 class="section1__highlights8">
-                    Coffee, Espresso, Cappuccino, Latte, Milk Frother
+                <div class="section1__flexRow5">
+                  <h5 class="section1__highlights11">Categories:</h5>
+                  <h5 class="section1__highlights6">
+                    <%= product.productCategory%>
                   </h5>
                 </div>
               </div>
@@ -96,29 +96,8 @@
           </div>
         </div>
 
-        <!-- Additional Product Info -->
         <div class="card mb-4 custom-card" style="border: none">
-          <div class="card-body custom-card">
-            <h4 class="card-title section2__title">Product Information</h4>
-            <ul class="list-group">
-              <li class="list-group-item">
-                <span class="section2__label">Brand:</span>
-                <span class="section2__value">Nespresso</span>
-              </li>
-              <li class="list-group-item">
-                <span class="section2__label">Color:</span>
-                <span class="section2__value">Black</span>
-              </li>
-              <li class="list-group-item">
-                <span class="section2__label">Material:</span>
-                <span class="section2__value">Plastic, Metal</span>
-              </li>
-              <li class="list-group-item">
-                <span class="section2__label">Dimensions:</span>
-                <span class="section2__value">12.5" x 6.7" x 10.2"</span>
-              </li>
-            </ul>
-          </div>
+          <div class="card-body custom-card"></div>
         </div>
 
         <div class="text-box">

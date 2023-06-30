@@ -79,8 +79,6 @@ $(document).ready(function () {
     };
 
     localStorage.setItem("jsonProducts", JSON.stringify(product));
-    let cart = JSON.parse(localStorage.getItem("jsonProducts"));
-    console.log(cart);
   });
 });
 

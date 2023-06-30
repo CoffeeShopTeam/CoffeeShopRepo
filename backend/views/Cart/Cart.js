@@ -1,24 +1,6 @@
 let cartItems = $("#cart-items");
 let cartContent = $(".cart-content");
 let cartTotal = $("#cart-total");
-let jsonProducts = [
-  {
-    id: 1,
-    image: "/assets/ShlomkePic.png",
-    title: "Fictional Product 1",
-    price: 19.99,
-    quantity: 1,
-  },
-  {
-    id: 2,
-    image: "/assets/ShlomkePic.png",
-    title: "Fictional Product 2",
-    price: 10.0,
-    quantity: 1,
-  },
-];
-
-localStorage.setItem("jsonProducts", JSON.stringify(jsonProducts));
 let cart = [];
 
 $(document).ready(function () {
@@ -28,47 +10,49 @@ $(document).ready(function () {
 
   function removeItemFromCart(id) {
     cart = cart.filter(function (item) {
+      console.log(item.id !== id);
       return item.id !== id;
     });
+    console.log(`you need to remove me`, cart);
     setCartValues(cart);
     updateLocalStorage(cart);
+    populateCart(cart);
   }
 
   function populateCart(cart) {
-    cartItems.empty();
+    $(".product-container").remove();
     cart.forEach(function (item) {
       addCartline(item);
     });
 
-    $(".remove-item").click(function () {
-      let removeItem = $(this);
-      let id = parseInt(removeItem.data("id"));
-      removeItem.closest(".product-container").remove();
+    $(".cart-content").on("click", ".remove-item", function () {
+      let id = $(this).attr("data-id");
+      $(this).closest(".cart-items").remove();
       removeItemFromCart(id);
     });
 
-    $(".plus-button").click(function () {
-      let addQuantity = $(this);
-      let id = parseInt(addQuantity.data("id"));
+    $(".cart-content").on("click", ".plus-button", function () {
+      console.log($(this));
+      let id = $(this).attr("data-id");
+      console.log(id);
       let tempItem = cart.find(function (item) {
         return item.id === id;
       });
-      tempItem.quantity += 1;
-      addQuantity.siblings(".item-amount").text(tempItem.quantity);
+      console.log(`i'm temp`, tempItem);
+      tempItem.quantity = tempItem.quantity + 1;
+      $(this).siblings(".item-amount").text(tempItem.quantity);
       setCartValues(cart);
       updateLocalStorage(cart);
     });
 
-    $(".minus-button").click(function () {
-      let lowerQuantity = $(this);
-      let id = parseInt(lowerQuantity.data("id"));
+    $(".cart-content").on("click", ".minus-button", function () {
+      let id = $(this).attr("data-id");
       let tempItem = cart.find(function (item) {
         return item.id === id;
       });
       if (tempItem.quantity > 1) {
         tempItem.quantity -= 1;
         lowerQuantity.siblings(".item-amount").text(tempItem.quantity);
-        setCartValues(cart);
       }
       setCartValues(cart);
       updateLocalStorage(cart);
@@ -88,52 +72,49 @@ $(document).ready(function () {
     }
     return cart;
   }
+
   function addCartline(cartItem) {
-    console.log(cartItem);
     let cartItemsDiv = $("#cart-items");
     const newItem = $("<div>");
     newItem.html(`
-<div class="product-container row">
-  <div class="product-item">
-    <div class="product-image">
-      <img id="product-image" src="${cartItem.image}" alt="Product Image">
-    </div>
-    <div class="product-details">
-      <h4 id="product-title mb-">${cartItem.title}</h4>
-      <h5 id="product-price">$${cartItem.price}</h5>
-      <div class="product-quantity">
-        <button class="btn btn-dark minus-button" data-id="${cartItem.id}">-</button>
-        <p class="item-amount mt-2">${cartItem.quantity}</p>
-        <button class="btn btn-dark plus-button" data-id="${cartItem.id}">+</button>
+      <div class="product-container row">
+        <div class="product-item">
+          <div class="product-image">
+            <img id="product-image" src="${cartItem.image}" alt="Product Image">
+          </div>
+          <div class="product-details">
+            <h4 id="product-title mb-">${cartItem.title}</h4>
+            <h5 id="product-price">$${cartItem.price}</h5>
+            <div class="product-quantity">
+              <button class="btn btn-dark minus-button" data-id="${cartItem.id}">-</button>
+              <p class="item-amount mt-2">${cartItem.quantity}</p>
+              <button class="btn btn-dark plus-button" data-id="${cartItem.id}">+</button>
+            </div>
+            <button class="btn btn-dark remove-item" data-id="${cartItem.id}">remove</button>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-dark remove-item" data-id="${cartItem.id}">remove</button>
-    </div>
-  </div>
-</div>
-<hr class="mb-3">
-`);
-
+      <hr class="mb-3">
+    `);
     cartItemsDiv.append(newItem);
     setCartValues(cart);
   }
 
   function setCartValues(cart) {
     let countTotal = 0;
-    let itemsTotal = 0;
     cart.forEach(function (item) {
       countTotal += item.price * item.quantity;
-      itemsTotal += item.quantity;
     });
-    cartTotal.text(itemsTotal.toFixed(2));
-
     let cartTotalContainer = $("#cart-total");
     cartTotalContainer.html(
       `<div class="cart-total">$${countTotal.toFixed(2)}</div>`
     );
   }
+
   function updateLocalStorage(cart) {
     localStorage.setItem("jsonProducts", JSON.stringify(cart));
   }
+
   function clearCart() {
     cart = [];
     $(".product-container").remove();

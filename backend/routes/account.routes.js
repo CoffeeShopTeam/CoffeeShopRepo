@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
+const Orders = require("../models/orders/orders.schema");
 
 router.use("/", (req, res, next) => {
   try {
@@ -53,9 +54,18 @@ router.get("/details", (req, res, next) => {
   }
 });
 
-router.get("/orders", (req, res, next) => {
+router.get("/orders", async(req, res, next) => {
   try {
+    let userOrders
     const type = req.type;
+    const userId = req.session?.data._id;
+    if(type === "customer")
+        userOrders = await Orders.find({user : userId})
+    else if(type === "admin" )
+        userOrders = await Orders.find()
+    else
+        userOrders = [];      
+    console.log(userOrders);
     res.render(
       path.join(
         __dirname,
@@ -64,7 +74,7 @@ router.get("/orders", (req, res, next) => {
         "account",
         "accountOrders",
         "accountOrders"
-      ), { type }
+      ), { type, orders: userOrders }
     );
   } catch (error) {
     res.status(500).send(error.message);

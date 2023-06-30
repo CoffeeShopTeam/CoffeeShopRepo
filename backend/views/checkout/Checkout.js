@@ -19,7 +19,16 @@ $(function () {
             $(product).find('h5').attr('data-amount',  data.convertedAmount);
             $(product).find('.currency-symbol').text(function() {
                 return `${data.convertedAmount} ${data.currencySymbol}`;
-              });
+            });
         });
+    })
+    $('.container').on('submit',function(event){
+        let orderPrice = $('h5[name="orderPrice"]').data('amount');
+
+        $('<input>').attr({
+            type: 'hidden',
+            name: 'orderPrice',
+            value: orderPrice
+        }).appendTo($(this));
     })
 });

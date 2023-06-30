@@ -9,7 +9,8 @@ async function login({ email, password }) {
     if (!matchPasswords) return null;
     const data = {
         firstName: user.firstName,
-        type: user.type
+        type: user.type,
+        _id: user._id
     }
     return data;
 }

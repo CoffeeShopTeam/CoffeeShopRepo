@@ -1,41 +1,7 @@
-.admin-title {
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-}
 
-.admin-table {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    padding-left: 6rem;
-    padding-right: 6rem;
-}
-
-.edit-permissions-btn {
-    margin-left: 2rem;
-}
-
-#done-btn {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-@media (max-width: 430px) {
-    .admin-title {
-        padding-bottom: 2rem;
-        padding-left: 20rem;
-        justify-content: center;
-        justify-items: center;
-        align-items: center;
-    }
-
-    .admin-table {
-        width: 200%;
-        justify-content: center;
-        justify-items: center;
-        align-items: center;
-        margin-left: 6rem;
-        padding-bottom: 6rem;
-    }
-}
+/* .icon{
+    height:1rem;
+    width: 1rem;
+    position: relative;
+    z-index: -1;
+} */

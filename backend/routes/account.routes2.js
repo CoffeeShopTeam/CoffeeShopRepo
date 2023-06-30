@@ -4,6 +4,9 @@ const path = require("path");
 const Orders = require("../models/orders/orders.schema");
 const { addressValidator } = require("../models/users/user.validator.js");
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
+const getAllUsers = require(path.join(__dirname, "../", "controller", "users", "getAllUsers.controller"));
+const deleteUser = require(path.join(__dirname, "../", "controller", "users", "deleteUser.controller"));
+
 const { updateUserFields } = require("../controller/users/updateUser.contoroller.js");
 const { updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
 router.use("/", (req, res, next) => {
@@ -112,15 +115,27 @@ router.get("/orders/:orderId", (req, res, next) => {
   } catch (error) {}
 });
 
-router.get("/users", (req, res, next) => {
+router.get("/users", async (req, res, next) => {
   try {
     const type = req.type;
+    let users = [];
     if (!["admin"].includes(type)) {
-      res.status(404).send("unauthorized");
+      res.redirect("/account/");
     }
-    res.render(path.join(__dirname, "..", "views", "account", "accountUsers", "accountUsers"), { type });
+    users = await getAllUsers();
+    // console.log(users);
+    res.render(path.join(__dirname, "..", "views", "account", "accountUsers", "accountUsers"), { type, users });
   } catch (error) {
     res.status(500).send(error.message);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    await deleteUser(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
   }
 });
 

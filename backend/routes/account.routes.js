@@ -118,4 +118,17 @@ router.get("/whishlist", (req, res, next) => {
     res.status(500).send(error.message);
   }
 });
+
+router.get("/dashboard", (req, res, next) => {
+  try {
+    const type = req.type;
+    if (!["admin"].includes(type)) {
+      res.status(404).send("unauthorized");
+    }
+    res.render(path.join(__dirname, "..", "views", "account", "accountDashboard", "accountDashboard"));
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 module.exports = router;

@@ -25,6 +25,7 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th>Brand</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Description</th>
@@ -35,10 +36,11 @@
           <tbody id="orderTableBody">
             <% for (let i = 0; i < products.length; i++) { %>
             <tr>
-              <td><%= products[i].productName %></td>
-              <td><%= products[i].productPrice %></td>
-              <td><%= products[i].productQuantity %></td>
-              <td><%= products[i].productDescription %></td>
+              <td><%= products[i]?.productName %></td>
+              <td><%= products[i]?.productBrand %></td>
+              <td><%= products[i]?.productPrice %></td>
+              <td><%= products[i]?.productQuantity %></td>
+              <td><%= products[i]?.productDescription %></td>
               <td>
                 <img
                   alt="Product Image"
@@ -110,6 +112,18 @@
                     class="form-control"
                     id="productName"
                     name="productName"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="productBrand" class="form-label"
+                    >Brand:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="productBrand"
+                    name="productBrand"
                     required
                   />
                 </div>
@@ -186,13 +200,17 @@
         class="modal fade"
         id="editModal"
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby="editModalLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-dark">
-              <h5 class="modal-title text-light" id="exampleModalLabel">
+              <h5
+                class="modal-title text-light"
+                id="editModalLabel"
+                data=""
+              >
                 Edit Product
               </h5>
               <button
@@ -203,14 +221,26 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form id="editForm" action="/product/">
+              <form id="editForm">
                 <div class="mb-3">
                   <label for="productName" class="form-label">Name:</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="productName"
+                    id="editProductName"
                     name="productName"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="editProductBrand" class="form-label"
+                    >Brand:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editProductBrand"
+                    name="productBrand"
                     required
                   />
                 </div>
@@ -219,7 +249,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="productPrice"
+                    id="editProductPrice"
                     name="productPrice"
                     required
                   />
@@ -231,7 +261,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="productQuantity"
+                    id="editProductQuantity"
                     name="productQuantity"
                     required
                   />
@@ -242,7 +272,7 @@
                   >
                   <textarea
                     class="form-control"
-                    id="productDescription"
+                    id="editProductDescription"
                     name="productDescription"
                     required
                   ></textarea>
@@ -253,7 +283,7 @@
                   >
                   <select
                     name="productCategory"
-                    id="productCategory"
+                    id="editProductCategory"
                     class="form-control"
                     required
                   >
@@ -264,13 +294,14 @@
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="productImage" class="form-label">Image:</label>
+                  <label for="editProductImage" class="form-label"
+                    >Image:</label
+                  >
                   <input
                     type="file"
                     class="form-control"
-                    id="productImage"
-                    name="productImage"
-                    required
+                    id="editProductImage"
+                    name="editProductImage"
                   />
                 </div>
                 <div class="modal-footer">

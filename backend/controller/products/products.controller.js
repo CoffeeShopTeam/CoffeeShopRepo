@@ -1,6 +1,5 @@
 const path = require("path");
 const Product = require("../../models/products/product.schema")
-const bcrypt = require("bcrypt");
 const twitterClient = require(path.join(
   __dirname,
   "../",
@@ -50,7 +49,6 @@ const createProduct = async (req, res) => {
   const userId = req.session?.data?._id
   if (!userId) throw new Error("Cannot find supplier id. Try to login again.");
   try {
-    console.log("hello ->>>", req.body);
     const product = new Product({
       ...req.body,
       supplierId: userId

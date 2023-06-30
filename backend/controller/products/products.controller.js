@@ -1,13 +1,5 @@
 const path = require("path");
 const Product = require("../../models/products/product.schema")
-// const Product = require(path.join(
-//   __dirname,
-//   "../",
-//   "../",
-//   "models",
-//   "products",
-//   "product.schema"
-// ));
 const bcrypt = require("bcrypt");
 const twitterClient = require(path.join(
   __dirname,
@@ -29,15 +21,28 @@ const getAllProducts = async () => {
   }
 };
 
-const getProductById = async (req, res) => {
+async function getProductById(productId) {
   try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      res.status(404).send("Product not found by id: " + req.params.id);
-    }
-    res.send(products);
-  } catch (e) {
-    res.status(500).send({ message: e.message });
+    const product = await Product.findById(productId);
+    return product;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+const getProductsByCategory = async (category, limit, excludeProductId) => {
+  try {
+    const products = await Product.find({
+      productCategory: category,
+      _id: { $ne: excludeProductId },
+    })
+      .limit(limit)
+      .exec();
+    return products;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
 
@@ -109,6 +114,7 @@ const getAllSupplierProducts = async (supplierId) => {
 module.exports = {
   getAllProducts,
   getProductById,
+  getProductsByCategory,
   createProduct,
   EditProductById,
   deleteProduct,

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const bcrypt = require("bcrypt");
+const Orders = require("../models/orders/orders.schema");
 const { addressValidator } = require("../models/users/user.validator.js");
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
 const { updateUserFields, updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
@@ -37,6 +37,33 @@ router.get("/details", async (req, res, next) => {
     const { email } = req.session.data;
     const user = await getUser(email);
     res.render(path.join(__dirname, "..", "views", "account", "accountDetails", "accountDetails"), { user });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+router.get("/orders", async(req, res, next) => {
+  try {
+    let userOrders
+    const type = req.type;
+    const userId = req.session?.data._id;
+    if(type === "customer")
+        userOrders = await Orders.find({user : userId})
+    else if(type === "admin" )
+        userOrders = await Orders.find()
+    else
+        userOrders = [];      
+    console.log(userOrders);
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountOrders",
+        "accountOrders"
+      ), { type, orders: userOrders }
+    );
   } catch (error) {
     res.status(500).send(error.message);
   }

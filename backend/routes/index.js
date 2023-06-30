@@ -1,6 +1,6 @@
 const signupRouter = require("./signup.routes");
 const loginRouter = require("./login.routes");
-const accountRouter = require("./account.routes");
+const accountRouter = require("./account.routes2");
 const checkoutRouter = require("./checkout.routes");
 const productRouter = require("./products.routes");
 const shopRouter = require("./shopPage.routes");

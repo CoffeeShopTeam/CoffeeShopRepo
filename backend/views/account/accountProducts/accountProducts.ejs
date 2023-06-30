@@ -25,6 +25,7 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th>Brand</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Description</th>
@@ -35,10 +36,11 @@
           <tbody id="orderTableBody">
             <% for (let i = 0; i < products.length; i++) { %>
             <tr>
-              <td><%= products[i].productName %></td>
-              <td><%= products[i].productPrice %></td>
-              <td><%= products[i].productQuantity %></td>
-              <td><%= products[i].productDescription %></td>
+              <td><%= products[i]?.productName %></td>
+              <td><%= products[i]?.productBrand %></td>
+              <td><%= products[i]?.productPrice %></td>
+              <td><%= products[i]?.productQuantity %></td>
+              <td><%= products[i]?.productDescription %></td>
               <td>
                 <img
                   alt="Product Image"
@@ -110,6 +112,18 @@
                     class="form-control"
                     id="productName"
                     name="productName"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="productBrand" class="form-label"
+                    >Brand:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="productBrand"
+                    name="productBrand"
                     required
                   />
                 </div>
@@ -215,6 +229,18 @@
                     class="form-control"
                     id="editProductName"
                     name="productName"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="editProductBrand" class="form-label"
+                    >Brand:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editProductBrand"
+                    name="productBrand"
                     required
                   />
                 </div>

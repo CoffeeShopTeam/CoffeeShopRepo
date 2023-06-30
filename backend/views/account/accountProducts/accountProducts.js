@@ -19,6 +19,7 @@ $(function () {
     function viewCurrentProductToEdit(data) {
         localStorage.setItem("editProduct", data._id);
         $("#editProductName").val(data.productName);
+        $("#editProductBrand").val(data.productBrand);
         $("#editProductPrice").val(data.productPrice);
         $("#editProductQuantity").val(data.productQuantity);
         $("#editProductDescription").val(data.productDescription);
@@ -32,6 +33,7 @@ $(function () {
                 url: `/product/${productId}`,
                 method: "GET",
                 success: function (data) {
+                    console.log(data);
                     viewCurrentProductToEdit(data);
                 },
                 error: function (error) {

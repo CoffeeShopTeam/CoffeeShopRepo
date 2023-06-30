@@ -8,12 +8,6 @@ const {
   EditProductById,
   deleteProduct,
 } = require("../controller/products/products.controller");
-const getProduct = require(path.join(
-  __dirname,
-  "../",
-  "middleware",
-  "getProduct"
-));
 
 router.use("/", (req, res, next) => {
   try {
@@ -44,7 +38,11 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", getAllProducts);
 
-router.get("/:id", getProductById);
+router.get("/:id", async (req, res, next) => {
+  const productId = req.params.id;
+  const product = await getProductById(productId);
+  res.json(product);
+});
 
 router.put("/:id", EditProductById);
 

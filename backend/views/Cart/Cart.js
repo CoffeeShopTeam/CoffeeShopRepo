@@ -3,14 +3,14 @@ let cartContent = $(".cart-content");
 let cartTotal = $("#cart-total");
 let jsonProducts = [
   {
-    id: 1, // Add an id property
+    id: 1,
     image: "/assets/ShlomkePic.png",
     title: "Fictional Product 1",
     price: 19.99,
     quantity: 1,
   },
   {
-    id: 2, // Add an id property
+    id: 2,
     image: "/assets/ShlomkePic.png",
     title: "Fictional Product 2",
     price: 10.0,
@@ -30,7 +30,7 @@ $(document).ready(function () {
     cart = cart.filter(function (item) {
       return item.id !== id;
     });
-    setCartValues(cart); // Update cart values after removing item
+    setCartValues(cart);
   }
 
   function populateCart(cart) {

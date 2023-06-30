@@ -127,7 +127,6 @@ $(document).ready(function () {
   }
 
   function updateLocalStorage(cart) {
-    // localStorage.removeItem("jsonProducts"); //added**
     localStorage.setItem("jsonProducts", JSON.stringify(cart));
   }
 

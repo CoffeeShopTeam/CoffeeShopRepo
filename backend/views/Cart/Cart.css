@@ -1,5 +1,8 @@
 .product-container {
     margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
 }
 
 .product-item {
@@ -12,6 +15,7 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .product-details {
@@ -27,26 +31,33 @@
 .product-quantity button {
     border: none;
     background-color: #2d2d2d;
-    font-size: 0.9rem;
+    color: #fff;
+    font-size: 1.6rem;
     width: 2rem;
     height: 2rem;
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
+    padding-bottom: 0.6rem;
     cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0.8;
 }
 
 .product-quantity .minus-button {
-    order: -1;
+    margin-left: 1.7rem;
 }
 
 .product-quantity .plus-button {
-    order: 1;
+    margin-right: 1.7rem;
 }
 
 .item-amount {
     font-size: 22px;
     font-weight: 600;
     flex-grow: 1;
-    text-align: center;
+    margin: 0px 0px 8px;
 }
 
 #cart-total {
@@ -57,9 +68,9 @@
 
 #product-title {
     padding-top: 5px;
-    line-height: 10px;
-    font-size: 32px;
-    font-family: 'Open Sans';
+    line-height: 1.2;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     color: #202020;
 }

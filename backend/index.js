@@ -7,16 +7,10 @@ const bodyParser = require("body-parser");
 const app = express();
 
 require("dotenv").config();
-<<<<<<< HEAD
-const PORT = process.env.PORT;
-const SECRET = process.env.SECRET;
-
-=======
 
 const PORT = process.env.PORT;
 const SECRET = process.env.SECRET;
 
->>>>>>> dev
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));
@@ -35,24 +29,14 @@ app.use("/login", routes.loginRouter);
 app.use("/account", routes.accountRouter);
 app.use("/checkout", routes.checkoutRouter);
 app.use("/createProduct", routes.productRouter);
-<<<<<<< HEAD
-=======
 app.use("/orderConfirmation", routes.orderConfirmationRouter);
+app.use("/cart", routes.cartRouter);
 
->>>>>>> dev
 app.get("/", (req, res, next) => {
   const filePath = path.join(__dirname, "views", "homePage", "homePage.ejs");
   res.render(filePath);
 });
 
-<<<<<<< HEAD
-app.use("/signup", routes.signupRouter);
-app.use("/login", routes.loginRouter);
-app.use("/account", routes.accountRouter);
-app.use("/cart", routes.cartRouter);
-
-=======
->>>>>>> dev
 app.listen(PORT, () => {
   console.log(`app available on http://localhost:${PORT}`);
   mongoConnect();

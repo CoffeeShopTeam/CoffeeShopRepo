@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
     <title>My Account</title>
     <link
       rel="stylesheet"
@@ -13,6 +14,13 @@
     <script src="jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="/account/account.css" />
     <script src="/account/account.js"></script>
+=======
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <title>My Account</title>
+
+    <link rel="stylesheet" href="/account/account.css" />
+>>>>>>> dev
   </head>
   <body>
     <main>
@@ -21,6 +29,7 @@
           <%= type %>
 
           <a class="navbar-brand" href="#">My Account</a>
+<<<<<<< HEAD
           <button
             class="navbar-toggler"
             type="button"
@@ -30,12 +39,16 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
+=======
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+>>>>>>> dev
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <% if (["admin", "supplier", "customer"].includes(type)) { %>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a class="nav-link" id="accountDetails" href="/account/details"
                   >Account details</a
                 >
@@ -74,6 +87,25 @@
                 <a class="nav-link" id="accountPermission" href="\account\users"
                   >Users</a
                 >
+=======
+                <a class="nav-link" id="accountDetails" href="/account/details">Account details</a>
+              </li>
+              <% } %> <% if (["admin", "supplier", "customer"].includes(type)) { %>
+              <li class="nav-item">
+                <a class="nav-link" id="accountOrders" href="/account/orders">Orders</a>
+              </li>
+              <% } %> <% if (["customer"].includes(type)) { %>
+              <li class="nav-item">
+                <a class="nav-link" id="accountWishlist" href="\account\whishlist">Wishlist</a>
+              </li>
+              <% } %> <% if (["admin", "supplier"].includes(type)) { %>
+              <li class="nav-item">
+                <a class="nav-link" id="accountProducts" href="\account\products">Products</a>
+              </li>
+              <% } %> <% if (["admin"].includes(type)) { %>
+              <li class="nav-item">
+                <a class="nav-link" id="accountPermission" href="\account\users">Users</a>
+>>>>>>> dev
               </li>
               <% } %>
 
@@ -85,11 +117,14 @@
         </div>
       </nav>
     </main>
+<<<<<<< HEAD
 
     <script src="\frontend\views\partials\partials.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+=======
+>>>>>>> dev
   </body>
 </html>

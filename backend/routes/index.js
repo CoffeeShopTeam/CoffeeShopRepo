@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const signupRouter = require("./signup.routes");
 const loginRouter = require("./login.routes");
 const accountRouter = require("./account.routes");
@@ -14,3 +15,22 @@ module.exports = {
   shopRouter,
   cartRouter,
 };
+=======
+const signupRouter = require('./signup.routes');
+const loginRouter = require('./login.routes');
+const accountRouter = require('./account.routes');
+const checkoutRouter = require('./checkout.routes');
+const productRouter = require("./products.routes");
+const shopRouter = require("./shopPage.routes");
+const orderConfirmationRouter = require("./orderConfirmation.routes")
+
+module.exports = {
+    signupRouter,
+    loginRouter,
+    accountRouter,
+    checkoutRouter,
+    productRouter,
+    shopRouter,
+    orderConfirmationRouter,
+}
+>>>>>>> dev

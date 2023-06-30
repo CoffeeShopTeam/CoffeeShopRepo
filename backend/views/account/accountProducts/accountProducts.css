@@ -3,6 +3,9 @@
     height: 50px;
     font-size: 36px;
     margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .products{
     margin-top: 1rem;
@@ -12,4 +15,12 @@
 }
 img{
     height: 5rem;
+    z-index: 1;
+}
+
+.icon {
+    height: 1rem;
+    width: 1rem;
+    position: relative;
+    z-index: -1;
 }

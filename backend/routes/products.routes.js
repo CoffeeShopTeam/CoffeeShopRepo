@@ -44,7 +44,8 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", getAllProducts);
 
-router.get("/:id", getProduct, getProductById);
+// router.get("/:id", getProduct, getProductById);
+router.get("/:id", getProductById);
 
 router.put("/:id", getProduct, EditProductById);
 

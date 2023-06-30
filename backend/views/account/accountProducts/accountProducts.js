@@ -1,5 +1,4 @@
 $(function () {
-    const editButton = $(".btn.edit");
     $(".btn.delete").each(function (i, btn) {
         $(btn).on('click', async function (event) {
             const productId = event.target.value;
@@ -14,12 +13,28 @@ $(function () {
                     console.error("Error fetching products:", error);
                 },
             });
-
         });
     })
 
-    editButton.on('click', function (event) {
-        const productId = event.target.value;
-
+    $(".btn.edit").each(function (i, btn) {
+        $(btn).on('click', function (event) {
+            const productId = event.target.value;
+            console.log(productId);
+            $.ajax({
+                url: `/product/${productId}`,
+                method: "GET",
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.error("Error fetching products:", error);
+                },
+            });
+        })
     })
+
+
+    $("#editForm").on('submit', function (event) {
+        console.log(event.target.value);
+    });
 });

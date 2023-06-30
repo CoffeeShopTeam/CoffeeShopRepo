@@ -23,6 +23,7 @@ const getAllProducts = async () => {
 
 async function getProductById(productId) {
   try {
+<<<<<<< Updated upstream
     const product = await Product.findById(productId);
     return product;
   } catch (error) {
@@ -43,6 +44,15 @@ const getProductsByCategory = async (category, limit, excludeProductId) => {
   } catch (error) {
     console.error(error);
     throw error;
+=======
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      res.status(404).send("Product not found by id: " + req.params.id);
+    }
+    res.json(product);
+  } catch (e) {
+    res.status(500).send({ message: e.message });
+>>>>>>> Stashed changes
   }
 };
 

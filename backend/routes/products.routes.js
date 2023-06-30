@@ -36,8 +36,6 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", getAllProducts);
 
-router.get("/:id", getProduct, getProductById);
-
 router.put("/:id", getProduct, EditProductById);
 
 router.delete("/", async (req, res) => {

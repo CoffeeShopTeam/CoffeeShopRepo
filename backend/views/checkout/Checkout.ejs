@@ -32,7 +32,9 @@
         <div id="header"></div>
       </nav>
     </header>
-    <main class="container">
+    <div class="accountNavBar" id="accountNavBar"></div>
+    <form class="container" method="POST" action="/orders" autocomplete="on">
+      
       <div class="mb-4">
         <h1 class="text-center">Checkout</h1>
       </div>
@@ -66,24 +68,25 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="first-name">First name</label>
+                  <label for="firstName">First name</label>
                   <span class="must-fill">*</span>
                   <input
                     type="text"
                     class="form-control"
                     id="first-name"
+                    name="firstName"
                     required
                   />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="last-name">Last name</label>
+                  <label for="lastName">Last name</label>
                   <span class="must-fill">*</span>
                   <input
                     type="text"
                     class="form-control"
-                    id="last-name"
+                    name="lastName"
                     required
                   />
                 </div>
@@ -91,7 +94,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="company-name">Company Name</label>
-                  <input type="text" class="form-control" id="company-name" />
+                  <input type="text" class="form-control" name="companyName" />
                 </div>
               </div>
               <div class="col-md-12">                
@@ -102,7 +105,7 @@
                   <select
                     class="form-select countrySelect narrow-select" 
                     aria-label="Floating label select example"
-                    name="countrySelect"
+                    name="country"
                     style="width: 100%;"
                     required
                     >
@@ -110,7 +113,6 @@
                       <option value="<%= countryName %>"><%= countryName %></option>
                     <% }); %>
                 </select>                  
-                <!-- </div> -->
               </div>
               </div>
               <div class="col-md-12">
@@ -120,7 +122,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="street-address"
+                    name="street-address"
                     required
                   />
                 </div>
@@ -129,7 +131,7 @@
                 <div class="form-group">
                   <label for="city">Town / City</label>
                   <span class="must-fill">*</span>
-                  <input type="text" class="form-control" id="city" required />
+                  <input type="text" class="form-control" name="city" required />
                 </div>
               </div>
               <div class="col-md-6">
@@ -139,7 +141,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="postcode"
+                    name="postlCode"
                     required
                   />
                 </div>
@@ -148,14 +150,14 @@
                 <div class="form-group">
                   <label for="phone">Phone Number</label>
                   <span class="must-fill">*</span>
-                  <input type="text" class="form-control" id="phone" required />
+                  <input type="text" class="form-control" name="phone" required />
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email</label>
                   <span class="must-fill">*</span>
-                  <input type="email" class="form-control" id="email" />
+                  <input type="email" class="form-control" name="email" />
                 </div>
               </div>
               <div class="col-md-12">
@@ -163,7 +165,7 @@
                   <label for="order-notes">Order notes</label>
                   <textarea
                     class="form-control"
-                    id="order-notes"
+                    name="ordersNotes"
                     rows="3"
                     placeholder="Got something to tell us?"
                   >
@@ -193,8 +195,8 @@
             </div>
             <hr3 class = "mb-3" />
             <div class="d-flex justify-content-between align-items-center mb-2 product">
-              <h5 class="mb-0" data-amount="380">TOTAL</h5>
-              <span class="currency-symbol"  currency-select="ILS">380₪</span>
+              <h5 class="mb-0" data-amount="380" name="orderPrice">TOTAL</h5>
+              <span class="currency-symbol"  currency-select="ILS" >380₪</span>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-2">
             </div>
@@ -204,18 +206,21 @@
               <div class="form-row">
               <div class="form-group col-md-6">
               <label for="cardNumber">Credit Card Number</label>
-              <input type="text" class="form-control" id="cardNumber" placeholder="Enter credit card number">
+            <span class="must-fill">*</span>
+              <input type="text" class="form-control" name="cardNumber" required placeholder="Enter credit card number">
             </div>
             <div class="form-group col-md-6 ">
 
             <label for="cvv">CVV</label>
-            <input type="text" class="form-control " id="cvv" placeholder="Enter CVV">
+            <span class="must-fill">*</span>
+            <input type="text" class="form-control " name="cvv" required maxlength="3" placeholder="Enter CVV">
             
           </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="expirationMonth">Expiration Month</label>
-                <select class="form-control" id="expirationMonth">
+                <span class="must-fill">*</span>
+                <select class="form-control" name="expirationMonth" required>
                   <option value="">Month</option>
                   <option value="01">01</option>
                   <option value="02">02</option>
@@ -236,7 +241,8 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="expirationYear">Expiration Year</label>
-                <select class="form-control" id="expirationYear">
+            <span class="must-fill">*</span>
+                <select class="form-control" name="expirationYear">
                   <option value="">Year</option>
                   <option value="2023">2023</option>
                   <option value="2024">2024</option>
@@ -252,7 +258,7 @@
                 
                   <form id="currency-conversion-form">                            
                   <strong class="mb-0"s>Convert Payment To:</strong>
-                <select class="mt-1 ml-4 mr-3" id="currency" name="currency" required>
+                <select class="mt-1 ml-4 mr-3" name="currency" id="currency" required>
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
                   <option value="GBP">GBP</option>
@@ -265,6 +271,7 @@
                 type="text"
                 class="form form-control-xs"
                 id="coupon-input"
+                name="couponCode"
                 placeholder="Coupon Code"
                 aria-label="Coupon Code"
                 aria-describedby="apply-coupon"
@@ -277,18 +284,18 @@
             
             <button
               class="btn btn-success btn-block btn-lg btn-dark"
-               onclick="window.location.href='/views/orderConfirmation/orderConfirmation.ejs'"      
+              type="submit"
               >
               PLACE ORDER
             </button>
           </div>
         </div>
       </section>
-    </main>
+    </form>
     <div id="footer"></div>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="\partials\partials.js"></script>
+    <script src="\account\account.js"></script>
   </body>
 </html>

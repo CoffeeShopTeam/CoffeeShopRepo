@@ -12,19 +12,24 @@ const ordersSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User", // Reference the user schema
   },
+  products:[{
+  product:{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "products",
+    },
+    quantity:{
+      type:Number,
+      require: true,
+      min: [1, 'quantity must be a positive number']
+    }
+    }] ,
 
   shippingDetails: {
-    deliveryType: {
-      type: String,
-      require: true,
-      enum: ["Express Shipping", "Regular Shipping"],
-      default: "Regular Shipping",
-    },
     deliveryPrice: {
       type: Number,
       require: true,
-      enum: [30, 10],
-      default: 30,
+      enum: [10],
+      default: 10,
     },
     email: {
       type: String,
@@ -66,7 +71,11 @@ const ordersSchema = new mongoose.Schema({
       min: [4, `note can't be shorted then 4 characters`],
     },
   },
-
+  orderPrice: {
+    type: String,
+    require: true,
+    min: [1, "the price must be a positive number"]
+  },
   paymentMethod: {
     type: String,
     require: true,

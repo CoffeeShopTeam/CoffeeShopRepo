@@ -22,6 +22,7 @@ app.use(
     saveUninitialized: false,
   })
 );
+
 app.use("/ShopPage", routes.shopRouter);
 app.use("/signup", routes.signupRouter);
 app.use("/login", routes.loginRouter);
@@ -29,7 +30,12 @@ app.use("/account", routes.accountRouter);
 app.use("/checkout", routes.checkoutRouter);
 app.use("/createProduct", routes.productRouter);
 app.use("/graph", routes.graphRouter);
+app.use("/product", routes.productRouter);
+app.use("/orders", routes.ordersRouter);
 app.use("/orderConfirmation", routes.orderConfirmationRouter);
+app.use("/privacyPolicy", routes.privacyPolicyRouter);
+app.use("/ourStory", routes.ourStoryRouter);
+app.use("/ProductPage", routes.productPageRouter);
 
 app.get("/", (req, res, next) => {
   const filePath = path.join(__dirname, "views", "homePage", "homePage.ejs");

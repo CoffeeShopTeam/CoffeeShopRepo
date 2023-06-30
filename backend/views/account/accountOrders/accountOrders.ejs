@@ -4,11 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Account - Orders</title>
-    <link rel="stylesheet" href="/account/accountOrders/accountOrders.css">
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="/account/accountOrders/accountOrders.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="/account/accountOrders/accountOrders.js"></script>
   </head>
@@ -17,29 +14,44 @@
     <div class="accountNavBar" id="accountNavBar"></div>
     <div class="container">
       <h1>Orders</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Order Number</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Total</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="orderTableBody"></tbody>
-      </table>
-      <p id="emptyMessage" style="display: none">
-        No orders have been made yet. <a href="#">Product</a>
-      </p>
+      <form method="GET" action="/orders">
+        <% if (orders.length === 0) { %>
+        <p>No orders have been made yet.</p>
+        <% } else { %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Order Number</th>
+              <th>Date</th>
+              <th>Email Confirmation</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody">
+            <% orders.forEach(function(order) { %>
+            <tr>
+              <td class="<%= order._id %>"><%= order._id.toString().slice(-5) %></td>
+              <td><%= new Date(order.orderDate).toLocaleString() %></td>
+              <td><%= order.shippingDetails.email %></td>
+              <td><%= order.orderPrice %></td>
+              <td><%= new Date(order.orderDate).toLocaleString() %></td>
+              <td>
+                <button type="submit" class="btn-xs btn-dark ms-auto" id="convert-button">View Order</button>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } %>
+        <div style="margin: 20rem"></div>
+      </form>
+      <p id="emptyMessage" style="display: none">No orders have been made yet. <a href="#">Product</a></p>
     </div>
     <div class="footer" id="footer"></div>
-
-    <!-- <script src="\frontend\views\partials\partials.js"></script> -->
-    <!-- <script src="\frontend\views\layouts\account\account.js"></script> -->
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/partials/partials.js"></script>
+    <script src="/account/account.js"></script>
   </body>
 </html>

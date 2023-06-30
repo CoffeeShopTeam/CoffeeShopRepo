@@ -9,7 +9,10 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="/account/accountProducts/accountProducts.css" />
+    <link
+      rel="stylesheet"
+      href="/account/accountProducts/accountProducts.css"
+    />
     <!-- <script src="account.js"></script> -->
   </head>
   <body>
@@ -22,37 +25,48 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th>Brand</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Description</th>
               <th>Image</th>
+              <th>actions</th>
             </tr>
           </thead>
           <tbody id="orderTableBody">
+            <% for (let i = 0; i < products.length; i++) { %>
             <tr>
-              <td>Product 1</td>
-              <td>15</td>
-              <td>3</td>
-              <td>This is product 2</td>
+              <td><%= products[i]?.productName %></td>
+              <td><%= products[i]?.productBrand %></td>
+              <td><%= products[i]?.productPrice %></td>
+              <td><%= products[i]?.productQuantity %></td>
+              <td><%= products[i]?.productDescription %></td>
               <td>
                 <img
-                  src="/assets/9d9f68ed2e69fe48a36b39fe02c20e0f.png"
                   alt="Product Image"
+                  src="/assets/<%= products[i].productImage %>"
                 />
               </td>
-            </tr>
-            <tr>
-              <td>Product 2</td>
-              <td>15</td>
-              <td>3</td>
-              <td>This is product 2</td>
               <td>
-                <img
-                  src="/assets/63420a35062d7b7f501744090005c34c.png"
-                  alt="Product Image"
-                />
+                <button class="btn delete" value="<%= products[i]._id%>">
+                  <img
+                    value="<%= products[i]._id%>"
+                    class="icon delete"
+                    src="/assets/trash.svg"
+                    alt="delete"
+                  />
+                </button>
+                <button
+                  class="btn edit"
+                  value="<%= products[i]._id%>"
+                  data-toggle="modal"
+                  data-target="#editModal"
+                >
+                  <img class="icon edit" src="/assets/pencil.svg" alt="edit" />
+                </button>
               </td>
             </tr>
+            <% } %>
           </tbody>
         </table>
         <div class="row justify-content-end">
@@ -90,34 +104,212 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form method="post" action="/product/">
                 <div class="mb-3">
-                  <label for="name" class="form-label">Name:</label>
-                  <input type="text" class="form-control" id="name" />
+                  <label for="productName" class="form-label">Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="productName"
+                    name="productName"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
-                  <label for="price" class="form-label">Price:</label>
-                  <input type="number" class="form-control" id="price" />
+                  <label for="productBrand" class="form-label"
+                    >Brand:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="productBrand"
+                    name="productBrand"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
-                  <label for="price" class="form-label">Quantity:</label>
-                  <input type="number" class="form-control" id="quantity" />
+                  <label for="productPrice" class="form-label">Price:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="productPrice"
+                    name="productPrice"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
-                  <label for="description" class="form-label"
+                  <label for="productQuantity" class="form-label"
+                    >Quantity:</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="productQuantity"
+                    name="productQuantity"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="productDescription" class="form-label"
                     >Description:</label
                   >
-                  <textarea class="form-control" id="description"></textarea>
+                  <textarea
+                    class="form-control"
+                    id="productDescription"
+                    name="productDescription"
+                    required
+                  ></textarea>
                 </div>
                 <div class="mb-3">
-                  <label for="image" class="form-label">Image:</label>
-                  <input type="file" class="form-control" id="image" />
+                  <label for="productCategory" class="form-label"
+                    >Category:</label
+                  >
+                  <select
+                    name="productCategory"
+                    id="productCategory"
+                    class="form-control"
+                    required
+                  >
+                    <option value="machines">Machines</option>
+                    <option value="beans">Beans</option>
+                    <option value="capsules">Capsules</option>
+                    <option value="accessories">Accessories</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="productImage" class="form-label">Image:</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="productImage"
+                    name="productImage"
+                    required
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button id="save" type="submit" class="btn btn-dark">
+                    Save
+                  </button>
                 </div>
               </form>
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-dark">Save</button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="editModal"
+        tabindex="-1"
+        aria-labelledby="editModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-dark">
+              <h5
+                class="modal-title text-light"
+                id="editModalLabel"
+                data=""
+              >
+                Edit Product
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="editForm">
+                <div class="mb-3">
+                  <label for="productName" class="form-label">Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editProductName"
+                    name="productName"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="editProductBrand" class="form-label"
+                    >Brand:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editProductBrand"
+                    name="productBrand"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="productPrice" class="form-label">Price:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="editProductPrice"
+                    name="productPrice"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="productQuantity" class="form-label"
+                    >Quantity:</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="editProductQuantity"
+                    name="productQuantity"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="productDescription" class="form-label"
+                    >Description:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="editProductDescription"
+                    name="productDescription"
+                    required
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="productCategory" class="form-label"
+                    >Category:</label
+                  >
+                  <select
+                    name="productCategory"
+                    id="editProductCategory"
+                    class="form-control"
+                    required
+                  >
+                    <option value="machines">Machines</option>
+                    <option value="beans">Beans</option>
+                    <option value="capsules">Capsules</option>
+                    <option value="accessories">Accessories</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="editProductImage" class="form-label"
+                    >Image:</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="editProductImage"
+                    name="editProductImage"
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button id="save" type="submit" class="btn btn-dark">
+                    Save
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -125,10 +317,7 @@
     </main>
     <div class="footer" id="footer"></div>
 
-    <!-- <script src="\frontend\views\partials\partials.js"></script> -->
-    <!-- <script src="\frontend\views\layouts\account\account.js"></script> -->
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="/account/accountProducts/accountProducts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>

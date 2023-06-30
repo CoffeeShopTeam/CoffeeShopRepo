@@ -7,19 +7,20 @@ const {
   getProductById,
   EditProductById,
   deleteProduct,
-} = require(path.join(
-  __dirname,
-  "../",
-  "controller",
-  "products",
-  "products.controller"
-));
-const getProduct = require(path.join(
-  __dirname,
-  "../",
-  "middleware",
-  "getProduct"
-));
+} = require("../controller/products/products.controller");
+
+router.use("/", (req, res, next) => {
+  try {
+    const data = req?.session?.data;
+    if (!data) {
+      res.redirect('/login/');
+    } else {
+      next();
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+})
 
 router.get("/", (req, res, next) => {
   res.render(path.join(__dirname, "../", "views", "products", "createProduct"));
@@ -28,6 +29,7 @@ router.get("/", (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     await createProduct(req, res);
+    res.redirect('/account/products/')
   } catch (err) {
     console.log(err.message);
     res.status(500).send(err.message);
@@ -36,11 +38,15 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", getAllProducts);
 
-router.get("/:id", getProduct, getProductById);
+router.get("/:id", async (req, res, next) => {
+  const productId = req.params.id;
+  const product = await getProductById(productId);
+  res.json(product);
+});
 
-router.put("/:id", getProduct, EditProductById);
+router.put("/:id", EditProductById);
 
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     await deleteProduct(req, res);
   } catch (err) {

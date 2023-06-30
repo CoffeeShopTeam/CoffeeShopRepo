@@ -5,7 +5,6 @@ const path = require("path");
 router.use('/', (req, res, next) => {
     try {
         const data = req?.session?.data;
-        console.log(data);
         if (!data) {
             res.redirect('/login/');
         } else {
@@ -22,7 +21,7 @@ router.get('/:orderId', (req, res, next) => {
         // TODO: Get and send to ejs order data
         res.render(path.join(
             __dirname, "..", "views", "orderConfirmation", "orderConfirmation"
-            ), { orderId })
+        ), { orderId });
     } catch (error) {
         res.status(500).send(error.message);
     }

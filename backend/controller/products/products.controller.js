@@ -1,12 +1,5 @@
 const path = require("path");
-const Product = require(path.join(
-  __dirname,
-  "../",
-  "../",
-  "models",
-  "products",
-  "product.schema"
-));
+const Product = require("../../models/products/product.schema")
 const bcrypt = require("bcrypt");
 const twitterClient = require(path.join(
   __dirname,
@@ -54,25 +47,17 @@ const getProductsByCategory = async (category, limit, excludeProductId) => {
 };
 
 const createProduct = async (req, res) => {
-  const {
-    productName,
-    productPrice,
-    productDescription,
-    productCategory,
-    productImage,
-    productQuantity,
-    supplierId,
-    productBrand,
-  } = req.body;
+  const userId = req.session?.data?._id
+  if (!userId) throw new Error("Cannot find supplier id. Try to login again.");
   try {
-    console.log(req.body);
+    console.log("hello ->>>", req.body);
     const product = new Product({
       ...req.body,
+      supplierId: userId
     });
     await product.save();
-    res.status(200).json({ success: true, data: product });
     const productId = product._id;
-    const tweetMessage = `We got a brand new product: ${productName}!\n\nFind it Here: http://Urusta.co.il/${productId}`;
+    const tweetMessage = `We got a brand new product: ${req.body.productName}!\n\nFind it Here: http://Urusta.co.il/${productId}`;
     const tweet = await twitterClient.v2.tweet(tweetMessage);
   } catch (e) {
     console.log(e);
@@ -112,6 +97,20 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const tweet = async (req, res) => {
+  const product = await Product;
+  try {
+    await twitterClient.v2.tweet("We Got A New Product: " + p);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const getAllSupplierProducts = async (supplierId) => {
+  const products = await Product.find({ supplierId: supplierId });
+  return products;
+}
+
 module.exports = {
   getAllProducts,
   getProductById,
@@ -119,4 +118,5 @@ module.exports = {
   createProduct,
   EditProductById,
   deleteProduct,
+  getAllSupplierProducts,
 };

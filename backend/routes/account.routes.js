@@ -234,6 +234,20 @@ router.get("/users", async (req, res, next) => {
   }
 });
 
+
+router.get("/dashboard", (req, res, next) => {
+  try {
+    const type = req.type;
+    if (!["admin"].includes(type)) {
+      res.status(404).send("unauthorized");
+    }
+    res.render(path.join(__dirname, "..", "views", "account", "accountDashboard", "accountDashboard"));
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+
 router.delete("/:id", async (req, res) => {
   try {
     await deleteUser(req, res);
@@ -252,4 +266,5 @@ router.put("/:id", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
 module.exports = router;

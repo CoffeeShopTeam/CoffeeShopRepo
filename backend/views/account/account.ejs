@@ -59,6 +59,10 @@
                   >Users</a
                 >
               </li>
+              <% } %><% if (["admin"].includes(type)) { %>
+              <li class="nav-item">
+                <a class="nav-link" id="accountDashboard" href="\account\dashboard">Dashboard</a>
+              </li>
               <% } %>
 
               <li class="nav-item">

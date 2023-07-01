@@ -43,3 +43,11 @@ main {
   margin-left: 1.2rem;
   border-width: 0.1rem;
 }
+
+#quantity {
+  margin-left: auto;
+}
+
+.currency-symbol {
+  margin-left: auto;
+}

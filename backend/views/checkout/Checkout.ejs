@@ -89,7 +89,6 @@
               <div class="form-group">
                 <label for="country">Country</label>
                 <span class="must-fill">*</span>
-                <!-- <div class="select-conainer"> -->
                 <select class="form-select countrySelect narrow-select" aria-label="Floating label select example"
                   name="country" style="width: 100%;" required>
                   <% countries.forEach(function(countryName) { %>
@@ -152,98 +151,120 @@
           </div>
         </div>
         <div class="order col-md-4">
-          <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="mb-0">PRODUCT</h5>
-            <h5 class="mb-0">QTY</h5>
-            <h5 class="mb-0">TOTAL</h5>
-          </div>
-          <!-- <hr class="mb-3" /> -->
-          <div id="checkout-product"></div>
-          <!-- <hr class="mb-3" /> -->
-          <div id="checkout-total"></div>
-          <div class="d-flex justify-content-between align-items-center mb-2">
-          </div>
-          <div class="d-flex justify-content-between align-items-center mb-2">
-          </div>
-          <div class="payment-methods">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="cardNumber">Credit Card Number</label>
-                <span class="must-fill">*</span>
-                <input type="text" class="form-control" name="cardNumber" required
-                  placeholder="Enter credit card number">
-              </div>
-              <div class="form-group col-md-6 ">
-
-                <label for="cvv">CVV</label>
-                <span class="must-fill">*</span>
-                <input type="text" class="form-control " name="cvv" required maxlength="3" placeholder="Enter CVV">
-
-              </div>
+          <div class= "container" id="order-container">
+            <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">PRODUCT</h5>
+              <h5 class="mb-0">QTY</h5>
+              <h5 class="mb-0">TOTAL</h5>
+            </div>
+            <div id="spacer"></div>
+            <div id="checkout-product"></div>
+            <div id="spacer"></div>
+            <div id="checkout-total"></div>
+            <div class="d-flex justify-content-between align-items-center mb-2" >
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-2" id ="spacer">
+            </div>
+            <div class="payment-methods">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="expirationMonth">Expiration Month</label>
+                  <label for="cardNumber">Credit Card Number</label>
                   <span class="must-fill">*</span>
-                  <select class="form-control" name="expirationMonth" required>
-                    <option value="">Month</option>
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-
-
-                    <!-- Add more options for the remaining months -->
-                  </select>
+                  <input type="text" class="form-control" name="cardNumber" required
+                    placeholder="Enter credit card number">
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="expirationYear">Expiration Year</label>
+                <div class="form-group col-md-6 ">
+  
+                  <label for="cvv">CVV</label>
                   <span class="must-fill">*</span>
-                  <select class="form-control" name="expirationYear">
-                    <option value="">Year</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2024">2025</option>
-                    <option value="2024">2026</option>
-                    <option value="2024">2027</option>
-                    <!-- Add more options for future years -->
-                  </select>
+                  <input type="text" class="form-control " name="cvv" required maxlength="3" placeholder="Enter CVV">
+  
                 </div>
-  </form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="expirationMonth">Expiration Month</label>
+                    <span class="must-fill">*</span>
+                    <select class="form-control" id="expirationMonth" name="expirationMonth" required>
+                      <option value="">Month</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+  
+  
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="expirationYear">Expiration Year</label>
+                    <span class="must-fill">*</span>
+                    <select class="form-control" id="expirationYear" name="expirationYear">
+                      <option value="">Year</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2024">2025</option>
+                      <option value="2024">2026</option>
+                      <option value="2024">2027</option>
+                    </select>
+                  </div>
+                  <div id="spacer"></div>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
+    
+  
+      <div class="d-flex justify-content-between align-items-center mb-3" id="convert-box">
+  
+      <form id="currency-conversion-form">
+        <strong class="mb-0" id="convert-title">Convert Payment To:</strong>
+        <select class="mt-1 ml-4 mr-3" name="currency" id="currency" required>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="ILS">ILS</option>
+        </select>
+        <button
+                  class="convert-button"
+                  type="submit" id="convert-button"
+                >
+                Convert               
+                </button>
+      </form>
+    </div>
+    
 
-    <form id="currency-conversion-form">
-      <strong class="mb-0" s>Convert Payment To:</strong>
-      <select class="mt-1 ml-4 mr-3" name="currency" id="currency" required>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="ILS">ILS</option>
-      </select>
-      <button type="submit" class="btn-xs btn-dark ms-auto" id="convert-button">Convert</button>
-    </form>
-  </div>
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <input type="text" class="form form-control-xs" id="coupon-input" name="couponCode" placeholder="Coupon Code"
-      aria-label="Coupon Code" aria-describedby="apply-coupon" />
-    <button class="btn btn-dark btn-sm" style=" font-size: 0.8rem;width:50%;">
-      Apply Coupon</button>
-  </div>
-
-  <button class="btn btn-success btn-block btn-lg btn-dark" id="place-order-button" type="submit">
-    PLACE ORDER
-  </button>
-  </div>
-  </div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <input type="text" class="form form-control-xs" id="coupon-input" name="couponCode" placeholder="Coupon Code"
+        aria-label="Coupon Code" aria-describedby="apply-coupon" />
+        <button
+                  type="submit" id="apply-coupon-button"
+                >
+                Apply Coupon</button>
+     
+    </div>
+    
+              <button
+                  class="place-order"
+                  type="submit" id="place-order-button"
+                >
+                Place Order               
+                </button>
+               </div>
+            </div>
+       
+          
+            </div>
+          </div>
+        </div>
+      
+      
+  
   </section>
   </form>
   <div id="footer"></div>

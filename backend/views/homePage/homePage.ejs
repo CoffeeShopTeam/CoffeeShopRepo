@@ -24,7 +24,6 @@
     crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="/homePage/HomePage.css" />
-  <script src="/homePage/homePage.js"></script>
 </head>
 
 <body>
@@ -32,15 +31,20 @@
 
   <header class="hero bg text-white py-5">
     <div class="container">
-      <h1 class="display-4 text-center">Welcome to URUSTA</h1>
+      <h1 class="display-4 text-center">Welcome to Urusta</h1>
       <p class="lead text-center">
         Welcome to Our Coffee Shop! Step into our cozy haven, where the aromatic embrace of freshly brewed coffee and
         the friendly ambiance await you. Indulge in our carefully crafted beverages and savor the moments of pure bliss
         and
         caffeine-fueled happiness.
       </p>
-      <a onclick="window.location.href = '/ShopPage'" class="btn btn-light btn-lg" id="shopBtn"> Browse Products </a>
-    </div>
+      <button
+      class="browse-products"
+      onclick="window.location.href='/ShopPage'"
+    >
+        Browse Products    
+      </button>
+      </div>
   </header>
 
  <section class="features py-5">
@@ -84,12 +88,9 @@
     </div>
   </section>
 
-  <div class="footer" id="footer"></div>
-  <script src="/partials/partials.js"></script>
-
-
     <div class="footer" id="footer"></div>
     <script src="\partials\partials.js"></script>
+    <script src="./homePage.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

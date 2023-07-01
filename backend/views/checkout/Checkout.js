@@ -73,8 +73,8 @@ $(document).ready(function () {
         "<div class='d-flex justify-content-between align-items-center mb-2 product'>"
     );
     newItem.html(`
-        <h5 class="mb-0" data-amount="${cartItem.price * cartItem.quantity} id="cartItem">${cartItem.title}</h5>
-        <p id="quantity" name="quantity">${cartItem.quantity}</p>
+        <h5 class="mb-0" data-amount="${cartItem.price * cartItem.quantity}" id="cartItem">${cartItem.title}</h5>
+        <p id="quantity" >${cartItem.quantity}</p>
         <span class="currency-symbol" currency-select="ILS">${(
         cartItem.price * cartItem.quantity
     ).toFixed(2)}₪</span>

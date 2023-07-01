@@ -39,11 +39,8 @@ app.use("/privacyPolicy", routes.privacyPolicyRouter);
 app.use("/ourStory", routes.ourStoryRouter);
 app.use("/ProductPage", routes.productPageRouter);
 app.use("/cart", routes.cartRouter);
-
-app.get("/", (req, res, next) => {
-  const filePath = path.join(__dirname, "views", "homePage", "homePage.ejs");
-  res.render(filePath);
-});
+app.use("/", routes.homePageRouter);
+app.use("/contactUs", routes.contactUsRouter);
 
 app.listen(PORT, () => {
   console.log(`app available on http://localhost:${PORT}`);

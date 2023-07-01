@@ -41,6 +41,7 @@
 .section1__box {
   display: flex;
   align-items: center;
+  margin-right: 0rem;
 }
 
 .counter-button {
@@ -68,18 +69,6 @@
 .add-to-cart-container {
   position: relative;
   margin-left: 7rem;
-}
-
-.add-to-cart-button {
-  padding: 0.75rem 4rem;
-  border: none;
-  background-color: whitesmoke;
-  color: black;
-  border: black;
-  font-size: 1.125rem;
-  font-weight: bold;
-  cursor: pointer;
-  position: relative;
 }
 
 .section1__flexRow5,
@@ -163,6 +152,7 @@
   font-weight: bold;
   cursor: pointer;
   right: 0;
+  width: 25rem;
 }
 
 .message-content-box {
@@ -214,16 +204,16 @@
   margin-top: 0.6rem;
   right: 1rem;
   font-size: 0.719rem;
-  min-width: 6rem;
+  min-width: 3rem;
 }
 
 .message-content-box {
   position: relative;
-  /* width: 100%;
-  max-width: 91.25rem; */
+  width: 100%;
+  max-width: 91.25rem;
   height: 2.813rem;
-  min-width: 50rem;
-  /* margin: -1.125rem 0 0 12.1875rem; */
+  /* min-width: 50rem; */
+  margin: -1.125rem 0 0 12.1875rem;
   margin-left: auto;
   margin-right: auto;
   background-color: #efefef;
@@ -234,14 +224,12 @@
   /* z-index: 1; */
 }
 
-/* Adjust the font sizes and margins for smaller screens
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .message-content-box {
     font-size: 0.875px;
     margin-left: 3rem;
-  } */
-/* 
-  .message-highlights {
+  }
+  */ .message-highlights {
     font-size: 0.75rem;
     margin-left: 0.5rem;
   }
@@ -250,25 +238,39 @@
     margin-left: 1rem;
     font-size: 0.625rem;
   }
+}
 
-
-/* @media (max-width: 425px) {
+@media (max-width: 425px) {
   .message-content-box {
     font-size: 0.75rem;
     margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  } */
-
-/* .message-highlights {
+    margin-right: 2rem;
+  }
+  */ .message-highlights {
     font-size: 0.625rem;
     margin-left: 0.25rem;
   }
 
   .view-cart-button {
-    margin-left: 0.5rem;
+    margin-left: 4rem;
     font-size: 0.5rem;
   }
-} */
+  .section1__box {
+    margin-right: 0rem;
+  }
+
+  .add-to-cart-button {
+    min-width: 10rem;
+    width: 10rem;
+    margin-left: 2rem;
+    padding: 0;
+    text-align: center;
+  }
+  .add-to-cart-container {
+    position: relative;
+    margin-left: 1rem;
+  }
+}
 
 .box {
   padding: 1.875rem;

@@ -3,9 +3,14 @@ const router = express.Router();
 const path = require("path");
 const Orders = require("../models/orders/orders.schema");
 const { addressValidator } = require("../models/users/user.validator.js");
+
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
 const { updateUserFields, updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
 const { getAllProducts, getAllSupplierProducts } = require("../controller/products/products.controller.js");
+const deleteUser = require(path.join(__dirname, "../", "controller", "users", "deleteUser.controller"));
+const EditUserById = require(path.join(__dirname, "../", "controller", "users", "EditUserById.controller"));
+const getAllUsers = require(path.join(__dirname, "../", "controller", "users", "getAllUsers.controller"));
+
 
 router.use("/", (req, res, next) => {
   try {
@@ -25,7 +30,9 @@ router.get("/", (req, res, next) => {
 router.get("/navbar", (req, res, next) => {
   try {
     const type = req.type;
-    res.render(path.join(__dirname, "..", "views", "account", "account"), { type });
+    res.render(path.join(__dirname, "..", "views", "account", "account"), {
+      type,
+    });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -36,23 +43,30 @@ router.get("/details", async (req, res, next) => {
     const type = req.type;
     const { email } = req.session.data;
     const user = await getUser(email);
-    res.render(path.join(__dirname, "..", "views", "account", "accountDetails", "accountDetails"), { user });
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountDetails",
+        "accountDetails"
+      ),
+      { user }
+    );
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
-router.get("/orders", async(req, res, next) => {
+router.get("/orders", async (req, res, next) => {
   try {
-    let userOrders
+    let userOrders;
     const type = req.type;
     const userId = req.session?.data._id;
-    if(type === "customer")
-        userOrders = await Orders.find({user : userId})
-    else if(type === "admin" )
-        userOrders = await Orders.find()
-    else
-        userOrders = [];      
+    if (type === "customer") userOrders = await Orders.find({ user: userId });
+    else if (type === "admin") userOrders = await Orders.find();
+    else userOrders = [];
     console.log(userOrders);
     res.render(
       path.join(
@@ -62,7 +76,8 @@ router.get("/orders", async(req, res, next) => {
         "account",
         "accountOrders",
         "accountOrders"
-      ), { type, orders: userOrders }
+      ),
+      { type, orders: userOrders }
     );
   } catch (error) {
     res.status(500).send(error.message);
@@ -75,13 +90,21 @@ router.put("/details", async (req, res, next) => {
     const user = await getUser(email);
 
     if (req.body.newPassword) {
-      const matchPasswords = await bcrypt.compare(req.body.currentPassword, user.password);
+      const matchPasswords = await bcrypt.compare(
+        req.body.currentPassword,
+        user.password
+      );
       if (!matchPasswords) {
         throw new Error("Passwords does not match");
       }
       await updateUserPassword(user, req.body);
     } else {
-      const isvalidAddress = await addressValidator(req.body.country, req.body.city, req.body.street, req.body.houseNumber);
+      const isvalidAddress = await addressValidator(
+        req.body.country,
+        req.body.city,
+        req.body.street,
+        req.body.houseNumber
+      );
       if (!isvalidAddress) {
         throw new Error("Address does not exist");
       }
@@ -107,7 +130,17 @@ router.put("/details", async (req, res, next) => {
 router.get("/orders", (req, res, next) => {
   try {
     const type = req.type;
-    res.render(path.join(__dirname, "..", "views", "account", "accountOrders", "accountOrders"), { type });
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountOrders",
+        "accountOrders"
+      ),
+      { type }
+    );
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -123,13 +156,23 @@ router.get("/products", async (req, res, next) => {
     if (type === "admin") {
       products = await getAllProducts();
     }
-    if (type === "supplier"){
+    if (type === "supplier") {
       products = await getAllSupplierProducts(req.userId);
     }
+
+
     res.render(
       path.join(
-        __dirname, "..", "views", "account", "accountProducts", "accountProducts"
-      ), { type, products });
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountProducts",
+        "accountProducts"
+      ),
+      { type, products }
+    );
+
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -139,8 +182,21 @@ router.get("/orders/:orderId", (req, res, next) => {
   try {
     const type = req.type;
     const { orderId } = req.params;
-    res.render(path.join(__dirname, "..", "views", "account", "accountViewOrder", "accountViewOrder"), { type });
-  } catch (error) { }
+
+
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountViewOrder",
+        "accountViewOrder"
+      ),
+      { type }
+    );
+
+  } catch (error) {}
 });
 
 router.get("/whishlist", (req, res, next) => {
@@ -149,11 +205,35 @@ router.get("/whishlist", (req, res, next) => {
     if ("customer" !== type) {
       res.status(404).send("unauthorize");
     }
-    res.render(path.join(__dirname, "..", "views", "account", "accountWishlist", "accountWishlist"));
+    res.render(
+      path.join(
+        __dirname,
+        "..",
+        "views",
+        "account",
+        "accountWishlist",
+        "accountWishlist"
+      )
+    );
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
+
+router.get("/users", async (req, res, next) => {
+  try {
+    const type = req.type;
+    let users = [];
+    if (!["admin"].includes(type)) {
+      res.redirect("/account/");
+    }
+    users = await getAllUsers();
+    res.render(path.join(__dirname, "..", "views", "account", "accountUsers", "accountUsers"), { type, users });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 
 router.get("/dashboard", (req, res, next) => {
   try {
@@ -164,6 +244,26 @@ router.get("/dashboard", (req, res, next) => {
     res.render(path.join(__dirname, "..", "views", "account", "accountDashboard", "accountDashboard"));
   } catch (error) {
     res.status(500).send(error.message);
+  }
+});
+
+
+router.delete("/:id", async (req, res) => {
+  try {
+    await deleteUser(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    console.log(req.body);
+    EditUserById(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
   }
 });
 

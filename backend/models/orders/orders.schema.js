@@ -93,7 +93,7 @@ const ordersSchema = new mongoose.Schema({
   couponCode: {
     type: String,
     require: true,
-    enum: ["Effi", "roee", "gil", "itay", "bar", "kfir"],
+    enum: ["Effi", "roee", "gil", "etai", "bar", "kfir"],
     validate: [validateCoupon, "Sorry, this coupon is invalid"],
   },
 });

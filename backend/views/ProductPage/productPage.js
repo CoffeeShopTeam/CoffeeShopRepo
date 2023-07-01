@@ -15,18 +15,21 @@ $(document).on("click", ".minus-button", function () {
   let value = parseInt(
     $(this).siblings(".counter-value").first().text().trim()
   );
-  if (value > 1) {
+  if (value > 1 ) {
     value--;
     $(this).siblings(".counter-value").first().text(value);
   }
 });
 
 $(document).on("click", ".plus-button", function () {
+  const quantity = $("#quantity").text();
   let value = parseInt(
     $(this).siblings(".counter-value").first().text().trim()
   );
-  value++;
-  $(this).siblings(".counter-value").first().text(value);
+  if (value < quantity){
+    value++;
+    $(this).siblings(".counter-value").first().text(value);
+  }
 });
 
 $(document).ready(function () {

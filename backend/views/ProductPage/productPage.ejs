@@ -93,7 +93,11 @@
                           </div>
                           <% if (product.productQuantity) { %>
                             <h5 class="section1__highlights6 quantity">
-                              Only <%= product.productQuantity %> left
+                              Only 
+                              <span id="quantity">
+                                <%= product.productQuantity %> 
+                              </span>
+                              left
                             </h5>
                           <% } %>
                       </div>

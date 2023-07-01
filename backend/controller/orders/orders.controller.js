@@ -1,10 +1,19 @@
 const Orders = require("../../models/orders/orders.schema");
 const path = require('path');
+const { getProductById } = require("../products/products.controller");
 
 async function createOrder(orderDetails, userId) {
     console.log(orderDetails);
     const parsedData = createUserObjec(orderDetails, userId);
     const newOrder = await Orders(parsedData);
+    newOrder.products.forEach(async (product) => {
+        // TODO: CHECK: is product is id or object
+        const fullProduct = await getProductById(product);
+        const newQuantity = fullProduct.productQuantity - product.quantity;
+        if (newQuantity < 0) throw new Error("Quantity is greater then the maximum");
+        fullProduct.set("productQuantity", newQuantity);
+        // # # # # # # # # # # # # # # # # # # #
+    });
     const savedOrder = await newOrder.save();
     if (!savedOrder) throw new Error("there was an error saving the order");
     return savedOrder;

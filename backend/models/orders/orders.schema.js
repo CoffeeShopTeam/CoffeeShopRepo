@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const ordersSchema = new mongoose.Schema({
   user: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "User", // Reference the user schema
+    ref: "users", // Reference the user schema
   },
   products:[{
   product:{
@@ -57,6 +57,11 @@ const ordersSchema = new mongoose.Schema({
       require: true,
       min: [2, `street can't be shorter then two characters`],
     },
+    houseNumber:{
+      type: String,
+      require: true,
+      min: [1, `house number can't be shorter then one characters`],
+    },
     postalCode: {
       type: String,
       require: true,
@@ -81,7 +86,6 @@ const ordersSchema = new mongoose.Schema({
 
   cardNumber: {
     type: String,
-    validate: [validateCreditCard, "invalid credit card number"],
   },
 
   orderDate: {
@@ -99,21 +103,21 @@ const ordersSchema = new mongoose.Schema({
 });
 
 ordersSchema.pre("save", async function (next) {
+
   const { country, city, street, houseNumber } = this.shippingDetails;
-  try {
-    const isAddressValid = await addressValidator(country, city, street, houseNumber);
-    if (!isAddressValid) {
-      throw new Error("Address is not valid");
-    }
-  } catch (error) {
-    return next(error);
+  if (!this.isModified("cardNumber")) {
+    return next();
   }
   try {
-    const salt = await bcrypt.genSalt(10);
-    const hashedCardNumber = await bcrypt.hash(this.cardNumber, salt);
-    this.cardNumber = hashedCardNumber;
-
-    return next();
+    if(validateCreditCard(this.cardNumber))
+    {
+      const salt = await bcrypt.genSalt(10);
+      const hashedCardNumber = await bcrypt.hash(this.cardNumber, salt);
+      this.cardNumber = hashedCardNumber;
+      return next();
+    }
+    else
+      return next();
   } catch (error) {
     return next(error);
   }

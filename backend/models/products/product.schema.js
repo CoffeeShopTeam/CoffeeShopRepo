@@ -33,7 +33,7 @@ const ProductSchema = new mongoose.Schema({
   },
   supplierId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "User",
+    ref: "users",
   },
   productBrand: {
     type: String,

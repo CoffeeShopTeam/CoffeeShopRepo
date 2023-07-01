@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const {createOrder, getAllOrders, getOrdersByUserID}  = require('../controller/index');
+const {createOrder, getAllOrders}  = require('../controller/index');
 
 //render to order confirmation
 router.post('/', async(req, res, next) => {
     try{
         const orderDetails = req.body;
         const userId = req.session?.data._id;
-        if(!userId)
+        if(!req.session?.data._id)
             res.redirect('/login');
         else{
             await createOrder(orderDetails, userId);
@@ -19,9 +19,6 @@ router.post('/', async(req, res, next) => {
     }
 });
 
-// get all orders for admin - no redirection yet
-router.get('/all',getAllOrders);
-
-// render view orders page
+router.get('/all', getAllOrders);
 
 module.exports = router;

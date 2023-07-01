@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
@@ -24,7 +25,7 @@
             <div class="first-table col-md-12 col-8">
                 <div class="card border-0">
                     <div class="card-header">
-                        <h5 class="card-title">Order Details - <%= orderId %></h5>
+                        <h5 class="card-title">Order Details - <%= order._id %></h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -32,22 +33,22 @@
                                 <div class="form-group">
                                     <div class="form-floating mb-3">
                                         <input type="text" disabled class="form-control-plaintext" id="orderNumber"
-                                            name="orderNumber" value="12345" />
+                                            name="orderNumber" value="<%= order._id %>" />
                                         <label for="orderNumber">Order Number</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="email" disabled class="form-control-plaintext" id="email"
-                                            name="email" value="user@example.com" />
+                                            name="email" value="<%= order.shippingDetails.email %>" />
                                         <label for="email">Email</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" disabled class="form-control-plaintext" id="paymentMethod"
-                                            name="paymentMethod" value="Credit Card" />
+                                            name="paymentMethod" value="<%= order.paymentMethod %>" />
                                         <label for="paymentMethod">Payment Method</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" disabled class="form-control-plaintext" id="orderDate"
-                                            name="orderDate" value="2023-06-24" />
+                                            name="orderDate" value="<%= order.orderDate %>" />
                                         <label for="orderDate">Order Date</label>
                                     </div>
                                 </div>
@@ -55,23 +56,18 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="form-floating mb-3">
-                                        <input type="text" disabled class="form-control-plaintext" id="deliveryOption"
-                                            name="deliveryOption" value="Express Shipping" />
-                                        <label for="deliveryOption">Delivery Option</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
                                         <input type="text" disabled class="form-control-plaintext" id="deliveryAddress"
-                                            name="deliveryAddress" value="Rishon Le Ziyon, Colman College" />
+                                            name="deliveryAddress" value="<%= order.shippingDetails.city %> <%= order.shippingDetails.street %>, <%= order.shippingDetails.country %>" />
                                         <label for="deliveryAddress">Delivery Address</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" disabled class="form-control-plaintext" id="contactNumber"
-                                            name="contactNumber" value="+1 123-456-7890" />
+                                            name="contactNumber" value="<%= order.shippingDetails.phone %>" />
                                         <label for="contactNumber">Contact Number</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" disabled class="form-control-plaintext" id="orderNotes"
-                                            name="orderNotes" value="Call before shipping" />
+                                            name="orderNotes" value="<%= order.shippingDetails.ordersNotes %>" />
                                         <label for="orderNotes">Order notes</label>
                                     </div>
                                 </div>
@@ -91,11 +87,19 @@
                             <thead>
                                 <tr>
                                     <th>Product</th>
+                                    <th>Quatity</th>
                                     <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <% for (let i = 0; i < order?.products?.length; i++) { %>
+                                    <tr>
+                                        <td><%= order?.products[i]?.productName %></td>
+                                        <td><%= order?.products[i]?.productQuantity %></td>
+                                        <td><%= order?.products[i]?.productPrice %></td>
+                                    </tr>
+                                <% } %>
+                                <!-- <tr>
                                     <td>Product 1</td>
                                     <td>$19.99</td>
                                 </tr>
@@ -106,18 +110,21 @@
                                 <tr>
                                     <td>Product 3</td>
                                     <td>$9.99</td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th>Subtotal</th>
-                                    <td>$59.97</td>
+                                    <th></th>
+                                    <th><%= order?.orderPrice %></th>
                                 </tr>
                                 <tr>
                                     <th>Shipping</th>
-                                    <td class="table-price">$5.00</td>
+                                    <td>1</td>
+                                    <th class="table-price"> free </td>
                                 </tr>
                                 <tr>
                                     <th>Total</th>
-                                    <td class="table-price">$64.97</td>
+                                    <th></th>
+                                    <th class="table-price"><%= order?.orderPrice %></th>
                                 </tr>
                             </tbody>
                         </table>

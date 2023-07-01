@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Account - Orders</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
     <link rel="stylesheet" href="/account/accountOrders/accountOrders.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -14,7 +15,6 @@
     <div class="accountNavBar" id="accountNavBar"></div>
     <div class="container">
       <h1>Orders</h1>
-      <form method="GET" action="/orders">
         <% if (orders.length === 0) { %>
         <p>No orders have been made yet.</p>
         <% } else { %>
@@ -31,21 +31,46 @@
           <tbody id="orderTableBody">
             <% orders.forEach(function(order) { %>
             <tr>
-              <td class="<%= order._id %>"><%= order._id.toString().slice(-5) %></td>
+              <td class="<%= order._id %>" name="<%= order._id %>"><%= order._id.toString().slice(-5) %></td>
               <td><%= new Date(order.orderDate).toLocaleString() %></td>
-              <td><%= order.shippingDetails.email %></td>
+              <td><%= order.shippingDetails.email %>              
+                  <button class="btn edit" value="<%= order._id%>" data-toggle="modal" data-target="#editModal">
+                    <img class="icon edit" src="/assets/pencil.svg" alt="edit" />
+                  </button>
+              </td>
               <td><%= order.orderPrice %></td>
-              <td><%= new Date(order.orderDate).toLocaleString() %></td>
               <td>
-                <button type="submit" class="btn-xs btn-dark ms-auto" id="convert-button">View Order</button>
+                <form method="GET" action="/account/orders/<%= order._id %>">
+                <button type="submit" class="btn-xs btn-dark ms-auto view-order" data-order-id="<%= order._id %>">View Order</button>
+                </form>
               </td>
             </tr>
             <% }); %>
           </tbody>
         </table>
         <% } %>
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-dark">
+                <h5 class="modal-title text-light" id="exampleModalLabel">Edit Shipping Email</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="editForm" action="/account/orders/" >
+                  <div class="mb-3">
+                    <label for="userType" class="form-label">Type:</label>
+                    <input type="text" name="email-details" id="email-details" placeholder="put your new email here" class="form-control" required>
+                  </div>
+                  <div class="modal-footer">
+                    <button id="save" type="submit" class="btn btn-dark">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <div style="margin: 20rem"></div>
-      </form>
       <p id="emptyMessage" style="display: none">No orders have been made yet. <a href="#">Product</a></p>
     </div>
     <div class="footer" id="footer"></div>

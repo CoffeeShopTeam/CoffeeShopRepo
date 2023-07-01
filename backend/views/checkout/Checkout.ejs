@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/checkout/Checkout.css" />
+    <script src="/checkout/Checkout.js"></script>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="stylesheet" type="text/css"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/checkout/Checkout.css" />
-  <script src="/checkout/Checkout.js"></script>
-
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-</head>
-
-<body>
-  <header>
-    <nav>
-      <div id="header"></div>
-    </nav>
-  </header>
-  <form class="container" method="POST" action="/orders" autocomplete="on">
-
-    <div class="mb-4">
-      <h1 class="text-center">Checkout</h1>
-    </div>
-    <div></div>
-    <section>
-      <div class="row">
-        <div class="d-flex justify-content-center">
+  <body>
+    <header>
+      <nav>
+        <div id="header"></div>
+      </nav>
+    </header>
+    <form class="container" id="containerForm">      
+      <div class="mb-4">
+        <h1 class="text-center">Checkout</h1>
+      </div>
+      <div></div>
+      <section>
+        <div class="row">
+          <div class="d-flex justify-content-center">
+          </div>
         </div>
       </div>
       <hr class="mt-2" />
@@ -91,11 +100,18 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="street-address">Street Address</label>
                 <span class="must-fill">*</span>
-                <input type="text" class="form-control" name="street-address" required />
+                <input type="text" class="form-control" name="streetAddress" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="street-address">House Number</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="houseNumber" required />
               </div>
             </div>
             <div class="col-md-6">
@@ -139,26 +155,13 @@
           <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h5 class="mb-0">PRODUCT</h5>
+            <h5 class="mb-0">QTY</h5>
             <h5 class="mb-0">TOTAL</h5>
           </div>
-          <hr class="mb-3" />
-          <div class="d-flex justify-content-between align-items-center mb-2 product">
-            <h5 class="mb-0" data-amount="350">CitiZ</h5>
-            <span class="currency-symbol" currency-select="ILS">350₪</span>
-          </div>
-          <div class="d-flex justify-content-between align-items-center mb-2 product">
-            <h5 class="mb-0" data-amount="20">BARISTA Cups</h5>
-            <span class="currency-symbol" currency-select="ILS">20₪</span>
-          </div>
-          <div class="d-flex justify-content-between align-items-center mb-2 product">
-            <h5 class="mb-0" data-amount="20">ORIGIN Cups</h5>
-            <span class="currency-symbol" currency-select="ILS">20₪</span>
-          </div>
-          <hr3 class="mb-3" />
-          <div class="d-flex justify-content-between align-items-center mb-2 product">
-            <h5 class="mb-0" data-amount="380" name="orderPrice">TOTAL</h5>
-            <span class="currency-symbol" currency-select="ILS">380₪</span>
-          </div>
+          <!-- <hr class="mb-3" /> -->
+          <div id="checkout-product"></div>
+          <!-- <hr class="mb-3" /> -->
+          <div id="checkout-total"></div>
           <div class="d-flex justify-content-between align-items-center mb-2">
           </div>
           <div class="d-flex justify-content-between align-items-center mb-2">
@@ -224,6 +227,7 @@
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="GBP">GBP</option>
+        <option value="ILS">ILS</option>
       </select>
       <button type="submit" class="btn-xs btn-dark ms-auto" id="convert-button">Convert</button>
     </form>
@@ -235,7 +239,7 @@
       Apply Coupon</button>
   </div>
 
-  <button class="btn btn-success btn-block btn-lg btn-dark" type="submit">
+  <button class="btn btn-success btn-block btn-lg btn-dark" id="place-order-button" type="submit">
     PLACE ORDER
   </button>
   </div>

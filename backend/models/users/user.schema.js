@@ -68,10 +68,10 @@ UserSchema.pre("save", async function (next) {
     if (this.password !== this.rePassword) {
       throw new Error("Passwords does not match");
     }
-    const isvalidAddress = await addressValidator(this.country, this.city, this.street, this.houseNumber);
-    if (!isvalidAddress) {
-      throw new Error("Address does not exist");
-    }
+    // const isvalidAddress = await addressValidator(this.country, this.city, this.street, this.houseNumber);
+    // if (!isvalidAddress) {
+    //   throw new Error("Address does not exist");
+    // }
     this.rePassword = "";
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(this.password, salt);

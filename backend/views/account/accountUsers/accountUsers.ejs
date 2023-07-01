@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/account/accountUsers/accountUsers.css" />
+    <script src="\account\accountUsers\accountUsers.js"></script>
+    <title>Users Management</title>
+  </head>
+
+  <body class="flex-column">
+    <header id="header"></header>
+    <div class="accountNavBar" id="accountNavBar"></div>
+    <div class="users container">
+      <h1>Users</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Birthday</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody">
+          <% for (let i = 0; i < users.length; i++) { %>
+          <tr>
+            <td><%= users[i].firstName %></td>
+            <td><%= users[i].lastName %></td>
+            <td><%= users[i].email %></td>
+            <td><%= users[i].phone %></td>
+            <td><%= users[i].birthday %></td>
+            <td><%= users[i].country %></td>
+            <td><%= users[i].type %></td>
+            <td>
+              <button class="btn delete" value="<%= users[i]._id%>">
+                <img value="<%= users[i]._id%>" class="icon delete" src="/assets/trash.svg" alt="delete" />
+              </button>
+              <button class="btn edit" value="<%= users[i]._id%>" data-toggle="modal" data-target="#editModal">
+                <img class="icon edit" src="/assets/pencil.svg" alt="edit" />
+              </button>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-dark">
+              <h5 class="modal-title text-light" id="exampleModalLabel">Edit User</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="editForm" action="/account/">
+                <div class="mb-3">
+                  <label for="userType" class="form-label">Type:</label>
+                  <select name="userType" id="userType" class="form-control" required>
+                    <option value="admin">Admin</option>
+                    <option value="supplier">Supplier</option>
+                    <option value="customer">Customer</option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button id="save" type="submit" class="btn btn-dark">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footer"></div>
+    <script src="\partials\partials.js"></script>
+    <script src="\account\account.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

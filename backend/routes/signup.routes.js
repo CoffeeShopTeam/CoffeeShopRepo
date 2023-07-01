@@ -1,20 +1,20 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const path = require('path');
-const { createUser } = require('../controller/users')
+const path = require("path");
+const { createUser } = require("../controller/users");
 
-router.get('/', (req, res, next) => {
-    res.render(path.join(__dirname, '../', 'views', 'signup', 'signUpPage'));
+router.get("/", (req, res, next) => {
+  res.render(path.join(__dirname, "../", "views", "signup", "signUpPage"));
 });
 
-router.post('/', async (req, res, next) => {
-    try {
-        const userDetails = req.body;
-        await createUser(userDetails);
-        res.send("Saved!")
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
+router.post("/", async (req, res, next) => {
+  try {
+    const userDetails = req.body;
+    await createUser(userDetails);
+    res.send("Saved!");
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
 });
 
 module.exports = router;

@@ -1,0 +1,17 @@
+img{
+    position: relative;
+    height: 5rem;
+    z-index: 10;
+}
+
+.icon {
+    height: 1rem;
+    width: 1rem;
+    position: relative;
+    z-index: 9;
+}
+
+.button{
+
+    z-index: 2;
+}

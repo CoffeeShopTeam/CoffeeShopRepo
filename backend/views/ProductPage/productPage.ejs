@@ -1,123 +1,93 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/ProductPage/productPage.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <script src="\backend\node_modules\jquery\dist\jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/aos@2.3.1/dist/aos.js"
-    ></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/gh/px2code/posize/build/v1.01.0.js"></script>
-  </head>
 
-  <body class="flex-column">
-    <header id="header">
-      <div id="header"></div>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" type="text/css" href="/ProductPage/productPage.css" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="\backend\node_modules\jquery\dist\jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/px2code/posize/build/v1.01.0.js"></script>
+</head>
 
-    <main class="product-page main">
-      <div class="container">
-        <div class="card mb-4 custom-card" style="border: none">
-          <div class="row no-gutters">
-            <div class="col-md-6">
-              <img
-                src="\assets\<%= product.productImage%>"
-                alt="Product Image"
-                class="card-img"
-                id="product-image"
-                style="width: 75%; max-width: 100%; height: auto"
-              />
-            </div>
-            <div class="col-md-6">
-              <div class="card-body custom-card">
-                <h2 class="card-title" id="product-title">
-                  <%= product.productName %>
-                </h2>
-                <h3
-                  class="specific-product card-subtitle price"
-                  id="product-price"
-                >
-                  $<%= product.productPrice %>
-                </h3>
-                <p class="card-text section1__highlights section1__greyed-text">
-                  <%= product.productDescription %>
-                </p>
-                <div class="section1__flexCol4">
-                  <div class="section1__box">
-                    <div class="counter-button">
-                      <button class="minus-button">-</button>
-                      <span class="counter-value">1</span>
-                      <button class="plus-button">+</button>
-                    </div>
-                    <div class="add-to-cart-container">
-                      <button
-                        id=".add-to-cart-button"
-                        class="add-to-cart-button btn-block"
-                      >
-                        ADD TO CART
-                      </button>
-                    </div>
+<body class="flex-column">
+  <header id="header">
+    <div id="header"></div>
+  </header>
+
+  <main class="product-page main">
+    <div class="container" id="<%= product._id%>">
+      <div class="card mb-4 custom-card" style="border: none">
+        <div class="row no-gutters">
+          <div class="col-md-6">
+            <img src="\assets\<%= product.productImage%>" alt="Product Image" class="card-img" id="product-image"
+              style="width: 75%; max-width: 100%; height: auto" />
+          </div>
+          <div class="col-md-6">
+            <div class="card-body custom-card">
+              <h2 class="card-title" id="product-title">
+                <%= product.productName %>
+              </h2>
+              <h3 class="specific-product card-subtitle price" id="product-price">
+                $<%= product.productPrice %>
+              </h3>
+              <p class="card-text section1__highlights section1__greyed-text">
+                <%= product.productDescription %>
+              </p>
+              <div class="section1__flexCol4">
+                <div class="section1__box">
+                  <div class="counter-button">
+                    <button class="minus-button">-</button>
+                    <span class="counter-value">1</span>
+                    <button class="plus-button">+</button>
+                  </div>
+                  <div class="add-to-cart-container">
+                    <button id=".add-to-cart-button" class="add-to-cart-button btn-block">
+                      ADD TO CART
+                    </button>
                   </div>
                 </div>
-                <div class="section1__flexRow5">
-                  <h5 class="section1__highlights11">Brand:</h5>
-                  <h5 class="section1__highlights6">
-                    <%= product.productBrand%>
-                  </h5>
-                </div>
-                <div class="section1__flexRow5">
-                  <h5 class="section1__highlights11">Categories:</h5>
-                  <h5 class="section1__highlights6">
-                    <%= product.productCategory%>
-                  </h5>
-                </div>
+              </div>
+              <div class="section1__flexRow5">
+                <h5 class="section1__highlights11">Brand:</h5>
+                <h5 class="section1__highlights6">
+                  <%= product.productBrand%>
+                </h5>
+              </div>
+              <div class="section1__flexRow5">
+                <h5 class="section1__highlights11">Categories:</h5>
+                <h5 class="section1__highlights6">
+                  <%= product.productCategory%>
+                </h5>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="card mb-4 custom-card" style="border: none">
-          <div class="card-body custom-card"></div>
-        </div>
+      <div class="card mb-4 custom-card" style="border: none">
+        <div class="card-body custom-card"></div>
+      </div>
 
-        <div class="text-box">
-          <h4 class="card-title section2__title">Similar Items</h4>
-        </div>
-        <div class="box-wrap">
-          <div class="row">
-            <% relatedProducts.forEach((product) => { %>
-            <div
-              class="col-lg-4"
-              onclick="window.location.href='/ProductPage/<%= product._id%>'"
-            >
+      <div class="text-box">
+        <h4 class="card-title section2__title">Similar Items</h4>
+      </div>
+      <div class="box-wrap">
+        <div class="row">
+          <% relatedProducts.forEach((product)=> { %>
+            <div class="col-lg-4" onclick="window.location.href='/ProductPage/<%= product._id%>'">
               <div class="card mb-4 box custom-card" style="border: none">
-                <img
-                  src="/assets/<%= product.productImage %>"
-                  alt="Related Product"
-                  class="card-img-top"
-                />
+                <img src="/assets/<%= product.productImage %>" alt="Related Product" class="card-img-top" />
                 <div class="card-body-sub custom-card">
-                  <h5 class="card-title"><%= product.productName %></h5>
+                  <h5 class="card-title">
+                    <%= product.productName %>
+                  </h5>
                   <h6 class="specific-product card-subtitle price">
                     $<%= product.productPrice %>
                   </h6>
@@ -125,11 +95,12 @@
               </div>
             </div>
             <% }) %>
-          </div>
         </div>
       </div>
-    </main>
-    <footer class="footer" id="footer"></footer>
-    <script src="\ProductPage\productPage.js"></script>
-  </body>
+    </div>
+  </main>
+  <footer class="footer" id="footer"></footer>
+  <script src="\ProductPage\productPage.js"></script>
+</body>
+
 </html>

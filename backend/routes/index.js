@@ -5,10 +5,13 @@ const checkoutRouter = require("./checkout.routes");
 const productRouter = require("./products.routes");
 const shopRouter = require("./shopPage.routes");
 const orderConfirmationRouter = require("./orderConfirmation.routes");
+const graphRouter = require("./graphs.routes");
 const privacyPolicyRouter = require("./privacyPolicy.routes");
 const ourStoryRouter = require("./ourStory.routes");
 const ordersRouter = require("./orders.routes");
 const productPageRouter = require("./productPage.routes");
+const cartRouter = require("./cart.routes");
+const logoutRouter = require("./logout.routes");
 
 module.exports = {
   signupRouter,
@@ -17,9 +20,15 @@ module.exports = {
   checkoutRouter,
   productRouter,
   shopRouter,
-  ordersRouter,
+  graphRouter,
   orderConfirmationRouter,
+
+  ordersRouter,
+
+  cartRouter,
+
   productPageRouter,
   privacyPolicyRouter,
   ourStoryRouter,
+  logoutRouter,
 };

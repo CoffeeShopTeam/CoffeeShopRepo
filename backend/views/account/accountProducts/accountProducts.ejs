@@ -14,7 +14,6 @@
       rel="stylesheet"
       href="/account/accountProducts/accountProducts.css"
     />
-    <!-- <script src="account.js"></script> -->
   </head>
   <body>
     <div class="header" id="header"></div>
@@ -71,18 +70,17 @@
             <% } %>
           </tbody>
         </table>
-        <% } else { %>
-          There are no products yet. Click on + to add a new product.
-          <% } %>
+        <% } else { %> There are no products yet. Click on + to add a new
+        product. <% } %>
         <div class="row justify-content-end">
           <div class="col-auto">
             <button
               type="button"
-              class="plus-button btn btn-dark rounded-circle fs-3"
+              class="plus-button"
               data-toggle="modal"
               data-target="#myModal"
             >
-              &#43;
+              Add Product
             </button>
           </div>
         </div>
@@ -104,7 +102,7 @@
               <button
                 type="button"
                 class="btn-close"
-                data-bs-dismiss="modal"
+                data-bs-dismiss="Modal"
                 aria-label="Close"
               ></button>
             </div>

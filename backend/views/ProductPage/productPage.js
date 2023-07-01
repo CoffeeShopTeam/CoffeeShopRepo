@@ -6,7 +6,7 @@ $(function () {
 $(document).ready(function () {
   $.get("/ProductPage/" + productId, function (data) {
     $(".card-title").text(data.productName);
-    $(".price").text("$" + data.productPrice);
+    $(".price").text("₪" + data.productPrice);
     $(".section1__greyed-text").text(data.productDescription);
   });
 });
@@ -32,8 +32,11 @@ $(document).on("click", ".plus-button", function () {
 $(document).ready(function () {
   $(".add-to-cart-button").click(function () {
     let quantity = $(".quantity").attr("id");
+    console.log(quantity);
     let amount = $(".counter-value").text();
+    console.log(amount);
     if (quantity < amount) {
+      console.log("if");
       alert("Easy There! It's more than what we have :(");
       return;
     }
@@ -83,7 +86,7 @@ $(document).ready(function () {
     const product = {
       image: $("#product-image").attr("src"),
       title: $("#product-title").text().trim(),
-      price: $("#product-price").text().trim().replace("$ ", ""),
+      price: $("#product-price").text().trim().replace("₪ ", ""),
       quantity: $(".counter-value").text().trim(),
       id: $(".container").attr("id"),
     };

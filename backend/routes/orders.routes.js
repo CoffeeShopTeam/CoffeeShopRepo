@@ -19,9 +19,6 @@ router.post('/', async(req, res, next) => {
     }
 });
 
-// get all orders for admin - no redirection yet
 router.get('/all',getAllOrders);
-
-// render view orders page
 
 module.exports = router;

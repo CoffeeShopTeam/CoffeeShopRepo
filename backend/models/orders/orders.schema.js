@@ -81,7 +81,6 @@ const ordersSchema = new mongoose.Schema({
 
   cardNumber: {
     type: String,
-    validate: [validateCreditCard, "invalid credit card number"],
   },
 
   orderDate: {
@@ -99,6 +98,8 @@ const ordersSchema = new mongoose.Schema({
 });
 
 ordersSchema.pre("save", async function (next) {
+  
+ 
   const { country, city, street, houseNumber } = this.shippingDetails;
   try {
     const isAddressValid = await addressValidator(country, city, street, houseNumber);
@@ -108,12 +109,19 @@ ordersSchema.pre("save", async function (next) {
   } catch (error) {
     return next(error);
   }
-  try {
-    const salt = await bcrypt.genSalt(10);
-    const hashedCardNumber = await bcrypt.hash(this.cardNumber, salt);
-    this.cardNumber = hashedCardNumber;
-
+  if (!this.isModified("cardNumber")) {
     return next();
+  }
+  try {
+    if(validateCreditCard(this.cardNumber))
+    {
+      const salt = await bcrypt.genSalt(10);
+      const hashedCardNumber = await bcrypt.hash(this.cardNumber, salt);
+      this.cardNumber = hashedCardNumber;
+      return next();
+    }
+    else
+      return next();
   } catch (error) {
     return next(error);
   }

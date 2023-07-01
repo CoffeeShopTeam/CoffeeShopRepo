@@ -7,10 +7,10 @@ const { addressValidator } = require("../models/users/user.validator.js");
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
 const { updateUserFields, updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
 const { getAllProducts, getAllSupplierProducts } = require("../controller/products/products.controller.js");
+const { getOrdersByOrderId ,editOrderById } = require('../controller/index')
 const deleteUser = require(path.join(__dirname, "../", "controller", "users", "deleteUser.controller"));
 const EditUserById = require(path.join(__dirname, "../", "controller", "users", "EditUserById.controller"));
 const getAllUsers = require(path.join(__dirname, "../", "controller", "users", "getAllUsers.controller"));
-
 
 router.use("/", (req, res, next) => {
   try {
@@ -53,31 +53,6 @@ router.get("/details", async (req, res, next) => {
         "accountDetails"
       ),
       { user }
-    );
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
-
-router.get("/orders", async (req, res, next) => {
-  try {
-    let userOrders;
-    const type = req.type;
-    const userId = req.session?.data._id;
-    if (type === "customer") userOrders = await Orders.find({ user: userId });
-    else if (type === "admin") userOrders = await Orders.find();
-    else userOrders = [];
-    console.log(userOrders);
-    res.render(
-      path.join(
-        __dirname,
-        "..",
-        "views",
-        "account",
-        "accountOrders",
-        "accountOrders"
-      ),
-      { type, orders: userOrders }
     );
   } catch (error) {
     res.status(500).send(error.message);
@@ -127,9 +102,17 @@ router.put("/details", async (req, res, next) => {
   }
 });
 
-router.get("/orders", (req, res, next) => {
+router.get("/orders", async(req, res, next) => {
   try {
+    let userOrders
     const type = req.type;
+    const userId = req.session?.data._id;
+    if(type === "customer")
+        userOrders = await Orders.find({user : userId})
+    else if(type === "admin" )
+        userOrders = await Orders.find()
+    else
+        userOrders = [];      
     res.render(
       path.join(
         __dirname,
@@ -138,13 +121,28 @@ router.get("/orders", (req, res, next) => {
         "account",
         "accountOrders",
         "accountOrders"
-      ),
-      { type }
-    );
+      ), { type, orders: userOrders });
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
+
+router.get("/orders/:orderId" ,async(req, res, next) => {
+  try {
+    await getOrdersByOrderId(req,res)
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+router.put('/orders/:orderId', async(req,res) => {
+  try {
+    await editOrderById(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+})
 
 router.get("/products", async (req, res, next) => {
   try {
@@ -198,6 +196,7 @@ router.get("/orders/:orderId", (req, res, next) => {
 
   } catch (error) {}
 });
+
 
 router.get("/whishlist", (req, res, next) => {
   try {

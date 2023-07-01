@@ -55,8 +55,17 @@ try {
 
 function createUserObjec(orderDetails, userId)
 {
+    let products = []
+    const reqProducts = JSON.parse(orderDetails.products);
+    for (let index = 0; index < reqProducts.length; index++) {
+        products.push({
+            product : reqProducts[index].id,
+            quantity : reqProducts[index].quantity
+        })         
+    }
     const data = {
     user: userId,
+    products: products,
     shippingDetails: {
         deliveryPrice: 10,
         email: orderDetails.email,
@@ -64,8 +73,9 @@ function createUserObjec(orderDetails, userId)
         prefix: orderDetails.prefix,
         country: orderDetails.country,
         city: orderDetails.city,
-        street: orderDetails.street,
-        postalCode: orderDetails.postalCode,
+        street: orderDetails.streetAddress,
+        houseNumber : orderDetails.houseNumber,
+        postalCode: orderDetails.postlCode,
         ordersNotes: orderDetails.ordersNotes,
     },
     orderPrice: orderDetails.orderPrice,

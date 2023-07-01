@@ -1,4 +1,4 @@
-const { getAllProducts } = require("../../controller/products/products.controller");
+// const { getAllProducts } = require("../../controller/products/products.controller");
 
 $(function () {
     $("#currency-conversion-form").on("submit", async function (e) {
@@ -114,32 +114,21 @@ function setTotalValue(cart) {
 }
 
 function submitForm(event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    if ($(this).attr('id') !== 'place-order-button') {
-      return; // Do nothing if it's not the "Place Order" button
-    }
-
-    let elements = $('label');
-
-    let formData = {};
-
-    // Loop through each element and add its value to the formData object
-    elements.each(function(index, element) {
-      let name = $(element).attr('for'); // Get the "for" attribute value of the label
-      let value = $('#' + name).val(); // Get the value of the corresponding input field
-      formData[name] = value; // Add the value to the formData object
-    });
-    let product = "product";
-    let products = getAllProducts()
-    formData[product] = products
+    event.preventDefault()
+    console.log(event);
     
-    // Make the AJAX request
+    let checkoutProducts = JSON.parse(localStorage.getItem("jsonProducts"));
+    console.log(checkoutProducts);
+
+    const form = $(this);
+    let data = $(form).serialize();
+    data = `${data}&products=${JSON.stringify(checkoutProducts)}`;
+    console.log(`the data is `,data);
+    
     $.ajax({
         url: '/orders',
-        type: 'POST',
-        data: formData,
-        contentType: 'application/json',
+        method: 'POST',
+        data: data,
         success: function(response) {
         console.log('Order placed successfully.');
     },
@@ -149,7 +138,6 @@ function submitForm(event) {
         });
 }
 
-$('#place-order-button').on('submit', submitForm);
-
+$('#containerForm').on('submit',submitForm)
 });
 

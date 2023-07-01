@@ -3,7 +3,6 @@ $(function () {
   $("#footer").load("/partials/Footer/Footer.html");
 });
 
-let amount = 1;
 $(document).ready(function () {
   $.get("/ProductPage/" + productId, function (data) {
     $(".card-title").text(data.productName);
@@ -32,6 +31,13 @@ $(document).on("click", ".plus-button", function () {
 
 $(document).ready(function () {
   $(".add-to-cart-button").click(function () {
+    let quantity = $(".quantity").attr("id");
+    let amount = $(".counter-value").text();
+    if (quantity < amount) {
+      alert("Easy There! It's more than what we have :(");
+      return;
+    }
+
     let message = $("<div>", {
       id: "message-content",
       class: "message-content-box col-md-10",
@@ -72,17 +78,16 @@ $(document).ready(function () {
 
     $("#header").after(message);
 
-    let jsonProduct = JSON.parse(localStorage.getItem("jsonProducts")) || []; // Retrieve existing array or initialize it as an empty array if it doesn't exist
+    let jsonProduct = JSON.parse(localStorage.getItem("jsonProducts")) || [];
 
     const product = {
       image: $("#product-image").attr("src"),
       title: $("#product-title").text().trim(),
-      price: $("#product-price").text().trim().replace("$", ""),
+      price: $("#product-price").text().trim().replace("$ ", ""),
       quantity: $(".counter-value").text().trim(),
       id: $(".container").attr("id"),
     };
 
-    // Check if the product already exists in the jsonProduct array
     const existingProduct = jsonProduct.find(
       (p) =>
         p.image === product.image &&

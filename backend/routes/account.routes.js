@@ -3,21 +3,14 @@ const router = express.Router();
 const path = require("path");
 const Orders = require("../models/orders/orders.schema");
 const { addressValidator } = require("../models/users/user.validator.js");
-const getUser = require(path.join(
-  __dirname,
-  "../",
-  "controller",
-  "users",
-  "getUser.controller"
-));
-const {
-  updateUserFields,
-  updateUserPassword,
-} = require("../controller/users/updateUser.contoroller.js");
-const {
-  getAllProducts,
-  getAllSupplierProducts,
-} = require("../controller/products/products.controller.js");
+
+const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
+const { updateUserFields, updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
+const { getAllProducts, getAllSupplierProducts } = require("../controller/products/products.controller.js");
+const deleteUser = require(path.join(__dirname, "../", "controller", "users", "deleteUser.controller"));
+const EditUserById = require(path.join(__dirname, "../", "controller", "users", "EditUserById.controller"));
+const getAllUsers = require(path.join(__dirname, "../", "controller", "users", "getAllUsers.controller"));
+
 
 router.use("/", (req, res, next) => {
   try {
@@ -166,6 +159,8 @@ router.get("/products", async (req, res, next) => {
     if (type === "supplier") {
       products = await getAllSupplierProducts(req.userId);
     }
+
+
     res.render(
       path.join(
         __dirname,
@@ -177,6 +172,7 @@ router.get("/products", async (req, res, next) => {
       ),
       { type, products }
     );
+
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -186,6 +182,8 @@ router.get("/orders/:orderId", (req, res, next) => {
   try {
     const type = req.type;
     const { orderId } = req.params;
+
+
     res.render(
       path.join(
         __dirname,
@@ -197,6 +195,7 @@ router.get("/orders/:orderId", (req, res, next) => {
       ),
       { type }
     );
+
   } catch (error) {}
 });
 
@@ -218,6 +217,39 @@ router.get("/whishlist", (req, res, next) => {
     );
   } catch (error) {
     res.status(500).send(error.message);
+  }
+});
+
+router.get("/users", async (req, res, next) => {
+  try {
+    const type = req.type;
+    let users = [];
+    if (!["admin"].includes(type)) {
+      res.redirect("/account/");
+    }
+    users = await getAllUsers();
+    res.render(path.join(__dirname, "..", "views", "account", "accountUsers", "accountUsers"), { type, users });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    await deleteUser(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    console.log(req.body);
+    EditUserById(req, res);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
   }
 });
 module.exports = router;

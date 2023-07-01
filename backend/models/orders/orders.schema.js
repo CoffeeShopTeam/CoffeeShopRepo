@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const ordersSchema = new mongoose.Schema({
   user: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "User", // Reference the user schema
+    ref: "users", // Reference the user schema
   },
   products:[{
   product:{

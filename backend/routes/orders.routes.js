@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const {createOrder, getAllOrders, getOrdersByUserID}  = require('../controller/index');
+const {createOrder, getAllOrders}  = require('../controller/index');
 
 //render to order confirmation
 router.post('/', async(req, res, next) => {
     try{
         const orderDetails = req.body;
         const userId = req.session?.data._id;
-        if(!userId)
+        if(!req.session?.data._id)
             res.redirect('/login');
         else{
             await createOrder(orderDetails, userId);
@@ -19,6 +19,6 @@ router.post('/', async(req, res, next) => {
     }
 });
 
-router.get('/all',getAllOrders);
+router.get('/all', getAllOrders);
 
 module.exports = router;

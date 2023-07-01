@@ -57,6 +57,11 @@ const ordersSchema = new mongoose.Schema({
       require: true,
       min: [2, `street can't be shorter then two characters`],
     },
+    houseNumber:{
+      type: String,
+      require: true,
+      min: [1, `house number can't be shorter then one characters`],
+    },
     postalCode: {
       type: String,
       require: true,
@@ -98,17 +103,8 @@ const ordersSchema = new mongoose.Schema({
 });
 
 ordersSchema.pre("save", async function (next) {
-  
- 
+
   const { country, city, street, houseNumber } = this.shippingDetails;
-  try {
-    const isAddressValid = await addressValidator(country, city, street, houseNumber);
-    if (!isAddressValid) {
-      throw new Error("Address is not valid");
-    }
-  } catch (error) {
-    return next(error);
-  }
   if (!this.isModified("cardNumber")) {
     return next();
   }

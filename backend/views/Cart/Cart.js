@@ -75,11 +75,6 @@ $(document).ready(function () {
 
   function getProducts() {
     let cart = JSON.parse(localStorage.getItem("jsonProducts"));
-    if (cart) {
-      console.log(cart);
-    } else {
-      console.log("No JSON products found in local storage");
-    }
     return cart;
   }
 

@@ -25,7 +25,7 @@ const getOrdersByOrderId = async(req, res) => {
         const { orderId } = req.params;
         const orders = await Orders.find({ _id: orderId }); 
         if(orders)
-        res.render(path.join(__dirname, "..", "..", "views", "account", "accountViewOrder", "accountViewOrder"), { orderId, orders });
+            console.log('the order was saved succesfully');
         else
             res.status(404).send("Order not found");       
     } catch (error) {

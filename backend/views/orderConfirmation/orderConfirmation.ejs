@@ -94,28 +94,11 @@
                             <tbody>
                                 <% for (let i = 0; i < order?.products?.length; i++) { %>
                                     <tr>
-                                        <td><%= order?.products[i]?.productName %></td>
-                                        <td><%= order?.products[i]?.productQuantity %></td>
-                                        <td><%= order?.products[i]?.productPrice %></td>
+                                        <td><%= productsArray[i].productName %></td>
+                                        <td><%= productsArray[i].productQuantity %></td>
+                                        <td><%= productsArray[i].productPrice * productsArray[i].productQuantity %></td>
                                     </tr>
                                 <% } %>
-                                <!-- <tr>
-                                    <td>Product 1</td>
-                                    <td>$19.99</td>
-                                </tr>
-                                <tr>
-                                    <td>Product 2</td>
-                                    <td>$29.99</td>
-                                </tr>
-                                <tr>
-                                    <td>Product 3</td>
-                                    <td>$9.99</td>
-                                </tr> -->
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <th></th>
-                                    <th><%= order?.orderPrice %></th>
-                                </tr>
                                 <tr>
                                     <th>Shipping</th>
                                     <td>1</td>
@@ -124,7 +107,7 @@
                                 <tr>
                                     <th>Total</th>
                                     <th></th>
-                                    <th class="table-price"><%= order?.orderPrice %></th>
+                                    <th class="table-price"><%= order.orderPrice %></th>
                                 </tr>
                             </tbody>
                         </table>

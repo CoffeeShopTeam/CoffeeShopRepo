@@ -21,6 +21,7 @@
       <div class="accountNavBar" id="accountNavBar"></div>
       <div class="products container">
         <h1>Products</h1>
+        <% if (products.length) {%>
         <table class="table">
           <thead>
             <tr>
@@ -69,6 +70,9 @@
             <% } %>
           </tbody>
         </table>
+        <% } else { %>
+          There are no products yet. Click on + to add a new product.
+          <% } %>
         <div class="row justify-content-end">
           <div class="col-auto">
             <button
@@ -116,9 +120,7 @@
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="productBrand" class="form-label"
-                    >Brand:</label
-                  >
+                  <label for="productBrand" class="form-label">Brand:</label>
                   <input
                     type="text"
                     class="form-control"
@@ -206,11 +208,7 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-dark">
-              <h5
-                class="modal-title text-light"
-                id="editModalLabel"
-                data=""
-              >
+              <h5 class="modal-title text-light" id="editModalLabel" data="">
                 Edit Product
               </h5>
               <button

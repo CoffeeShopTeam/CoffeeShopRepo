@@ -27,6 +27,7 @@ app.use(
 app.use("/ShopPage", routes.shopRouter);
 app.use("/signup", routes.signupRouter);
 app.use("/login", routes.loginRouter);
+app.use("/logout", routes.logoutRouter);
 app.use("/account", routes.accountRouter);
 app.use("/checkout", routes.checkoutRouter);
 app.use("/product", routes.productRouter);

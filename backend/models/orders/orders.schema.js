@@ -97,11 +97,10 @@ const ordersSchema = new mongoose.Schema({
   couponCode: {
     type: String,
     require: true,
-    enum: ["Effi", "roee", "gil", "itay", "bar", "kfir"],
+    enum: ["Effi", "roee", "gil", "etai", "bar", "kfir"],
     validate: [validateCoupon, "Sorry, this coupon is invalid"],
   },
 });
-
 
 ordersSchema.pre("save", async function (next) {
   const { country, city, street, houseNumber } = this.shippingDetails;

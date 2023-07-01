@@ -32,16 +32,16 @@ $(document).on("click", ".plus-button", function () {
 
 $(document).ready(function () {
   $(".add-to-cart-button").click(function () {
-    var message = $("<div>", {
+    let message = $("<div>", {
       id: "message-content",
       class: "message-content-box col-md-10",
     });
 
-    var messageContent = $("<div>", {
+    let messageContent = $("<div>", {
       class: "message-content-flex",
     });
 
-    var messageIcon = $("<div>", {
+    let messageIcon = $("<div>", {
       class: "message-icon",
     }).append(
       $("<img>", {
@@ -51,12 +51,12 @@ $(document).ready(function () {
       })
     );
 
-    var messageText = $("<h5>", {
+    let messageText = $("<h5>", {
       class: "message-highlights",
       text: "This item has been added to your Shopping bag.",
     });
 
-    var viewCartButton = $("<h5>", {
+    let viewCartButton = $("<h5>", {
       class: "view-cart-button",
       text: "VIEW CART",
       click: function () {
@@ -71,14 +71,33 @@ $(document).ready(function () {
     $(".message-content-box").remove();
 
     $("#header").after(message);
+
+    let jsonProduct = JSON.parse(localStorage.getItem("jsonProducts")) || []; // Retrieve existing array or initialize it as an empty array if it doesn't exist
+
     const product = {
       image: $("#product-image").attr("src"),
       title: $("#product-title").text().trim(),
       price: $("#product-price").text().trim().replace("$", ""),
       quantity: $(".counter-value").text().trim(),
+      id: $(".container").attr("id"),
     };
 
-    localStorage.setItem("jsonProducts", JSON.stringify(product));
+    // Check if the product already exists in the jsonProduct array
+    const existingProduct = jsonProduct.find(
+      (p) =>
+        p.image === product.image &&
+        p.title === product.title &&
+        p.price === product.price
+    );
+
+    if (existingProduct) {
+      existingProduct.quantity =
+        parseInt(existingProduct.quantity) + parseInt(product.quantity);
+    } else {
+      jsonProduct.push(product);
+    }
+
+    localStorage.setItem("jsonProducts", JSON.stringify(jsonProduct));
   });
 });
 

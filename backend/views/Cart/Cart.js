@@ -5,6 +5,9 @@ let cart = [];
 
 $(document).ready(function () {
   cart = getProducts();
+  if (cart === null) {
+    showEmptyCartMessage();
+  }
   populateCart(cart);
   setCartValues(cart);
 
@@ -12,13 +15,17 @@ $(document).ready(function () {
     cart = cart.filter(function (item) {
       return item.id !== id;
     });
+
     if (cart.length === 0) {
       clearCart(cart);
+      showEmptyCartMessage();
       return;
     }
+
     setCartValues(cart);
     updateLocalStorage(cart);
     populateCart(cart);
+    hideEmptyCartMessage();
   }
 
   function populateCart(cart) {
@@ -131,5 +138,16 @@ $(document).ready(function () {
     setCartValues(cart);
     updateLocalStorage(cart);
     localStorage.removeItem("jsonProducts");
+    showEmptyCartMessage();
   }
 });
+
+function showEmptyCartMessage() {
+  let emptyMessage = document.getElementById("empty-message");
+  emptyMessage.style.display = "block";
+}
+
+function hideEmptyCartMessage() {
+  let emptyMessage = document.getElementById("empty-message");
+  emptyMessage.style.display = "none";
+}

@@ -1,7 +1,8 @@
-const {createOrder, getAllOrders , getOrdersByOrderId} = require('./orders/orders.controller');
+const {createOrder, getAllOrders , getOrdersByOrderId, editOrderById} = require('./orders/orders.controller');
 
 module.exports = {
     createOrder,
     getAllOrders,
-    getOrdersByOrderId
+    getOrdersByOrderId,
+    editOrderById
 };

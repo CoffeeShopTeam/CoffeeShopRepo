@@ -22,14 +22,36 @@ const  getAllOrders = async(req, res) => {
 
 const getOrdersByOrderId = async(req, res) => {
     try {
-        const orderId = req.params.orderId;
-        const orders = await Orders.find({ orderId: orderId });        
-        res.status(200).json(orders);
+        const { orderId } = req.params;
+        const orders = await Orders.find({ _id: orderId }); 
+        if(orders)
+        res.render(path.join(__dirname, "..", "..", "views", "account", "accountViewOrder", "accountViewOrder"), { orderId, orders });
+        else
+            res.status(404).send("Order not found");       
     } catch (error) {
         console.log(`Failed to fetch orders: ${error}`);
         res.status(500).json({ error: 'Failed to fetch orders' });
     }
 }
+
+
+const editOrderById = async (req, res) => {
+try {
+    const { orderId } = req.params;
+    const order = await Orders.findById({ _id: orderId });
+    if (!order) {
+        res.status(404).send("Cannot find product with this id");
+        return;
+    }
+        const { email } = req.body;
+        order.shippingDetails.email = email;
+        const updatedEmail = await order.save();
+        res.json(updatedEmail);
+    } catch (e) {
+    console.log(e);
+    res.status(500).send({ message: e.message });
+    }
+};
 
 function createUserObjec(orderDetails, userId)
 {
@@ -57,4 +79,4 @@ function createUserObjec(orderDetails, userId)
     return data;
 }
 
-module.exports = { createOrder, getAllOrders, getOrdersByOrderId };
+module.exports = { createOrder, getAllOrders, getOrdersByOrderId , editOrderById };

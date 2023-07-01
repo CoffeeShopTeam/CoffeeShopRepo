@@ -18,7 +18,7 @@ $(function () {
           },
         });
         const data = res.data;
-        $(product).find("span").attr("currency-select", data.currency);
+        $(product).find("span").attr("currency-select", data.current);
         $(product).find("h5").attr("data-amount", data.convertedAmount);
         $(product)
           .find(".currency-symbol")
@@ -74,10 +74,11 @@ $(document).ready(function () {
       <h5 class="mb-0" data-amount="${
         cartItem.price * cartItem.quantity
       }">${cartItem.title}</h5>
-      <span id="quantity">${cartItem.quantity}</span>
+      <p id="quantity">${cartItem.quantity}</p>
       <span class="currency-symbol" currency-select="ILS">${(
         cartItem.price * cartItem.quantity
       ).toFixed(2)}₪</span>
+      </div>
       <hr class="mb-3" />
     `);
     item.append(newItem);

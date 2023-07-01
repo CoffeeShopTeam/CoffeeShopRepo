@@ -1,109 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/account/accountDetails/accountDetails.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <title>My Account - Details</title>
-  </head>
-  <body>
-    <div class="header" id="header"></div>
-    <div class="accountNavBar" id="accountNavBar"></div>
+  <link rel="stylesheet" type="text/css" href="/account/accountDetails/accountDetails.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          <div class="card border-0">
-            <div class="card-header bg-dark text-light">
-              <h5 class="card-title">Account Details</h5>
-            </div>
-            <div class="card-body">
-              <form id="user-details-form">
-                <div class="form-floating mb-3">
-                  <input type="text" disabled class="form-control-plaintext" id="firstName" value="<%= user.firstName%>" />
-                  <label for="firstName">First Name</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="text" disabled class="form-control-plaintext" id="lastName" value="<%= user.lastName%>" />
-                  <label for="lastName">Last Name</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="email" disabled class="form-control-plaintext" id="email" value="<%= user.email%>" />
-                  <label for="email">Email</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="text" disabled class="form-control-plaintext" id="phone" value="<%= user.phone%>" />
-                  <label for="phone">Phone</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input class="form-control-plaintext" disabled id="country" value="<%= user.country%>" />
-                  <label for="country">Country</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input class="form-control-plaintext" disabled id="city" value="<%= user.city%>" />
-                  <label for="city">City</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input class="form-control-plaintext" disabled id="street" value="<%= user.street%>" />
-                  <label for="street">Street</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input class="form-control-plaintext" disabled id="houseNumber" value="<%= user.houseNumber%>" />
-                  <label for="houseNumber">House Number</label>
-                </div>
-                <button type="button" class="btn btn-primary btn-dark" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
-                <button type="submit" class="btn float-right" id="editButton">Edit</button>
-              </form>
-            </div>
+  <title>My Account - Details</title>
+</head>
+
+<body>
+  <div class="header" id="header"></div>
+  <div class="accountNavBar" id="accountNavBar"></div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card border-0">
+          <div class="card-header bg-dark text-light">
+            <h5 class="card-title">Account Details</h5>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true" data-backdrop="false">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-dark text-light">
-            <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
+          <div class="card-body">
+            <form id="user-details-form">
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password" />
-                <label for="currentPassword">Current Password</label>
+                <input type="text" disabled class="form-control-plaintext" id="firstName"
+                  value="<%= user.firstName%>" />
+                <label for="firstName">First Name</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="newPassword" placeholder="Enter new password" />
-                <label for="newPassword">New Password</label>
+                <input type="text" disabled class="form-control-plaintext" id="lastName" value="<%= user.lastName%>" />
+                <label for="lastName">Last Name</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password" />
-                <label for="confirmPassword">Confirm Password</label>
+                <input type="email" disabled class="form-control-plaintext" id="email" value="<%= user.email%>" />
+                <label for="email">Email</label>
               </div>
-              <button type="submit" id="confirmPasswordButton" class="btn btn-primary btn-dark">Confirm</button>
+              <div class="form-floating mb-3">
+                <input type="text" disabled class="form-control-plaintext" id="phone" value="<%= user.phone%>" />
+                <label for="phone">Phone</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control-plaintext" disabled id="country" value="<%= user.country%>" />
+                <label for="country">Country</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control-plaintext" disabled id="city" value="<%= user.city%>" />
+                <label for="city">City</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control-plaintext" disabled id="street" value="<%= user.street%>" />
+                <label for="street">Street</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control-plaintext" disabled id="houseNumber" value="<%= user.houseNumber%>" />
+                <label for="houseNumber">House Number</label>
+              </div>
+              <button type="button" class="btn btn-primary btn-dark" data-toggle="modal"
+                data-target="#changePasswordModal">Change Password</button>
+              <button type="submit" class="btn float-right" id="editButton">Edit</button>
             </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="footer" id="footer"></div>
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"
+    aria-labelledby="changePasswordModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-light">
+          <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password" />
+              <label for="currentPassword">Current Password</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="newPassword" placeholder="Enter new password" />
+              <label for="newPassword">New Password</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password" />
+              <label for="confirmPassword">Confirm Password</label>
+            </div>
+            <button type="submit" id="confirmPasswordButton" class="btn btn-primary btn-dark">Confirm</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="\partials\partials.js"></script>
-    <script src="\account\account.js"></script>
-    <script src="/account/accountDetails/accountDetails.js"></script>
+  <div class="footer" id="footer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
+  <script src="\partials\partials.js"></script>
+  <script src="\account\account.js"></script>
+  <script src="/account/accountDetails/accountDetails.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
 </html>

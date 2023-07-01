@@ -1,301 +1,252 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/checkout/Checkout.css" />
-    <script src="/checkout/Checkout.js"></script>
-    
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/checkout/Checkout.css" />
+  <script src="/checkout/Checkout.js"></script>
 
-  <body>
-    <header>
-      <nav>
-        <div id="header"></div>
-      </nav>
-    </header>
-    <div class="accountNavBar" id="accountNavBar"></div>
-    <form class="container" method="POST" action="/orders" autocomplete="on">
-      
-      <div class="mb-4">
-        <h1 class="text-center">Checkout</h1>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div id="header"></div>
+    </nav>
+  </header>
+  <form class="container" method="POST" action="/orders" autocomplete="on">
+
+    <div class="mb-4">
+      <h1 class="text-center">Checkout</h1>
+    </div>
+    <div></div>
+    <section>
+      <div class="row">
+        <div class="d-flex justify-content-center">
+        </div>
       </div>
-      <div></div>
-      <section>
-        <div class="row">
-          <div class="d-flex justify-content-center">
+      <hr class="mt-2" />
+    </section>
+
+    <section class="col">
+      <div class="main-sec row">
+        <div class="shipping col-md-4">
+          <h3 class="mb-3" style="margin-top:1rem;">Shipping Details</h3>
+          <div class="checkout row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="Prefix">Prefix</label>
+                <div class="select-container">
+                  <select class="form-select" aria-label="Floating label select example" name="Prefix">
+                    <option value="Mr">Mr.</option>
+                    <option value="Ms">Ms.</option>
+                    <option value="Mrs">Mrs.</option>
+                    <option value="Dr">Dr.</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstName">First name</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" id="first-name" name="firstName" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="lastName">Last name</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="lastName" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="company-name">Company Name</label>
+                <input type="text" class="form-control" name="companyName" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="country">Country</label>
+                <span class="must-fill">*</span>
+                <!-- <div class="select-conainer"> -->
+                <select class="form-select countrySelect narrow-select" aria-label="Floating label select example"
+                  name="country" style="width: 100%;" required>
+                  <% countries.forEach(function(countryName) { %>
+                    <option value="<%= countryName %>">
+                      <%= countryName %>
+                    </option>
+                    <% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="street-address">Street Address</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="street-address" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="city">Town / City</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="city" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="postcode">Postcode / ZIP</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="postlCode" required />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="phone" required />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <span class="must-fill">*</span>
+                <input type="email" class="form-control" name="email" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="order-notes">Order notes</label>
+                <textarea class="form-control" name="ordersNotes" rows="3" placeholder="Got something to tell us?">
+                  </textarea>
+              </div>
+            </div>
           </div>
         </div>
-        <hr class="mt-2" />
-      </section>
-
-      <section class="col">
-        <div class="main-sec row">
-          <div class="shipping col-md-4">
-            <h3 class="mb-3" style="margin-top:1rem;">Shipping Details</h3>
-            <div class="checkout row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="Prefix">Prefix</label>
-                  <div class="select-container">
-                    <select class="form-select" aria-label="Floating label select example" name="Prefix">
-                      <option value="Mr">Mr.</option>
-                      <option value="Ms">Ms.</option>
-                      <option value="Mrs">Mrs.</option>
-                      <option value="Dr">Dr.</option>
-                    </select>
-                  </div>
-                </div>
-                
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="firstName">First name</label>
-                  <span class="must-fill">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="first-name"
-                    name="firstName"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="lastName">Last name</label>
-                  <span class="must-fill">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="lastName"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="company-name">Company Name</label>
-                  <input type="text" class="form-control" name="companyName" />
-                </div>
-              </div>
-              <div class="col-md-12">                
-                <div class="form-group">
-                  <label for="country">Country</label>
-                  <span class="must-fill">*</span>
-                  <!-- <div class="select-conainer"> -->
-                  <select
-                    class="form-select countrySelect narrow-select" 
-                    aria-label="Floating label select example"
-                    name="country"
-                    style="width: 100%;"
-                    required
-                    >
-                    <% countries.forEach(function(countryName) { %>
-                      <option value="<%= countryName %>"><%= countryName %></option>
-                    <% }); %>
-                </select>                  
-              </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="street-address">Street Address</label>
-                  <span class="must-fill">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="street-address"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="city">Town / City</label>
-                  <span class="must-fill">*</span>
-                  <input type="text" class="form-control" name="city" required />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="postcode">Postcode / ZIP</label>
-                  <span class="must-fill">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="postlCode"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="phone">Phone Number</label>
-                  <span class="must-fill">*</span>
-                  <input type="text" class="form-control" name="phone" required />
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <span class="must-fill">*</span>
-                  <input type="email" class="form-control" name="email" />
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="order-notes">Order notes</label>
-                  <textarea
-                    class="form-control"
-                    name="ordersNotes"
-                    rows="3"
-                    placeholder="Got something to tell us?"
-                  >
-                  </textarea>
-                </div>
-              </div>
-            </div>
+        <div class="order col-md-4">
+          <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">PRODUCT</h5>
+            <h5 class="mb-0">TOTAL</h5>
           </div>
-          <div class="order col-md-4">
-            <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="mb-0">PRODUCT</h5>
-              <h5 class="mb-0">TOTAL</h5>
-            </div>
-            <hr class="mb-3" />
-            <div class="d-flex justify-content-between align-items-center mb-2 product">
-              <h5 class="mb-0" data-amount="350">CitiZ</h5>
-              <span class="currency-symbol" currency-select="ILS">350₪</span>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-2 product">
-              <h5 class="mb-0" data-amount="20">BARISTA Cups</h5>
-              <span class="currency-symbol" currency-select="ILS">20₪</span>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-2 product">
-              <h5 class="mb-0" data-amount="20">ORIGIN Cups</h5>
-              <span class="currency-symbol" currency-select="ILS">20₪</span>
-            </div>
-            <hr3 class = "mb-3" />
-            <div class="d-flex justify-content-between align-items-center mb-2 product">
-              <h5 class="mb-0" data-amount="380" name="orderPrice">TOTAL</h5>
-              <span class="currency-symbol"  currency-select="ILS" >380₪</span>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-2">
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-2">
-            </div>
-            <div class="payment-methods">
-              <div class="form-row">
-              <div class="form-group col-md-6">
-              <label for="cardNumber">Credit Card Number</label>
-            <span class="must-fill">*</span>
-              <input type="text" class="form-control" name="cardNumber" required placeholder="Enter credit card number">
-            </div>
-            <div class="form-group col-md-6 ">
-
-            <label for="cvv">CVV</label>
-            <span class="must-fill">*</span>
-            <input type="text" class="form-control " name="cvv" required maxlength="3" placeholder="Enter CVV">
-            
+          <hr class="mb-3" />
+          <div class="d-flex justify-content-between align-items-center mb-2 product">
+            <h5 class="mb-0" data-amount="350">CitiZ</h5>
+            <span class="currency-symbol" currency-select="ILS">350₪</span>
           </div>
+          <div class="d-flex justify-content-between align-items-center mb-2 product">
+            <h5 class="mb-0" data-amount="20">BARISTA Cups</h5>
+            <span class="currency-symbol" currency-select="ILS">20₪</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-2 product">
+            <h5 class="mb-0" data-amount="20">ORIGIN Cups</h5>
+            <span class="currency-symbol" currency-select="ILS">20₪</span>
+          </div>
+          <hr3 class="mb-3" />
+          <div class="d-flex justify-content-between align-items-center mb-2 product">
+            <h5 class="mb-0" data-amount="380" name="orderPrice">TOTAL</h5>
+            <span class="currency-symbol" currency-select="ILS">380₪</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+          </div>
+          <div class="payment-methods">
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="expirationMonth">Expiration Month</label>
+                <label for="cardNumber">Credit Card Number</label>
                 <span class="must-fill">*</span>
-                <select class="form-control" name="expirationMonth" required>
-                  <option value="">Month</option>
-                  <option value="01">01</option>
-                  <option value="02">02</option>
-                  <option value="03">03</option>
-                  <option value="04">04</option>
-                  <option value="05">05</option>
-                  <option value="06">06</option>
-                  <option value="07">07</option>
-                  <option value="08">08</option>
-                  <option value="09">09</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-
-
-                  <!-- Add more options for the remaining months -->
-                </select>
+                <input type="text" class="form-control" name="cardNumber" required
+                  placeholder="Enter credit card number">
               </div>
-              <div class="form-group col-md-6">
-                <label for="expirationYear">Expiration Year</label>
-            <span class="must-fill">*</span>
-                <select class="form-control" name="expirationYear">
-                  <option value="">Year</option>
-                  <option value="2023">2023</option>
-                  <option value="2024">2024</option>
-                  <option value="2024">2025</option>
-                  <option value="2024">2026</option>
-                  <option value="2024">2027</option>
-                  <!-- Add more options for future years -->
-                </select>               
-              </div>
-            </form>
+              <div class="form-group col-md-6 ">
 
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                
-                  <form id="currency-conversion-form">                            
-                  <strong class="mb-0"s>Convert Payment To:</strong>
-                <select class="mt-1 ml-4 mr-3" name="currency" id="currency" required>
-                  <option value="USD">USD</option>
-                  <option value="EUR">EUR</option>
-                  <option value="GBP">GBP</option>
-                </select>
-                  <button type="submit" class="btn-xs btn-dark ms-auto" id="convert-button">Convert</button>   
-                </form>
+                <label for="cvv">CVV</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control " name="cvv" required maxlength="3" placeholder="Enter CVV">
+
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="expirationMonth">Expiration Month</label>
+                  <span class="must-fill">*</span>
+                  <select class="form-control" name="expirationMonth" required>
+                    <option value="">Month</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+
+
+                    <!-- Add more options for the remaining months -->
+                  </select>
                 </div>
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <input
-                type="text"
-                class="form form-control-xs"
-                id="coupon-input"
-                name="couponCode"
-                placeholder="Coupon Code"
-                aria-label="Coupon Code"
-                aria-describedby="apply-coupon"
-                />
-              <button class="btn btn-dark btn-sm"            
-              style=" font-size: 0.8rem;width:50%;"
-              >
-              Apply Coupon</button>
-            </div>
-            
-            <button
-              class="btn btn-success btn-block btn-lg btn-dark"
-              type="submit"
-              >
-              PLACE ORDER
-            </button>
-          </div>
-        </div>
-      </section>
+                <div class="form-group col-md-6">
+                  <label for="expirationYear">Expiration Year</label>
+                  <span class="must-fill">*</span>
+                  <select class="form-control" name="expirationYear">
+                    <option value="">Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2024">2025</option>
+                    <option value="2024">2026</option>
+                    <option value="2024">2027</option>
+                    <!-- Add more options for future years -->
+                  </select>
+                </div>
+  </form>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <form id="currency-conversion-form">
+      <strong class="mb-0" s>Convert Payment To:</strong>
+      <select class="mt-1 ml-4 mr-3" name="currency" id="currency" required>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+      <button type="submit" class="btn-xs btn-dark ms-auto" id="convert-button">Convert</button>
     </form>
-    <div id="footer"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="\partials\partials.js"></script>
-    <script src="\account\account.js"></script>
-  </body>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <input type="text" class="form form-control-xs" id="coupon-input" name="couponCode" placeholder="Coupon Code"
+      aria-label="Coupon Code" aria-describedby="apply-coupon" />
+    <button class="btn btn-dark btn-sm" style=" font-size: 0.8rem;width:50%;">
+      Apply Coupon</button>
+  </div>
+
+  <button class="btn btn-success btn-block btn-lg btn-dark" type="submit">
+    PLACE ORDER
+  </button>
+  </div>
+  </div>
+  </section>
+  </form>
+  <div id="footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="\partials\partials.js"></script>
+  <script src="\account\account.js"></script>
+</body>
+
 </html>

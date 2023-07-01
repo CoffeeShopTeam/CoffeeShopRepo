@@ -75,14 +75,28 @@
                       <span class="counter-value">1</span>
                       <button class="plus-button">+</button>
                     </div>
-                    <div class="add-to-cart-container">
-                      <button
+                    <div class="buy-product-container">
+                      <div class="add-to-cart-container">
+                        <button
                         id=".add-to-cart-button"
                         class="add-to-cart-button"
-                      >
-                        ADD TO CART
-                      </button>
-                    </div>
+                        <% if (product.productQuantity === 0) { %>
+                          disabled
+                          <% } %>
+                          >
+                          <% if (product.productQuantity === 0) { %>
+                            OUT OF STOCK
+                            <% } else { %>
+                              ADD TO CART
+                              <% } %>
+                            </button>
+                          </div>
+                          <% if (product.productQuantity) { %>
+                            <h5 class="section1__highlights6 quantity">
+                              Only <%= product.productQuantity %> left
+                            </h5>
+                          <% } %>
+                      </div>
                   </div>
                 </div>
                 <div class="section1__flexRow5">

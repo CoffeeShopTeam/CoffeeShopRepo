@@ -130,7 +130,9 @@ function submitForm(event) {
         method: 'POST',
         data: data,
         success: function(response) {
+        let orderId = response._id;
         console.log('Order placed successfully.');
+        window.location.href = `/orderConfirmation/${orderId}`
     },
         error: function(error) {
         console.log('Error placing the order.');

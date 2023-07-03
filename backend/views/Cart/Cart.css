@@ -19,6 +19,7 @@
   height: 200px;
   object-fit: cover;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .product-details {
@@ -29,7 +30,7 @@
 #product-price {
   text-align: left;
   font: 500 22px/1.68 "DM Sans", Helvetica, Arial, serif;
-  font-variant: #a18a68;
+  color: #a18a68;
 }
 
 .remove-item-container {
@@ -114,4 +115,26 @@
 
 .empty-message {
   display: none;
+}
+
+.counter-button {
+  display: flex;
+  align-items: center;
+  background-color: #eee;
+  color: #707070;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin-left: 10rem;
+  width: 4rem;
+}
+
+.counter-button button {
+  border: none;
+  background-color: transparent;
+  color: #707070;
+  cursor: pointer;
+}
+
+.counter-value {
+  margin-left: 1.2rem;
 }

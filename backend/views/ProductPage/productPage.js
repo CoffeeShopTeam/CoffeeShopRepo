@@ -29,83 +29,86 @@ $(document).on("click", ".plus-button", function () {
   $(this).siblings(".counter-value").first().text(value);
 });
 
+let addedProduct = 0;
 $(document).ready(function () {
   $(".add-to-cart-button").click(function () {
     let quantity = $(".quantity").attr("id");
     console.log(quantity);
     let amount = $(".counter-value").text();
     console.log(amount);
-    if (quantity < amount) {
+    if (parseInt(quantity) < parseInt(amount) + addedProduct) {
       console.log("if");
       alert("Easy There! It's more than what we have :(");
       return;
-    }
-
-    let message = $("<div>", {
-      id: "message-content",
-      class: "message-content-box col-md-10",
-    });
-
-    let messageContent = $("<div>", {
-      class: "message-content-flex",
-    });
-
-    let messageIcon = $("<div>", {
-      class: "message-icon",
-    }).append(
-      $("<img>", {
-        src: "/assets/29721143e926a816dec4943d6352c52e.png",
-        alt: "alt text",
-        class: "message-icon",
-      })
-    );
-
-    let messageText = $("<h5>", {
-      class: "message-highlights",
-      text: "This item has been added to your Shopping bag.",
-    });
-
-    let viewCartButton = $("<h5>", {
-      class: "view-cart-button",
-      text: "VIEW CART",
-      click: function () {
-        window.location.href = "/Cart";
-      },
-    });
-
-    messageContent.append(messageIcon, messageText, viewCartButton);
-
-    message.append(messageContent);
-
-    $(".message-content-box").remove();
-
-    $("#header").after(message);
-
-    let jsonProduct = JSON.parse(localStorage.getItem("jsonProducts")) || [];
-
-    const product = {
-      image: $("#product-image").attr("src"),
-      title: $("#product-title").text().trim(),
-      price: $("#product-price").text().trim().replace("₪ ", ""),
-      quantity: $(".counter-value").text().trim(),
-      id: $(".container").attr("id"),
-    };
-
-    const existingProduct = jsonProduct.find(
-      (p) =>
-        p.image === product.image &&
-        p.title === product.title &&
-        p.price === product.price
-    );
-
-    if (existingProduct) {
-      existingProduct.quantity =
-        parseInt(existingProduct.quantity) + parseInt(product.quantity);
     } else {
-      jsonProduct.push(product);
-    }
+      let message = $("<div>", {
+        id: "message-content",
+        class: "message-content-box col-md-10",
+      });
 
-    localStorage.setItem("jsonProducts", JSON.stringify(jsonProduct));
+      let messageContent = $("<div>", {
+        class: "message-content-flex",
+      });
+
+      let messageIcon = $("<div>", {
+        class: "message-icon",
+      }).append(
+        $("<img>", {
+          src: "/assets/29721143e926a816dec4943d6352c52e.png",
+          alt: "alt text",
+          class: "message-icon",
+        })
+      );
+
+      let messageText = $("<h5>", {
+        class: "message-highlights",
+        text: "This item has been added to your Shopping bag.",
+      });
+
+      let viewCartButton = $("<h5>", {
+        class: "view-cart-button",
+        text: "VIEW CART",
+        click: function () {
+          window.location.href = "/Cart";
+        },
+      });
+
+      messageContent.append(messageIcon, messageText, viewCartButton);
+
+      message.append(messageContent);
+
+      $(".message-content-box").remove();
+
+      $("#header").after(message);
+
+      let jsonProduct = JSON.parse(localStorage.getItem("jsonProducts")) || [];
+
+      const product = {
+        image: $("#product-image").attr("src"),
+        title: $("#product-title").text().trim(),
+        price: $("#product-price").text().trim().replace("₪ ", ""),
+        quantity: $(".counter-value").text().trim(),
+        id: $(".container").attr("id"),
+      };
+
+      const existingProduct = jsonProduct.find(
+        (p) =>
+          p.image === product.image &&
+          p.title === product.title &&
+          p.price === product.price
+      );
+
+      if (existingProduct) {
+        existingProduct.quantity =
+          parseInt(existingProduct.quantity) + parseInt(product.quantity);
+      } else {
+        jsonProduct.push(product);
+      }
+
+      localStorage.setItem("jsonProducts", JSON.stringify(jsonProduct));
+      addedProduct += parseInt(amount);
+      console.log(addedProduct);
+    }
   });
 });
 

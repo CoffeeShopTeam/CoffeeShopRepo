@@ -212,7 +212,6 @@
   width: 100%;
   max-width: 91.25rem;
   height: 2.813rem;
-  /* min-width: 50rem; */
   margin: -1.125rem 0 0 12.1875rem;
   margin-left: auto;
   margin-right: auto;
@@ -221,7 +220,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
-  /* z-index: 1; */
 }
 
 @media (max-width: 768px) {
@@ -276,7 +274,6 @@
   padding: 1.875rem;
   margin: 2%;
   background: white;
-  /* width: 10%; */
   border-radius: 0.1875rem;
   transition: 0.2s all;
   cursor: pointer;

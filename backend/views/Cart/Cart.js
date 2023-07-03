@@ -53,7 +53,7 @@ $(document).ready(function () {
           return item.id === id;
         });
         tempItem.quantity = Number(tempItem.quantity) + 1;
-        $(this).siblings(".item-amount").text(tempItem.quantity);
+        $(this).siblings(".counter-value").text(tempItem.quantity);
         setCartValues(cart);
         updateLocalStorage(cart);
       });
@@ -67,7 +67,7 @@ $(document).ready(function () {
         });
         if (tempItem.quantity > 1) {
           tempItem.quantity = Number(tempItem.quantity) - 1;
-          $(this).siblings(".item-amount").text(tempItem.quantity);
+          $(this).siblings(".counter-value").text(tempItem.quantity);
         }
         setCartValues(cart);
         updateLocalStorage(cart);
@@ -93,13 +93,16 @@ $(document).ready(function () {
      
         <div class="product-item">
         <div class="product-image">
-        <img id="product-image" src="${cartItem.image}" alt="Product Image">
+        <img id="product-image" src="${cartItem.image}" alt="Product Image" onclick="window.location.href = '/productPage/${cartItem.id}'">
         </div>
           <div class="product-details">
             <h4 id="product-title">${cartItem.title}</h4>
             <h5 id="product-price">₪ ${cartItem.price}</h5>
           </div>
-          <div class="remove-item-container">
+          <div class="counter-button">
+                      <span class="counter-value">${cartItem.quantity}</span>
+                    </div>
+                      <div class="remove-item-container">
                       <button
                       data-id="${cartItem.id}"
                         class="remove-item"

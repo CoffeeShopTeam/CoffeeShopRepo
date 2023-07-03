@@ -33,9 +33,7 @@ let addedProduct = 0;
 $(document).ready(function () {
   $(".add-to-cart-button").click(function () {
     let quantity = $(".quantity").attr("id");
-    console.log(quantity);
     let amount = $(".counter-value").text();
-    console.log(amount);
     if (parseInt(quantity) < parseInt(amount) + addedProduct) {
       console.log("if");
       alert("Easy There! It's more than what we have :(");
@@ -107,7 +105,6 @@ $(document).ready(function () {
 
       localStorage.setItem("jsonProducts", JSON.stringify(jsonProduct));
       addedProduct += parseInt(amount);
-      console.log(addedProduct);
     }
   });
 });

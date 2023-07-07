@@ -66,38 +66,44 @@ const editOrderById = async (req, res) => {
 };
 
 function createUserObject(orderDetails, userId) {
-    let products = []
-    const reqProducts = JSON.parse(orderDetails.products);
-    for (let index = 0; index < reqProducts.length; index++) {
-        products.push({
-            product: reqProducts[index].id,
-            quantity: reqProducts[index].quantity
-        })
+    try {
+
+        let products = []
+        const reqProducts = JSON.parse(orderDetails.products);
+        for (let index = 0; index < reqProducts.length; index++) {
+            products.push({
+                product: reqProducts[index].id,
+                quantity: reqProducts[index].quantity
+            })
+        }
+        const data = {
+            user: userId,
+            products: products,
+            shippingDetails: {
+                deliveryPrice: 10,
+                email: orderDetails.email,
+                phone: orderDetails.phone,
+                prefix: orderDetails.prefix,
+                country: orderDetails.country,
+                city: orderDetails.city,
+                street: orderDetails.streetAddress,
+                houseNumber: orderDetails.houseNumber,
+                postalCode: orderDetails.postlCode,
+                ordersNotes: orderDetails.ordersNotes,
+            },
+            orderPrice: orderDetails.orderPrice,
+            paymentMethod: "credit card",
+            cardNumber: orderDetails.cardNumber,
+            orderDate: new Date(),
+        };
+        if (orderDetails.couponCode) {
+            data.couponCode = orderDetails.couponCode;
+        }
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        return null;
     }
-    const data = {
-        user: userId,
-        products: products,
-        shippingDetails: {
-            deliveryPrice: 10,
-            email: orderDetails.email,
-            phone: orderDetails.phone,
-            prefix: orderDetails.prefix,
-            country: orderDetails.country,
-            city: orderDetails.city,
-            street: orderDetails.streetAddress,
-            houseNumber: orderDetails.houseNumber,
-            postalCode: orderDetails.postlCode,
-            ordersNotes: orderDetails.ordersNotes,
-        },
-        orderPrice: orderDetails.orderPrice,
-        paymentMethod: "credit card",
-        cardNumber: orderDetails.cardNumber,
-        orderDate: new Date(),
-    };
-    if (orderDetails.couponCode) {
-        data.couponCode = orderDetails.couponCode;
-    }
-    return data;
 }
 
 module.exports = { createOrder, getAllOrders, getOrdersByOrderId, editOrderById };

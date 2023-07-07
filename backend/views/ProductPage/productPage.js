@@ -24,7 +24,7 @@ $(function () {
   }
   if (quantity < amount) {
     $("#add-to-cart-button").attr("disabled", true);
-    alert("This product is already in your cart with the maximum quantity.");
+    alert("This product is out of stock or already in your cart with the maximum quantity.");
   }
 
 });

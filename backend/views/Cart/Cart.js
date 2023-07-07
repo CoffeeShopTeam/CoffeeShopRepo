@@ -117,6 +117,7 @@ $(document).ready(function () {
       countTotal = 0.0;
       let cartTotalContainer = $("#cart-total");
       cartTotalContainer.html(`<div class="cart-total">$${countTotal}</div>`);
+      $("#gotoCheckout").attr("disabled", true)
     } else {
       cart.forEach(function (item) {
         countTotal += item.price * item.quantity;

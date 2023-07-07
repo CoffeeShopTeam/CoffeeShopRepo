@@ -111,7 +111,7 @@
               <div class="form-group">
                 <label for="street-address">House Number</label>
                 <span class="must-fill">*</span>
-                <input type="text" class="form-control" name="houseNumber" required />
+                <input type="number" minlength="1" class="form-control" name="houseNumber" required />
               </div>
             </div>
             <div class="col-md-6">
@@ -132,7 +132,7 @@
               <div class="form-group">
                 <label for="phone">Phone Number</label>
                 <span class="must-fill">*</span>
-                <input type="text" class="form-control" name="phone" required />
+                <input type="number" minlength="10" class="form-control" name="phone" required />
               </div>
             </div>
             <div class="col-md-12">
@@ -171,7 +171,7 @@
               <div class="form-group col-md-6">
                 <label for="cardNumber">Credit Card Number</label>
                 <span class="must-fill">*</span>
-                <input type="text" class="form-control" name="cardNumber" required
+                <input type="number" minlength="16" class="form-control" name="cardNumber" required
                   placeholder="Enter credit card number">
               </div>
               <div class="form-group col-md-6 ">

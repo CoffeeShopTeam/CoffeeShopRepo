@@ -3,6 +3,9 @@ const router = express.Router();
 const path = require('path');
 const axios = require('axios');
 const { exchangeRate } = require('../services/index');
+const { requireLogin } = require('../middleware');
+
+router.use(requireLogin);
 
 router.get('/', async (req, res, next) => {
     try {

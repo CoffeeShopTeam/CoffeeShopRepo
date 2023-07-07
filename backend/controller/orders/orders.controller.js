@@ -3,20 +3,25 @@ const path = require('path');
 const { getProductById } = require("../products/products.controller");
 
 async function createOrder(orderDetails, userId) {
-    console.log(orderDetails);
-    const parsedData = createUserObjec(orderDetails, userId);
-    const newOrder = await Orders(parsedData);
-    newOrder.products.forEach(async (product) => {
+    try {
+        console.log(orderDetails);
+        const parsedData = createUserObject(orderDetails, userId);
+        parsedData.products.forEach(async (product) => {
         // TODO: CHECK: is product is id or object
-        const fullProduct = await getProductById(product);
+        const fullProduct = await getProductById(product.product);
+        if (!fullProduct) throw new Error(`Could not find product ${product.product}`);
         const newQuantity = fullProduct.productQuantity - product.quantity;
         if (newQuantity < 0) throw new Error("Quantity is greater then the maximum");
         fullProduct.set("productQuantity", newQuantity);
         // # # # # # # # # # # # # # # # # # # #
     });
+    const newOrder = await Orders(parsedData);
     const savedOrder = await newOrder.save();
     if (!savedOrder) throw new Error("there was an error saving the order");
     return savedOrder;
+    } catch {
+        
+    }
 };
 
 const  getAllOrders = async(req, res) => {
@@ -62,7 +67,7 @@ try {
     }
 };
 
-function createUserObjec(orderDetails, userId)
+function createUserObject(orderDetails, userId)
 {
     let products = []
     const reqProducts = JSON.parse(orderDetails.products);
@@ -73,28 +78,28 @@ function createUserObjec(orderDetails, userId)
         })         
     }
     const data = {
-    user: userId,
-    products: products,
-    shippingDetails: {
-        deliveryPrice: 10,
-        email: orderDetails.email,
-        phone: orderDetails.phone,
-        prefix: orderDetails.prefix,
-        country: orderDetails.country,
-        city: orderDetails.city,
-        street: orderDetails.streetAddress,
-        houseNumber : orderDetails.houseNumber,
-        postalCode: orderDetails.postlCode,
-        ordersNotes: orderDetails.ordersNotes,
-    },
-    orderPrice: orderDetails.orderPrice,
-    paymentMethod: "credit card",
-    cardNumber: orderDetails.cardNumber,
-    orderDate: new Date(),
-};
+        user: userId,
+        products: products,
+        shippingDetails: {
+            deliveryPrice: 10,
+            email: orderDetails.email,
+            phone: orderDetails.phone,
+            prefix: orderDetails.prefix,
+            country: orderDetails.country,
+            city: orderDetails.city,
+            street: orderDetails.streetAddress,
+            houseNumber : orderDetails.houseNumber,
+            postalCode: orderDetails.postlCode,
+            ordersNotes: orderDetails.ordersNotes,
+        },
+        orderPrice: orderDetails.orderPrice,
+        paymentMethod: "credit card",
+        cardNumber: orderDetails.cardNumber,
+        orderDate: new Date(),
+    };
     if (orderDetails.couponCode) {
-            data.couponCode = orderDetails.couponCode;
-        }
+        data.couponCode = orderDetails.couponCode;
+    }
     return data;
 }
 

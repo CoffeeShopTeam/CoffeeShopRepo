@@ -1,5 +1,4 @@
 const Orders = require("../../models/orders/orders.schema");
-const path = require('path');
 const { getProductById } = require("../products/products.controller");
 
 async function createOrder(orderDetails, userId) {
@@ -7,26 +6,25 @@ async function createOrder(orderDetails, userId) {
         console.log(orderDetails);
         const parsedData = createUserObject(orderDetails, userId);
         parsedData.products.forEach(async (product) => {
-        // TODO: CHECK: is product is id or object
-        const fullProduct = await getProductById(product.product);
-        if (!fullProduct) throw new Error(`Could not find product ${product.product}`);
-        const newQuantity = fullProduct.productQuantity - product.quantity;
-        if (newQuantity < 0) throw new Error("Quantity is greater then the maximum");
-        fullProduct.set("productQuantity", newQuantity);
-        // # # # # # # # # # # # # # # # # # # #
-    });
-    const newOrder = await Orders(parsedData);
-    const savedOrder = await newOrder.save();
-    if (!savedOrder) throw new Error("there was an error saving the order");
-    return savedOrder;
-    } catch {
-        
+            const fullProduct = await getProductById(product.product);
+            if (!fullProduct) throw new Error(`Could not find product ${product.product}`);
+            const newQuantity = fullProduct.productQuantity - product.quantity;
+            if (newQuantity < 0) throw new Error("Quantity is greater then the maximum");
+            fullProduct.set("productQuantity", newQuantity);
+            fullProduct.save();
+        });
+        const newOrder = await Orders(parsedData);
+        const savedOrder = await newOrder.save();
+        if (!savedOrder) throw new Error("there was an error saving the order");
+        return savedOrder;
+    } catch (error) {
+        console.log(error.message);
     }
 };
 
-const  getAllOrders = async(req, res) => {
+const getAllOrders = async (req, res) => {
     try {
-        const allOrders =  await Orders.find();
+        const allOrders = await Orders.find();
         res.status(200).json(allOrders);
     } catch (error) {
         console.log(`Failed to get orders: ${error}`);
@@ -34,14 +32,14 @@ const  getAllOrders = async(req, res) => {
     }
 };
 
-const getOrdersByOrderId = async(req, res) => {
+const getOrdersByOrderId = async (req, res) => {
     try {
         const { orderId } = req.params;
-        const orders = await Orders.find({ _id: orderId }); 
-        if(orders)
+        const orders = await Orders.find({ _id: orderId });
+        if (orders)
             console.log('the order was saved succesfully');
         else
-            res.status(404).send("Order not found");       
+            res.status(404).send("Order not found");
     } catch (error) {
         console.log(`Failed to fetch orders: ${error}`);
         res.status(500).json({ error: 'Failed to fetch orders' });
@@ -50,32 +48,31 @@ const getOrdersByOrderId = async(req, res) => {
 
 
 const editOrderById = async (req, res) => {
-try {
-    const { orderId } = req.params;
-    const order = await Orders.findById({ _id: orderId });
-    if (!order) {
-        res.status(404).send("Cannot find product with this id");
-        return;
-    }
+    try {
+        const { orderId } = req.params;
+        const order = await Orders.findById({ _id: orderId });
+        if (!order) {
+            res.status(404).send("Cannot find product with this id");
+            return;
+        }
         const { email } = req.body;
         order.shippingDetails.email = email;
         const updatedEmail = await order.save();
         res.json(updatedEmail);
     } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e.message });
+        console.log(e);
+        res.status(500).send({ message: e.message });
     }
 };
 
-function createUserObject(orderDetails, userId)
-{
+function createUserObject(orderDetails, userId) {
     let products = []
     const reqProducts = JSON.parse(orderDetails.products);
     for (let index = 0; index < reqProducts.length; index++) {
         products.push({
-            product : reqProducts[index].id,
-            quantity : reqProducts[index].quantity
-        })         
+            product: reqProducts[index].id,
+            quantity: reqProducts[index].quantity
+        })
     }
     const data = {
         user: userId,
@@ -88,7 +85,7 @@ function createUserObject(orderDetails, userId)
             country: orderDetails.country,
             city: orderDetails.city,
             street: orderDetails.streetAddress,
-            houseNumber : orderDetails.houseNumber,
+            houseNumber: orderDetails.houseNumber,
             postalCode: orderDetails.postlCode,
             ordersNotes: orderDetails.ordersNotes,
         },
@@ -103,4 +100,4 @@ function createUserObject(orderDetails, userId)
     return data;
 }
 
-module.exports = { createOrder, getAllOrders, getOrdersByOrderId , editOrderById };
+module.exports = { createOrder, getAllOrders, getOrdersByOrderId, editOrderById };

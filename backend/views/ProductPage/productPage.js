@@ -7,7 +7,7 @@ function getProductId() {
 function getCurrentProductFromLocalStorage() {
   const productId = getProductId();
   const jsonProducts = JSON.parse(localStorage.getItem("jsonProducts"));
-  const productInLocalStorage = jsonProducts.find((product) => {
+  const productInLocalStorage = jsonProducts?.find((product) => {
     return product.id === productId;
   });
   return productInLocalStorage;

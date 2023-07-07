@@ -6,13 +6,11 @@ const { requireLogin } = require('../middleware');
 
 
 router.use(requireLogin);
-//render to order confirmation
+
 router.post('/', async(req, res, next) => {
     try{
         const orderDetails = req.body;
         const userId = req.session?.data._id;
-        // const products = JSON.parse(orderDetails.products);
-        // orderDetails.products = products;
         if(!userId)
             res.render(path.join(__dirname, "..", "views", "login", "loginPage",))
         else{

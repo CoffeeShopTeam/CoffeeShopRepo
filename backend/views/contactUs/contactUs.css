@@ -90,6 +90,7 @@
   flex-direction: column;
   position: relative;
   margin: 56px 0px 0px;
+  margin-left: 8rem;
 }
 .contact-us .section1__highlights {
   font: 400 16px/1.68 "DM Sans", Helvetica, Arial, serif;
@@ -154,6 +155,9 @@
   position: relative;
   min-height: 106px;
   margin: 77px 0px 0px;
+}
+.map {
+  margin-left: 10rem;
 }
 @media (max-width: 1199px) {
   .contact-us .section1__highlights2 {

@@ -68,7 +68,6 @@
 
 .add-to-cart-container {
   position: relative;
-  margin-left: 7rem;
 }
 
 .section1__flexRow5,
@@ -153,6 +152,10 @@
   cursor: pointer;
   right: 0;
   width: 25rem;
+}
+.add-to-cart-button:disabled {
+  cursor: auto;
+  background-color: #d1d1d1
 }
 
 .message-content-box {
@@ -290,4 +293,16 @@
   filter: blur(0rem);
   opacity: 1;
   box-shadow: 0 0.5rem 1.25rem 0rem rgba(0, 0, 0, 0.125);
+}
+
+.buy-product-container{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section1__highlights6.quantity {
+  margin: 1rem 0 0 0;
 }

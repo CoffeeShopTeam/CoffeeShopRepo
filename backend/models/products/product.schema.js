@@ -29,6 +29,7 @@ const ProductSchema = new mongoose.Schema({
   productQuantity: {
     type: Number,
     required: true,
+    min: [0, "The minimal quantity is zero."],
     validate: [validateQuantity, "Invalid quantity"],
   },
   supplierId: {

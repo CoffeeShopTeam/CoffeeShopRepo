@@ -54,8 +54,8 @@ main {
 }
 
 .productImage {
-  height: 7.5rem;
-  width: auto;
+  max-height: 7.5rem;
+  max-width: 10rem;
   object-fit: fill;
 }
 

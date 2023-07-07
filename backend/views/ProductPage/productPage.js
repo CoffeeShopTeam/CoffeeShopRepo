@@ -1,6 +1,32 @@
+function getProductId() {
+  const pathnameArray = window.location.pathname.split("/");
+  const productId = pathnameArray[pathnameArray.length - 1];
+  return productId;
+}
+
+function getCurrentProductFromLocalStorage() {
+  const productId = getProductId();
+  const jsonProducts = JSON.parse(localStorage.getItem("jsonProducts"));
+  const productInLocalStorage = jsonProducts?.find((product) => {
+    return product.id === productId;
+  });
+  return productInLocalStorage;
+}
+
 $(function () {
   $("#header").load("/partials/Header/Header.html");
   $("#footer").load("/partials/Footer/Footer.html");
+  let quantity = $(".quantity").attr("id");
+  let amount = $(".counter-value").text();
+  const productInLocalStorage = getCurrentProductFromLocalStorage();
+  if (productInLocalStorage) {
+    quantity = quantity - productInLocalStorage.quantity;
+  }
+  if (quantity < amount) {
+    $("#add-to-cart-button").attr("disabled", true);
+    alert("This product is out of stock or already in your cart with the maximum quantity.");
+  }
+
 });
 
 $(document).ready(function () {
@@ -22,16 +48,23 @@ $(document).on("click", ".minus-button", function () {
 });
 
 $(document).on("click", ".plus-button", function () {
+  let quantity = parseInt($("#quantity").text());
+  const productInLocalStorage = getCurrentProductFromLocalStorage();
+  if (productInLocalStorage) {
+    quantity = quantity - productInLocalStorage.quantity;
+  }
   let value = parseInt(
     $(this).siblings(".counter-value").first().text().trim()
   );
-  value++;
-  $(this).siblings(".counter-value").first().text(value);
+  if (value < quantity) {
+    value++;
+    $(this).siblings(".counter-value").first().text(value);
+  }
 });
 
 let addedProduct = 0;
 $(document).ready(function () {
-  $(".add-to-cart-button").click(function () {
+  $("#add-to-cart-button").click(function () {
     let quantity = $(".quantity").attr("id");
     let amount = $(".counter-value").text();
     if (parseInt(quantity) < parseInt(amount) + addedProduct) {
@@ -110,7 +143,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $(".add-to-cart-button").hover(
+  $("#add-to-cart-button").hover(
     function () {
       $(this).css("background-color", "black");
       $(this).css("color", "white");

@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const path = require("path");
 const {createOrder, getAllOrders}  = require('../controller/index');
+const { requireLogin } = require('../middleware');
 
-//render to order confirmation
+
+router.use(requireLogin);
+
 router.post('/', async(req, res, next) => {
     try{
         const orderDetails = req.body;

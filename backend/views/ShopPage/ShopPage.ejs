@@ -21,7 +21,6 @@
       type="text/css"
       href="https://unpkg.com/aos@2.3.1/dist/aos.css"
     />
-    <script src="\node_modules\jquery\dist\jquery.min.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -89,7 +88,7 @@
                       <div class="col-md-4 box <%= product.productCategory %>" data-quantity="<%= product.productQuantity%>" id="productCell" onclick ="window.location.href='/ProductPage/<%= product._id%>'">
                         <img src="/assets/<%= product.productImage %>" alt="alt text" class="productImage" />
                         <h3 class="product-name"><%= product.productName %></h3>
-                        <h3 class="product-price">$ <%= product.productPrice %></h3> 
+                        <h3 class="product-price">₪ <%= product.productPrice %></h3> 
                       </div>
                     <% }) %>
                   </div>

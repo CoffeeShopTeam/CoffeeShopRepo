@@ -12,7 +12,6 @@ function handleEditButtonClick(event) {
 
   const editButton = document.getElementById("editButton");
   editButton.textContent = "Save";
-  // editButton.removeEventListener("click", handleEditButtonClick);
   editButton.addEventListener("click", handleSaveButtonClick);
 }
 

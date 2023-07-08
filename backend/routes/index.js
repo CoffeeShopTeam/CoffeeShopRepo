@@ -12,6 +12,8 @@ const ordersRouter = require("./orders.routes");
 const productPageRouter = require("./productPage.routes");
 const cartRouter = require("./cart.routes");
 const logoutRouter = require("./logout.routes");
+const homePageRouter = require("./homePage.routes");
+const contactUsRouter = require("./contactUs.routes");
 
 module.exports = {
   signupRouter,
@@ -31,4 +33,6 @@ module.exports = {
   privacyPolicyRouter,
   ourStoryRouter,
   logoutRouter,
+  homePageRouter,
+  contactUsRouter,
 };

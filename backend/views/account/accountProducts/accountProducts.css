@@ -1,32 +1,31 @@
 .plus-button {
-    width: 50px;
-    height: 50px;
-    font-size: 36px;
-    margin-right: 2rem;
-    display: flex ;
-    align-items: center;
-    justify-content: center;
+  height: 2.5rem;
+  border: 1px solid #707070;
+  border-radius: 0.25rem;
+  background-color: white;
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  right: 0;
+  width: 7rem;
 }
 
-.plus-button.btn.btn-dark.rounded-circle.fs-3{
-    display: flex ;
+.products {
+  margin-top: 1rem;
 }
-
-.products{
-    margin-top: 1rem;
+.mainContent {
+  min-height: 40rem;
 }
-.mainContent{
-    min-height: 40rem;
-}
-img{
-    position: relative;
-    height: 5rem;
-    z-index: 10;
+img {
+  position: relative;
+  height: 5rem;
+  z-index: 10;
 }
 
 .icon {
-    height: 1rem;
-    width: 1rem;
-    position: relative;
-    z-index: 9;
+  height: 1rem;
+  width: 1rem;
+  position: relative;
+  z-index: 9;
 }

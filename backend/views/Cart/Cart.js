@@ -53,7 +53,7 @@ $(document).ready(function () {
           return item.id === id;
         });
         tempItem.quantity = Number(tempItem.quantity) + 1;
-        $(this).siblings(".item-amount").text(tempItem.quantity);
+        $(this).siblings(".counter-value").text(tempItem.quantity);
         setCartValues(cart);
         updateLocalStorage(cart);
       });
@@ -67,7 +67,7 @@ $(document).ready(function () {
         });
         if (tempItem.quantity > 1) {
           tempItem.quantity = Number(tempItem.quantity) - 1;
-          $(this).siblings(".item-amount").text(tempItem.quantity);
+          $(this).siblings(".counter-value").text(tempItem.quantity);
         }
         setCartValues(cart);
         updateLocalStorage(cart);
@@ -90,20 +90,26 @@ $(document).ready(function () {
     const newItem = $("<div>");
     newItem.html(`
       <div class="product-container row">
+     
         <div class="product-item">
-          <div class="product-image">
-            <img id="product-image" src="${cartItem.image}" alt="Product Image">
-          </div>
+        <div class="product-image">
+        <img id="product-image" src="${cartItem.image}" alt="Product Image" onclick="window.location.href = '/productPage/${cartItem.id}'">
+        </div>
           <div class="product-details">
-            <h4 id="product-title mb-2">${cartItem.title}</h4>
-            <h5 id="product-price mb-1">$${cartItem.price}</h5>
-            <div class="product-quantity">
-              <button class="btn btn-dark minus-button" data-id="${cartItem.id}">-</button>
-              <p class="item-amount mt-2">${cartItem.quantity}</p>
-              <button class="btn btn-dark plus-button" data-id="${cartItem.id}">+</button>
-            </div>
-            <button class="btn btn-dark remove-item" data-id="${cartItem.id}">remove</button>
+            <h4 id="product-title">${cartItem.title}</h4>
+            <h5 id="product-price">₪ ${cartItem.price}</h5>
           </div>
+          <div class="counter-button">
+                      <span class="counter-value">${cartItem.quantity}</span>
+                    </div>
+                      <div class="remove-item-container">
+                      <button
+                      data-id="${cartItem.id}"
+                        class="remove-item"
+                      >
+                        Remove
+                      </button>
+                    </div>
         </div>
       </div>
     `);
@@ -116,14 +122,15 @@ $(document).ready(function () {
     if (cart === null) {
       countTotal = 0.0;
       let cartTotalContainer = $("#cart-total");
-      cartTotalContainer.html(`<div class="cart-total">$${countTotal}</div>`);
+      cartTotalContainer.html(`<div class="cart-total">₪ ${countTotal}</div>`);
+      $("#gotoCheckout").attr("disabled", true)
     } else {
       cart.forEach(function (item) {
         countTotal += item.price * item.quantity;
       });
       let cartTotalContainer = $("#cart-total");
       cartTotalContainer.html(
-        `<div id="cart-total">$${countTotal.toFixed(2)}</div>`
+        `<div id="cart-total">₪ ${countTotal.toFixed(2)}</div>`
       );
     }
   }
@@ -151,3 +158,36 @@ function hideEmptyCartMessage() {
   let emptyMessage = document.getElementById("empty-message");
   emptyMessage.style.display = "none";
 }
+
+$(document).ready(function () {
+  $(".remove-item").hover(
+    function () {
+      $(this).css("background-color", "black");
+      $(this).css("color", "white");
+    },
+    function () {
+      $(this).css("background-color", "");
+      $(this).css("color", "");
+    }
+  );
+  $(".clear-cart").hover(
+    function () {
+      $(this).css("background-color", "black");
+      $(this).css("color", "white");
+    },
+    function () {
+      $(this).css("background-color", "");
+      $(this).css("color", "");
+    }
+  );
+  $(".to-checkout").hover(
+    function () {
+      $(this).css("background-color", "white");
+      $(this).css("color", "black");
+    },
+    function () {
+      $(this).css("background-color", "");
+      $(this).css("color", "");
+    }
+  );
+});

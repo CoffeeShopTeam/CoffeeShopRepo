@@ -1,165 +1,162 @@
 .privacy-policy.root {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+}
+.privacy-policy .flexCol {
+  display: flex;
+  flex-direction: column;
+  width: 41.15%;
+  position: relative;
+  text-align: center;
+}
+@media (max-width: 991px) {
   .privacy-policy .flexCol {
-    display: flex;
-    flex-direction: column;
-    width: 41.15%;
-    position: relative;
+    width: 48.24%;
+  }
+}
+@media (max-width: 767px) {
+  .privacy-policy .flexCol {
+    width: 55.41%;
+  }
+}
+@media (max-width: 575px) {
+  .privacy-policy .flexCol {
+    width: 62.36%;
+  }
+}
+@media (max-width: 479px) {
+  .privacy-policy .flexCol {
+    width: 68.84%;
+  }
+}
+@media (max-width: 383px) {
+  .privacy-policy .flexCol {
+    width: 74.65%;
+  }
+}
+
+@media (max-width: 2999px) {
+  .privacy-policy .title {
     text-align: center;
+    justify-content: center;
+    font: 400 33px/1.68 "DM Sans", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
   }
-  @media (max-width: 991px) {
-    .privacy-policy .flexCol {
-      width: 48.24%;
-    }
+}
+@media (max-width: 1199px) {
+  .privacy-policy .title {
+    font: 400 28px/1.68 "DM Sans", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
   }
-  @media (max-width: 767px) {
-    .privacy-policy .flexCol {
-      width: 55.41%;
-    }
+}
+@media (max-width: 991px) {
+  .privacy-policy .title {
+    font-size: 24px;
   }
-  @media (max-width: 575px) {
-    .privacy-policy .flexCol {
-      width: 62.36%;
-    }
+}
+@media (max-width: 767px) {
+  .privacy-policy .title {
+    font-size: 20px;
   }
-  @media (max-width: 479px) {
-    .privacy-policy .flexCol {
-      width: 68.84%;
-    }
-  }
-  @media (max-width: 383px) {
-    .privacy-policy .flexCol {
-      width: 74.65%;
-    }
-  }
+}
 
-  @media (max-width: 2999px) {
-    .privacy-policy .title {
-      text-align: center;
-      justify-content: center;
-    }
-  }
-  @media (max-width: 1199px) {
-    .privacy-policy .title {
-      font-size: 28px;
-    }
-  }
-  @media (max-width: 991px) {
-    .privacy-policy .title {
-      font-size: 24px;
-    }
-  }
-  @media (max-width: 767px) {
-    .privacy-policy .title {
-      font-size: 20px;
-    }
-  }
-  @media (max-width: 383px) {
-    .privacy-policy .title {
-      font-size: 12px;
-    }
-  }
-  .privacy-policy .flexCol1 {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: 50px 0px 0px;
-    text-align: left;
-
-  }
+.privacy-policy .flexCol1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 50px 0px 0px;
+  text-align: left;
+}
+.privacy-policy .highlights {
+  font: 400 16px/1.68 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0px;
+  position: relative;
+  margin: 0px 0px 15px;
+}
+@media (max-width: 1199px) {
   .privacy-policy .highlights {
-    font: 400 16px/1.68 "DM Sans", Helvetica, Arial, serif;
-    color: rgb(0, 0, 0);
-    letter-spacing: 0px;
-    position: relative;
-    margin: 0px 0px 15px;
+    font-size: 12px;
+    text-align: left;
   }
-  @media (max-width: 1199px) {
-    .privacy-policy .highlights {
-      font-size: 12px;
-      text-align: left;
-    }
-  }
-  .privacy-policy .flexCol2 {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: 5px 0px 0px;
-  }
+}
+.privacy-policy .flexCol2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 60px 0px 0px;
+}
+.privacy-policy .medium_title {
+  font: 500 26px/0.96 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0px;
+  position: relative;
+}
+@media (max-width: 991px) {
   .privacy-policy .medium_title {
-    font: 500 26px/0.96 "DM Sans", Helvetica, Arial, serif;
-    color: rgb(0, 0, 0);
-    letter-spacing: 0px;
-    position: relative;
+    font-size: 20px;
+    text-align: left;
   }
-  @media (max-width: 991px) {
-    .privacy-policy .medium_title {
-      font-size: 20px;
-      text-align: left;
-    }
+}
+@media (max-width: 767px) {
+  .privacy-policy .medium_title {
+    font-size: 16px;
   }
-  @media (max-width: 767px) {
-    .privacy-policy .medium_title {
-      font-size: 16px;
-    }
+}
+@media (max-width: 383px) {
+  .privacy-policy .medium_title {
+    font-size: 12px;
   }
-  @media (max-width: 383px) {
-    .privacy-policy .medium_title {
-      font-size: 12px;
-    }
-  }
-  .privacy-policy .highlights1 {
-    font: 500 16px/1.68 "DM Sans", Helvetica, Arial, serif;
-    color: rgb(0, 0, 0);
-    letter-spacing: 0px;
-    position: relative;
+}
+.privacy-policy .highlights1 {
+  font: 500 16px/1.68 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0px;
+  position: relative;
 
-    margin: 18px 0px 0px 5px;
+  margin: 18px 0px 0px 5px;
+}
+@media (max-width: 1199px) {
+  .privacy-policy .highlights1 {
+    font-size: 12px;
+    text-align: left;
   }
-  @media (max-width: 1199px) {
-    .privacy-policy .highlights1 {
-      font-size: 12px;
-      text-align: left;
-    }
-  }
+}
+.privacy-policy .flexCol3 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 60px 15px 0px 5px;
+}
+@media (max-width: 991px) {
   .privacy-policy .flexCol3 {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: 20px 15px 0px 5px;
+    margin: 20px 8px 0px 5px;
   }
-  @media (max-width: 991px) {
-    .privacy-policy .flexCol3 {
-      margin: 20px 8px 0px 5px;
-    }
+}
+@media (max-width: 383px) {
+  .privacy-policy .flexCol3 {
+    margin: 20px 4px 0px 5px;
   }
-  @media (max-width: 383px) {
-    .privacy-policy .flexCol3 {
-      margin: 20px 4px 0px 5px;
-    }
-  }
+}
+.privacy-policy .highlights2 {
+  font: 400 16px/1.68 "DM Sans", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0px;
+  position: relative;
+  min-height: 110px;
+  margin: 18px 0px 0px;
+}
+@media (max-width: 1199px) {
   .privacy-policy .highlights2 {
-    font: 400 16px/1.68 "DM Sans", Helvetica, Arial, serif;
-    color: rgb(0, 0, 0);
-    letter-spacing: 0px;
-    position: relative;
-    min-height: 110px;
-    margin: 18px 0px 0px;
+    font-size: 12px;
+    text-align: left;
   }
-  @media (max-width: 1199px) {
-    .privacy-policy .highlights2 {
-      font-size: 12px;
-      text-align: left;
-    }
-  }
-  .privacy-policy .component {
-    position: relative;
-    margin: 84px 0px 67px;
-  }
-  
+}
+.privacy-policy .component {
+  position: relative;
+  margin: 84px 0px 67px;
+}

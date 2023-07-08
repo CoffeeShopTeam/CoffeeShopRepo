@@ -1,5 +1,6 @@
 const Orders = require("../../models/orders/orders.schema");
 const path = require('path');
+const { getProductByOrderId } = require("../products/products.controller");
 
 async function createOrder(orderDetails, userId) {
     console.log(orderDetails);
@@ -21,12 +22,13 @@ const  getAllOrders = async(req, res) => {
 };
 
 const getOrdersByOrderId = async(req, res) => {
-    try {
+    try {   
         const { orderId } = req.params;
-        const orders = await Orders.find({ _id: orderId }); 
-        if(orders)
+        const order = await getOrderWithPopulatedData(orderId);
+        const productsArray = await getProductByOrderId(order);         
+        if(order)
         res.render(path.join(__dirname, "..", "..", "views", "account", "accountViewOrder", "accountViewOrder"),
-        { orderId, orders });
+        { orderId, order, productsArray });
         else
             res.status(404).send("Order not found");       
     } catch (error) {
@@ -90,4 +92,17 @@ function createUserObjec(orderDetails, userId)
     return data;
 }
 
-module.exports = { createOrder, getAllOrders, getOrdersByOrderId , editOrderById };
+const getOrderWithPopulatedData = async (orderId) => {
+    try {
+        const order = await Orders.findById(orderId)
+            .populate("user")
+            .populate("products.product")
+            .exec();
+        console.log(order);
+        return order;
+    } catch (error) {
+        throw new Error(`Failed to fetch order: ${error}`);
+    }
+  };
+
+module.exports = { createOrder, getAllOrders, getOrdersByOrderId , editOrderById, getOrderWithPopulatedData };

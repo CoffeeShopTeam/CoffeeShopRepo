@@ -1,4 +1,3 @@
-<% orders.forEach(function(order) { %>
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -44,15 +43,10 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <div class="form-floating mb-3">
-                      <input type="text" readonly class="form-control-plaintext" id="deliveryOption"
-                        value="<%= order.shippingDetails.deliveryOption %>" />
-                      <label for="deliveryOption">Delivery Option</label>
-                    </div>
+                  <div class="form-group">                    
                     <div class="form-floating mb-3">
                       <input type="text" readonly class="form-control-plaintext" id="deliveryAddress"
-                        value="<%= order.shippingDetails.address %>" />
+                        value=" <%= order.shippingDetails.street  %> <%= order.shippingDetails.houseNumber %>, <%= order.shippingDetails.city  %>" />
                       <label for="deliveryAddress">Delivery Address</label>
                     </div>
                     <div class="form-floating mb-3">
@@ -82,34 +76,29 @@
                 <thead>
                   <tr>
                     <th>Product</th>
+                    <th>Quantity</th>
                     <th>Price</th>
                   </tr>
                 </thead>
                 <tbody>
+                  
                   <% order.products.forEach(function(product) { %>
                     <tr>
-                      <td><%= product.name %></td>
-                      <td><%= product.price %></td>
+                      <td><%= product.product.productName %></td>
+                      <td><%= product.quantity %></td>
+                      <td><%= product.product.productPrice %></td>
                     </tr>
-                  <% }); %>
-                  <tr>
-                    <th>Subtotal</th>
-                    <td>$<%= parseInt(order.orderPrice )%></td>
-                  </tr>
-                  <tr>
-                    <th>Shipping</th>
-                    <td class="table-price">$<%= order.shippingDetails.deliveryPrice %></td>
-                  </tr>
+                  <% }); %>          
                   <tr>
                     <th>Total</th>
-                    <td class="table-price">$<%= parseInt(order.orderPrice) + parseInt(order.shippingDetails.deliveryPrice) %></td>
+                    <th></th>
+                    <td class="table-price"><%= parseInt(order.orderPrice) %>₪</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-
       </div>
     </div>
     <div class="footer" id="footer"></div>
@@ -121,4 +110,3 @@
   </body>
 
   </html>
-<% }); %>

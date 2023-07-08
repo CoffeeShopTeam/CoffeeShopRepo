@@ -109,6 +109,15 @@ const getAllSupplierProducts = async (supplierId) => {
   return products;
 }
 
+async function getProductByOrderId(order) {
+  let productsArray = [];
+  for (let index = 0; index < order.products.length; index++) {
+      productsArray[index] = await getProductById(order.products[index].product);
+      productsArray[index].productQuantity = order.products[index].quantity;
+  }
+  return productsArray;
+}
+
 module.exports = {
   getAllProducts,
   getProductById,
@@ -117,4 +126,5 @@ module.exports = {
   EditProductById,
   deleteProduct,
   getAllSupplierProducts,
+  getProductByOrderId
 };

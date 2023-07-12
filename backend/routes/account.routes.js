@@ -3,7 +3,8 @@ const router = express.Router();
 const path = require("path");
 const Orders = require("../models/orders/orders.schema");
 const { addressValidator } = require("../models/users/user.validator.js");
-
+const { getProductByOrderId  } = require('../controller/products/products.controller');
+const { getOrderWithPopulatedData} = require('../controller/orders/orders.controller')
 const getUser = require(path.join(__dirname, "../", "controller", "users", "getUser.controller"));
 const { updateUserFields, updateUserPassword } = require("../controller/users/updateUser.contoroller.js");
 const { getAllProducts, getAllSupplierProducts } = require("../controller/products/products.controller.js");
@@ -176,12 +177,12 @@ router.get("/products", async (req, res, next) => {
   }
 });
 
-router.get("/orders/:orderId", (req, res, next) => {
+router.get("/orders/:orderId", async(req, res, next) => {
   try {
     const type = req.type;
     const { orderId } = req.params;
-
-
+    const order = await getOrderWithPopulatedData(orderId);
+    let productsArray = await getProductByOrderId(order);
     res.render(
       path.join(
         __dirname,
@@ -191,10 +192,12 @@ router.get("/orders/:orderId", (req, res, next) => {
         "accountViewOrder",
         "accountViewOrder"
       ),
-      { type }
+      { type,order, productsArray  }
     );
 
-  } catch (error) {}
+  } catch (error) {
+        throw new Error('order was not found')
+  }
 });
 
 

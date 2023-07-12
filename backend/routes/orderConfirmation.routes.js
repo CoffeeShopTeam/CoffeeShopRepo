@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const Orders = require("../models/orders/orders.schema");
-const { getProductById } = require('../controller/products/products.controller');
+const { getProductByOrderId  } = require('../controller/products/products.controller');
+const { getOrderWithPopulatedData} = require('../controller/orders/orders.controller')
 router.use('/', (req, res, next) => {
     try {
         const data = req?.session?.data;
@@ -19,17 +20,8 @@ router.use('/', (req, res, next) => {
 router.get('/:orderId', async (req, res, next) => {
     try {
         const { orderId } = req.params;
-        // TODO: Get and send to ejs order data
-        const order = await Orders.findById(orderId)
-            .populate("user")
-            .populate("products.product").exec();
-        console.log(order);
-        let productsArray = []
-        for (let index = 0; index < order.products.length; index++) 
-        {
-            productsArray[index] = await getProductById(order.products[index].product);
-            productsArray[index].productQuantity = order.products[index].quantity;
-        }
+        const order = await getOrderWithPopulatedData(orderId);
+        let productsArray = await getProductByOrderId(order);
         res.render(path.join(
             __dirname, "..", "views", "orderConfirmation", "orderConfirmation"
         ), { order, productsArray });

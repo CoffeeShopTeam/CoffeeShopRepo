@@ -12,7 +12,6 @@ async function getExchangeRates(targetCurrency , baseCurrency , amount) {
     if (response.status !== 200) {
       throw new Error(`Failed to fetch currency data. Status: ${response.status}`);
     }
-
     const data = response.data;
     if (data.length === 0) {
       throw new Error(`Currency not found.`);

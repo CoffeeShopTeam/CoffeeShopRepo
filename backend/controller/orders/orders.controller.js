@@ -1,5 +1,6 @@
 const Orders = require("../../models/orders/orders.schema");
-const { getProductById } = require("../products/products.controller");
+const path = require('path');
+const { getProductById , getProductByOrderId} = require("../products/products.controller");
 
 async function createOrder(orderDetails, userId) {
     try {
@@ -32,12 +33,14 @@ const getAllOrders = async (req, res) => {
     }
 };
 
-const getOrdersByOrderId = async (req, res) => {
-    try {
+const getOrdersByOrderId = async(req, res) => {
+    try {   
         const { orderId } = req.params;
-        const orders = await Orders.find({ _id: orderId });
-        if (orders)
-            console.log('the order was saved succesfully');
+        const order = await getOrderWithPopulatedData(orderId);
+        const productsArray = await getProductByOrderId(order);         
+        if(order)
+        res.render(path.join(__dirname, "..", "..", "views", "account", "accountViewOrder", "accountViewOrder"),
+        { orderId, order, productsArray });
         else
             res.status(404).send("Order not found");
     } catch (error) {
@@ -106,4 +109,17 @@ function createUserObject(orderDetails, userId) {
     }
 }
 
-module.exports = { createOrder, getAllOrders, getOrdersByOrderId, editOrderById };
+const getOrderWithPopulatedData = async (orderId) => {
+    try {
+        const order = await Orders.findById(orderId)
+            .populate("user")
+            .populate("products.product")
+            .exec();
+        console.log(order);
+        return order;
+    } catch (error) {
+        throw new Error(`Failed to fetch order: ${error}`);
+    }
+  };
+
+module.exports = { createOrder, getAllOrders, getOrdersByOrderId , editOrderById, getOrderWithPopulatedData };

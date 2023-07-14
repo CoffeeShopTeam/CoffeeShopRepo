@@ -4,13 +4,15 @@ const {
   getAllProducts,
 } = require("../controller/products/products.controller");
 
+const {
+  getMostOrderedProducts,
+} = require("../controller/orders/orders.controller");
+
 router.get("/", async (req, res) => {
   try {
-    // Fetch all products
-    const products = await getAllProducts();
+    const mostOrderedProducts = await getMostOrderedProducts(6);
 
-    // Render the EJS template and pass the products as a variable
-    res.render("homePage/homePage", { products: products });
+    res.render("homePage/homePage", { sortedProducts: mostOrderedProducts });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

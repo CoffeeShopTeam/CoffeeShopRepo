@@ -11,7 +11,7 @@ router.post("/", async (req, res, next) => {
   try {
     const userDetails = req.body;
     await createUser(userDetails);
-    res.send("Saved!");
+    res.redirect("/")
   } catch (err) {
     res.status(500).send(err.message);
   }

@@ -22,6 +22,4 @@ const tweet = async () => {
   }
 };
 
-tweet();
-
-module.exports = { tweet };
+module.exports = twitterClient;

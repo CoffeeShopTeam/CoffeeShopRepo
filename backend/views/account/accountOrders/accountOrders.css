@@ -4,3 +4,13 @@
 .mainContent{
     min-height: 40rem;
 }
+
+img {
+    z-index: 9;
+    position: relative;
+}
+
+.btn.edit {
+    z-index: 10;
+    position: relative;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
+    <title>Urusta</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/homePage/HomePage.css" />
+  </head>
+  <body>
+    <div class="header" id="header"></div>
+    <header class="hero bg text-white py-5">
+      <div class="container">
+        <h1 class="display-4 text-center">Welcome to Urusta</h1>
+        <p class="lead text-center">
+          Welcome to Our Coffee Shop! Step into our cozy haven, where the
+          aromatic embrace of freshly brewed coffee and the friendly ambiance
+          await you. Indulge in our carefully crafted beverages and savor the
+          moments of pure bliss and caffeine-fueled happiness.
+        </p>
+        <button
+          class="browse-products"
+          onclick="window.location.href='/ShopPage'"
+        >
+          Browse Products
+        </button>
+      </div>
+    </header>
+    <section class="features py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <div
+              id="topSellersCarousel"
+              class="carousel slide mb-4"
+              data-ride="carousel"
+            >
+              <h5 class="text-center mb-4" id="Title">Top Sellers</h5>
+              <div class="carousel-inner">
+                <% for (let i = 0; i < sortedProducts.length; i += 2) { %>
+                <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                  <div class="card mb-4 border-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="box-wrap text-center">
+                          <% for (let j = i; j < i + 2 && j <
+                          sortedProducts.length; j++) { %>
+                          <div
+                            class="col-md-6 box"
+                            id="productCell"
+                            onclick="window.location.href='/ProductPage/<%= sortedProducts[j]._id %>'"
+                          >
+                            <img
+                              src="/assets/<%= sortedProducts[j].productImage %>"
+                              alt="alt text"
+                              class="card-img-top"
+                            />
+                            <h3 class="product-name">
+                              <%= sortedProducts[j].productName %>
+                            </h3>
+                            <h3 class="product-price">
+                              $ <%= sortedProducts[j].productPrice %>
+                            </h3>
+                          </div>
+                          <% } %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#topSellersCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="false"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#topSellersCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="false"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="footer" id="footer"></div>
+    <script src="\partials\partials.js"></script>
+    <script src="./homePage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/orderConfirmation/orderConfirmation.css" />
+    <script src="/orderConfirmation/orderConfirmation.js"></script>
+    <title>Order Confirmation</title>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="mb-4">
+        <h1 class="text-center">Order Confirmation</h1>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="first-table col-md-12 col-8">
+                <div class="card border-0">
+                    <div class="card-header">
+                        <h5 class="card-title">Order Details - <%= order._id %></h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="orderNumber"
+                                            name="orderNumber" value="<%= order._id %>" />
+                                        <label for="orderNumber">Order Number</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" disabled class="form-control-plaintext" id="email"
+                                            name="email" value="<%= order.shippingDetails.email %>" />
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="paymentMethod"
+                                            name="paymentMethod" value="<%= order.paymentMethod %>" />
+                                        <label for="paymentMethod">Payment Method</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="orderDate"
+                                            name="orderDate" value="<%= order.orderDate %>" />
+                                        <label for="orderDate">Order Date</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="deliveryAddress"
+                                            name="deliveryAddress" value="<%= order.shippingDetails.city %> <%= order.shippingDetails.street %>, <%= order.shippingDetails.country %>" />
+                                        <label for="deliveryAddress">Delivery Address</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="contactNumber"
+                                            name="contactNumber" value="<%= order.shippingDetails.phone %>" />
+                                        <label for="contactNumber">Contact Number</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" disabled class="form-control-plaintext" id="orderNotes"
+                                            name="orderNotes" value="<%= order.shippingDetails.ordersNotes %>" />
+                                        <label for="orderNotes">Order notes</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="second-table col-md-12 col-8">
+                <div class="card border-0">
+                    <div class="card-header">
+                        <h5 class="card-title">Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quatity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i = 0; i < order?.products?.length; i++) { %>
+                                    <tr>
+                                        <td><%= productsArray[i].productName %></td>
+                                        <td><%= productsArray[i].productQuantity %></td>
+                                        <td><%= productsArray[i].productPrice * productsArray[i].productQuantity %></td>
+                                    </tr>
+                                <% } %>
+                                <tr>
+                                    <th>Shipping</th>
+                                    <td>1</td>
+                                    <th class="table-price"> free </td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th></th>
+                                    <th class="table-price"><%= order.orderPrice %></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button
+                  class="to-homepage"
+                    id="back-to-homepage"
+                >
+                Back To Homepage               
+                </button>
+            </div>
+        </div>
+    </div>
+            <div id="footer"></div>
+            <script src="\partials\partials.js"></script>
+</body>
+
+</html>

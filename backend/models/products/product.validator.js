@@ -1,6 +1,6 @@
 function validateQuantity(productQuantity) {
   const quantity = productQuantity;
-  return Number.isInteger(quantity) && quantity > 1;
+  return Number.isInteger(quantity) && quantity >= 0;
 }
 
 module.exports = validateQuantity;

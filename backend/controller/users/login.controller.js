@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const User = require("../../models/users/user.schema");
 
 async function login({ email, password }) {
@@ -9,7 +9,9 @@ async function login({ email, password }) {
     if (!matchPasswords) return null;
     const data = {
         firstName: user.firstName,
-        type: user.type
+        type: user.type,
+        _id: user._id,
+        email : user.email
     }
     return data;
 }

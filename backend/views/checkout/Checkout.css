@@ -1,0 +1,129 @@
+.must-fill {
+  color: red;
+}
+
+main {
+  width: 100%;
+}
+
+#click-to-login,
+#click-to-signup {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#coupon-input {
+  width: 13rem;
+  margin-left: 0.5rem;
+}
+
+.main-sec {
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.checkout {
+  padding-right: 1rem;
+  font: "DM Sans", Helvetica, Arial, serif;
+}
+
+.shipping {
+  position: relative;
+  font: "DM Sans", Helvetica, Arial, serif;
+}
+
+.order {
+  position: relative;
+  align-content: center;
+  align-items: center;
+  background-color: white;
+
+  font: "DM Sans", Helvetica, Arial, serif;
+}
+
+#ship-option {
+  margin-top: 2.5rem;
+  margin-left: 1.2rem;
+  border-width: 0.1rem;
+}
+
+#quantity {
+  margin-top: 1rem;
+  margin-left: auto;
+  text-align: center;
+}
+
+.currency-symbol {
+  margin-left: auto;
+}
+
+#order-container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+  background-color: #efefef;
+  border-style: solid;
+  border-color: #d8d8d8;
+  border-width: 0.1rem;
+}
+
+#spacer {
+  border-top-width: 0.1rem;
+  margin-bottom: 1rem;
+  border-top-style: solid;
+  border-color: #d8d8d8;
+}
+
+.place-order {
+  height: 2.5rem;
+  border: 1px solid #707070;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  width: 23rem;
+  margin-left: 0.25rem;
+}
+
+#convet-title {
+  font: 300 16px "DM Sans", Helvetica, Arial, serif;
+  margin-left: 0.5rem;
+}
+
+#convert-box {
+  margin-left: 0.5rem;
+}
+
+#apply-coupon-button {
+  height: 2rem;
+  border: 1px solid #707070;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  width: 8rem;
+  margin-left: 1.7rem;
+}
+
+.convert-button {
+  height: 2rem;
+  border: 1px solid #707070;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  width: 5rem;
+  margin-left: 2rem;
+  margin-top: 0.2rem;
+}

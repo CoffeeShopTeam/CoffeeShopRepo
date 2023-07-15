@@ -29,11 +29,16 @@ const ProductSchema = new mongoose.Schema({
   productQuantity: {
     type: Number,
     required: true,
+    min: [0, "The minimal quantity is zero."],
     validate: [validateQuantity, "Invalid quantity"],
   },
   supplierId: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "User",
+    ref: "users",
+  },
+  productBrand: {
+    type: String,
+    required: true,
   },
 });
 

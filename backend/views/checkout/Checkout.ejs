@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/checkout/Checkout.css" />
+    <script src="/checkout/Checkout.js"></script>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-16x16.png" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div id="header"></div>
+      </nav>
+    </header>
+    <form class="container" id="containerForm">      
+      <div class="mb-4">
+        <h1 class="text-center">Checkout</h1>
+      </div>
+      <div></div>
+      <section>
+        <div class="row">
+          <div class="d-flex justify-content-center">
+          </div>
+        </div>
+      </div>
+      <hr class="mt-2" />
+    </section>
+
+    <section class="col">
+      <div class="main-sec row">
+        <div class="shipping col-md-4">
+          <h3 class="mb-3" style="margin-top:1rem;">Shipping Details</h3>
+          <div class="checkout row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="Prefix">Prefix</label>
+                <div class="select-container">
+                  <select class="form-select" aria-label="Floating label select example" name="Prefix">
+                    <option value="Mr">Mr.</option>
+                    <option value="Ms">Ms.</option>
+                    <option value="Mrs">Mrs.</option>
+                    <option value="Dr">Dr.</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstName">First name</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" id="first-name" name="firstName" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="lastName">Last name</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="lastName" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="company-name">Company Name</label>
+                <input type="text" class="form-control" name="companyName" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="country">Country</label>
+                <span class="must-fill">*</span>
+                <select class="form-select countrySelect narrow-select" aria-label="Floating label select example"
+                  name="country" style="width: 100%;" required>
+                  <% countries.forEach(function(countryName) { %>
+                    <option value="<%= countryName %>">
+                      <%= countryName %>
+                    </option>
+                    <% }); %>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="street-address">Street Address</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="streetAddress" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="street-address">House Number</label>
+                <span class="must-fill">*</span>
+                <input type="number" minlength="1" class="form-control" name="houseNumber" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="city">Town / City</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="city" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="postcode">Postcode / ZIP</label>
+                <span class="must-fill">*</span>
+                <input type="text" class="form-control" name="postlCode" required />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <span class="must-fill">*</span>
+                <input type="number" minlength="10" class="form-control" name="phone" required />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <span class="must-fill">*</span>
+                <input type="email" class="form-control" name="email" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="order-notes">Order notes</label>
+                <textarea class="form-control" name="ordersNotes" rows="3" placeholder="Got something to tell us?">
+                  </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order col-md-4">
+          <div class= "container" id="order-container">
+            <h3 class="mb-3" style="margin-top:1rem;">YOUR ORDER</h3>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">PRODUCT</h5>
+              <h5 class="mb-0">QTY</h5>
+              <h5 class="mb-0">TOTAL</h5>
+            </div>
+            <div id="spacer"></div>
+            <div id="checkout-product"></div>
+            <div id="spacer"></div>
+            <div id="checkout-total"></div>
+            <div class="d-flex justify-content-between align-items-center mb-2" >
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-2" id ="spacer">
+            </div>
+            <div class="payment-methods">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="cardNumber">Credit Card Number</label>
+                  <span class="must-fill">*</span>
+                  <input type="text" class="form-control" name="cardNumber" required
+                    placeholder="Enter credit card number">
+                </div>
+                <div class="form-group col-md-6 ">
+  
+                  <label for="cvv">CVV</label>
+                  <span class="must-fill">*</span>
+                  <input type="text" class="form-control " name="cvv" required maxlength="3" placeholder="Enter CVV">
+  
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="expirationMonth">Expiration Month</label>
+                    <span class="must-fill">*</span>
+                    <select class="form-control" id="expirationMonth" name="expirationMonth" required>
+                      <option value="">Month</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+  
+  
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="expirationYear">Expiration Year</label>
+                    <span class="must-fill">*</span>
+                    <select class="form-control" id="expirationYear" name="expirationYear">
+                      <option value="">Year</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2024">2025</option>
+                      <option value="2024">2026</option>
+                      <option value="2024">2027</option>
+                    </select>
+                  </div>
+                  <div id="spacer"></div>
+
+    
+  
+      <div class="d-flex justify-content-between align-items-center mb-3" id="convert-box">
+  
+        <strong class="mb-0" id="convert-title">Convert Payment To:</strong>
+        <select class="mt-1 ml-4 mr-3" name="currency" id="currency" required>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="ILS">ILS</option>
+        </select>
+        <button
+                  class="convert-button"
+                  type="submit" id="convert-button"
+                >
+                Convert               
+                </button>
+    </div>
+    <button
+        class="place-order"
+        type="submit" id="place-order-button"
+      >
+      Place Order               
+      </button>
+      </div>
+  </div>
+       
+          
+            </div>
+          </div>
+        </div>
+      
+      
+  
+  </section>
+  </form>
+  <div id="footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="\partials\partials.js"></script>
+  <script src="\account\account.js"></script>
+</body>
+
+</html>

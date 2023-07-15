@@ -16,6 +16,7 @@ router.post("/", async (req, res, next) => {
     res.redirect("/account/details");
   } catch (error) {
     console.log(error);
+    req.body.error = error.message
     res.redirect("/login/");
   }
 });

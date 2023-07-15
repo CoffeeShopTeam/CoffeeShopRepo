@@ -6,3 +6,7 @@ function resetSearchBar() {
   input.placeholder = "Search Here..";
   window.location.href = link;
 }
+
+$(function() {
+  $("#user-text")
+})

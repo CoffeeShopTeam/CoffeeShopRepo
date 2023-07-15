@@ -1,9 +1,8 @@
 // const { getAllProducts } = require("../../controller/products/products.controller");
 
 $(function () {
-    $("#currency-conversion-form").on("submit", async function (e) {
+    $("#convert-button").on("click", async function (e) {
     e.preventDefault();
-    e.stopPropagation()
     const targetCurrency = $("#currency").val();
     const allProducts = $(
         ".d-flex.justify-content-between.align-items-center.mb-2.product"
@@ -143,4 +142,3 @@ function submitForm(event) {
 
 $('#containerForm').on('submit',submitForm)
 });
-

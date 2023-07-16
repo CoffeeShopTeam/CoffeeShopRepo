@@ -96,7 +96,7 @@
                                     <tr>
                                         <td><%= productsArray[i].productName %></td>
                                         <td><%= productsArray[i].productQuantity %></td>
-                                        <td><%= productsArray[i].productPrice * productsArray[i].productQuantity %></td>
+                                        <td><%= productsArray[i].productPrice * productsArray[i].productQuantity %>₪</td>
                                     </tr>
                                 <% } %>
                                 <tr>
@@ -107,7 +107,7 @@
                                 <tr>
                                     <th>Total</th>
                                     <th></th>
-                                    <th class="table-price"><%= order.orderPrice %></th>
+                                    <th class="table-price"><%= order.orderPrice %>₪</th>
                                 </tr>
                             </tbody>
                         </table>

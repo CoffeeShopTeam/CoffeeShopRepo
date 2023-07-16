@@ -38,7 +38,7 @@
                     <img class="icon edit" src="/assets/pencil.svg" alt="edit" />
                   </button>
               </td>
-              <td><%= order.orderPrice %></td>
+              <td><%= order.orderPrice %>₪</td>
               <td>
                 <form method="GET" action="/account/orders/<%= order._id %>">
                 <button type="submit" class="btn-xs btn-dark ms-auto view-order" data-order-id="<%= order._id %>">View Order</button>
